@@ -6,15 +6,10 @@ public class GameState {
     private Integer sizeY;
 
     public GameState(List<GameStateRow> gameStateRows) {
-        this.gameStateRows = gameStateRows;
-
         this.setSizeY(gameStateRows.size());
         this.setSizeX(gameStateRows.get(0).getCellRow().size());
-    }
 
-    public GameState(Integer sizeX, Integer sizeY) {
-        this.setSizeX(sizeX);
-        this.setSizeY(sizeY);
+        this.gameStateRows = gameStateRows;
     }
 
     public Integer getSizeX() {
@@ -38,4 +33,20 @@ public class GameState {
         this.sizeY = sizeY;
     }
 
+    public GameCell getXYCell(int x, int y){
+        return gameStateRows.get(y).getCellRow().get(x);
+    }
+
+    public void updateNeighbors() {
+        int x = 0;
+        for(GameStateRow row : gameStateRows)
+        {
+            int y = 0;
+            for(GameCell cell : row.getCellRow()) {
+
+                y++;
+            }
+            x++;
+        }
+    }
 }
