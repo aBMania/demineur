@@ -16,7 +16,7 @@ public class ConsoleView {
                         return ".";
                     }
                     else{
-                        return gameCell.getNumberBombsNear().toString();
+                        return ""+gameCell.getNumberBombsNear();
                     }
                 }
             case FLAG_EXCLAMATIONMARK:
@@ -27,7 +27,15 @@ public class ConsoleView {
 
         throw new RuntimeException("Cannot find symbol for this cell");
     }
-    public void ConsoleView(GameState game_state) {
+    public void ConsoleView(GameState gameState) {
+        Integer sizeX = gameState.getSizeX();
+        Integer sizeY = gameState.getSizeY();
+
+        for(int x = 0;x < sizeX; x++){
+            for(int y = 0;y < sizeY;y++){
+
+            }
+        }
 
     }
 }
