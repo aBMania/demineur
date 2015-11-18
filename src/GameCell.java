@@ -16,9 +16,9 @@ public class GameCell {
         this.state = state;
     }
 
-    public GameCell(boolean mined, Integer x, Integer y, GameCell eastGameCell, GameCell westGameCell, GameCell northGameCell, GameCell southGameCell) {
+    public GameCell(Integer x, Integer y, boolean mined, GameCellState state, GameCell northGameCell, GameCell eastGameCell, GameCell southGameCell, GameCell westGameCell) {
         this(x, y, mined, state);
-²
+
         this.eastGameCell = eastGameCell;
         this.westGameCell = westGameCell;
         this.northGameCell = northGameCell;
@@ -93,6 +93,8 @@ public class GameCell {
         if (this.getWestGameCell() != null && this.getWestGameCell().isMined() == true){
             nbBonbsNear++;
         }
+
+        return nbBonbsNear;
     }
 
     public boolean isHidden() {
