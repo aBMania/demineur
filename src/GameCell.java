@@ -1,32 +1,28 @@
 public class GameCell {
-    private boolean mined = false; // true if cell is mined
-    private GameCellState state = null;
     private Integer x = 0;
     private Integer y = 0;
+    private boolean mined = false; // true if cell is mined
+    private GameCellState state = null;
     private GameCell eastGameCell = null;
     private GameCell westGameCell = null;
     private GameCell northGameCell = null;
     private GameCell southGameCell = null;
 
-    public GameCell(Integer x, Integer y, GameCell eastGameCell, GameCell westGameCell, GameCell northGameCell, GameCell southGameCell) {
+
+    public GameCell(Integer x, Integer y, boolean mined, GameCellState state) {
         this.x = x;
         this.y = y;
-        this.eastGameCell = eastGameCell;
-        this.westGameCell = westGameCell;
-        this.northGameCell = northGameCell;
-        this.southGameCell = southGameCell;
-        this.state = GameCellState.HIDDEN;
+        this.mined = mined;
+        this.state = state;
     }
 
     public GameCell(boolean mined, Integer x, Integer y, GameCell eastGameCell, GameCell westGameCell, GameCell northGameCell, GameCell southGameCell) {
-        this.x = x;
-        this.y = y;
+        this(x, y, mined, state);
+²
         this.eastGameCell = eastGameCell;
         this.westGameCell = westGameCell;
         this.northGameCell = northGameCell;
         this.southGameCell = southGameCell;
-        this.state = GameCellState.HIDDEN;
-        this.mined = mined;
     }
 
     public boolean isMined() {
@@ -75,5 +71,31 @@ public class GameCell {
 
     public void setSouthGameCell(GameCell southGameCell) {
         this.southGameCell = southGameCell;
+    }
+    public Integer getNumberBombsNear(){
+        Integer nbBonbsNear = 0;
+        if (this.getEastGameCell() != null && this.getEastGameCell().isMined() == true){
+            nbBonbsNear++;
+        }
+        if (this.getNorthGameCell() != null && this.getNorthGameCell().isMined() == true){
+            nbBonbsNear++;
+        }
+        if (this.getSouthGameCell() != null && this.getSouthGameCell().isMined() == true){
+            nbBonbsNear++;
+        }
+        if (this.getWestGameCell() != null && this.getWestGameCell().isMined() == true){
+            nbBonbsNear++;
+        }
+
+        if (this.getWestGameCell() != null && this.getWestGameCell().isMined() == true){
+            nbBonbsNear++;
+        }
+        if (this.getWestGameCell() != null && this.getWestGameCell().isMined() == true){
+            nbBonbsNear++;
+        }
+    }
+
+    public boolean isHidden() {
+        return this.getState().equals(GameCellState.HIDDEN);
     }
 }
