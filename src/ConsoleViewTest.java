@@ -1,7 +1,7 @@
 public class ConsoleViewTest {
 
     public static void main(String[] args) {
-        GameState gs = GameStateGenerator.newGame(5, 6, 6);
+        GameState gs = GameStateGenerator.newGame(60, 2, 4);
 
         ConsoleView view = new ConsoleView(gs, true);
         view.printGameState();

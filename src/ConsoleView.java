@@ -44,8 +44,8 @@ public class ConsoleView {
     }
 
     public void printGameState(){
-        for(int x = 0; x < this.gs.getSizeX(); x++){
-            for(int y = 0; y < this.gs.getSizeY();y++){
+        for(int y = 0; y < this.gs.getSizeY(); y++){
+            for(int x = 0; x < this.gs.getSizeX();x++){
                 System.out.print(getCellRepresentation(this.gs.getXYCell(x, y)) + " ");
             }
             System.out.println();

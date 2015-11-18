@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 
 public class GameStateGenerator {
@@ -29,15 +27,25 @@ public class GameStateGenerator {
     public static GameState newGame(Integer perCent, Integer x, Integer y){
 
         GameState gs = newBlankGameState(x,y);
-        Random rand = new Random();
+        Integer nCells = x*y;
+        Integer nBombs = nCells*perCent/100;
+        List<Integer> cells = new LinkedList<>();
 
-        for(int i = 0; i < x; i++ ){
-            for(int j = 0; j < y; j++){
-                int randomNum = rand.nextInt(101);
-                if(randomNum <= perCent ){
-                    gs.getXYCell(i,j).setMined(true);
-                }
-            }
+        for(int i = 0; i < nCells; i++) {
+            cells.add(i);
+        }
+
+        // On mélange un tableau contenant les n premiers chiffres, n le nombre de cellules dans le jeu
+        // On selectionne alors les x premièrs chiffres et on mine les cellules associées
+        Collections.shuffle(cells);
+
+        for(int i = 0; i < nBombs; i++){
+            Integer cellNumber = cells.get(i);
+
+            int cellY = cellNumber % y;
+            int cellX = (cellNumber-cellY)/y;
+
+            gs.getXYCell(cellX, cellY).setMined(true);
         }
 
         return gs;
