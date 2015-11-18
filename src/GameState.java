@@ -44,6 +44,17 @@ public class GameState {
             int y = 0;
             for(GameCell cell : row.getCellRow()) {
 
+                for(int i=(x-1); i<(x+1); i++){
+                    for(int j=(y-1); j<(y+1); j++){
+                        if(i != j){
+                            GameCell neighbor = getXYCell(i, j);
+
+                            if(neighbor != null)
+                                cell.addNeighbor(neighbor);
+                        }
+                    }
+                }
+
                 y++;
             }
             x++;
