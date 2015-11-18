@@ -25,7 +25,7 @@ public class GameCell {
         this.state = state;
         this.neihgboor = neighbors;
     }
-    public void addNeighbor(GameCell cell) {
+    public void addNeighboor(GameCell cell) {
         neihgboor.add(cell);
     }
     public boolean isMined() {
