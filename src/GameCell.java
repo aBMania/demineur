@@ -1,5 +1,5 @@
 public class GameCell {
-    private boolean mined; // true if cell is mined
+    private boolean mined = false; // true if cell is mined
     private GameCellState state = null;
     private Integer x = 0;
     private Integer y = 0;
@@ -16,6 +16,17 @@ public class GameCell {
         this.northGameCell = northGameCell;
         this.southGameCell = southGameCell;
         this.state = GameCellState.HIDDEN;
+    }
+
+    public GameCell(boolean mined, Integer x, Integer y, GameCell eastGameCell, GameCell westGameCell, GameCell northGameCell, GameCell southGameCell) {
+        this.x = x;
+        this.y = y;
+        this.eastGameCell = eastGameCell;
+        this.westGameCell = westGameCell;
+        this.northGameCell = northGameCell;
+        this.southGameCell = southGameCell;
+        this.state = GameCellState.HIDDEN;
+        this.mined = mined;
     }
 
     public boolean isMined() {
