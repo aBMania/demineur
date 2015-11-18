@@ -9,5 +9,8 @@ public class GameController {
     public void discoverCell(int x, int y){
         GameCell cell = this.gameState.getXYCell(x, y);
 
+        if(cell.isMined()) {
+            gameState.setLost(true);
+        }
     }
 }
