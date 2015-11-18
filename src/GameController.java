@@ -11,6 +11,22 @@ public class GameController {
 
         if(cell.isMined()) {
             gameState.setLost(true);
+            return;
         }
+
+        showCell(cell);
+    }
+
+    private void showCell(GameCell cell) {
+
+        if(cell.getNumberBombsNear() > 0) {
+            cell.setState(GameCellState.VISIBLE);
+            return;
+        }
+
+        for(GameCell neighbor : cell.getNeighbor()) {
+            showCell(cell);
+        }
+
     }
 }

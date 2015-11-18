@@ -1,21 +1,23 @@
 public class ConsoleView {
 
+    private boolean debug = false;
+    private GameState gs;
+
     public ConsoleView(GameState gameState) {
-        Integer sizeX = gameState.getSizeX();
-        Integer sizeY = gameState.getSizeY();
-
-        for(int x = 0;x < sizeX; x++){
-            for(int y = 0;y < sizeY;y++){
-                System.out.print(getCellRepresentation(gameState.getXYCell(x, y)) + " ");
-            }
-            System.out.println();
-        }
-
+        this.gs = gameState;
     }
+
+    public ConsoleView(GameState gameState, boolean debug) {
+        this(gameState);
+        this.debug = debug;
+    }
+
 
     public String getCellRepresentation(GameCell gameCell) {
 
         if(gameCell.isHidden()){
+            if(this.debug && gameCell.isMined())
+                return "$";
             return "#";
         }
 
@@ -29,7 +31,7 @@ public class ConsoleView {
                         return ".";
                     }
                     else{
-                        return ""+gameCell.getNumberBombsNear();
+                        return Integer.toString(gameCell.getNumberBombsNear());
                     }
                 }
             case FLAG_EXCLAMATIONMARK:
@@ -39,5 +41,14 @@ public class ConsoleView {
         }
 
         throw new RuntimeException("Cannot find symbol for this cell");
+    }
+
+    public void printGameState(){
+        for(int x = 0; x < this.gs.getSizeX(); x++){
+            for(int y = 0; y < this.gs.getSizeY();y++){
+                System.out.print(getCellRepresentation(this.gs.getXYCell(x, y)) + " ");
+            }
+            System.out.println();
+        }
     }
 }

@@ -58,4 +58,8 @@ public class GameCell {
 
         return nbBonbsNear;
     }
+
+    public List<GameCell> getNeighbor() {
+        return neighbor;
+    }
 }
