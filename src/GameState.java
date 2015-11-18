@@ -16,36 +16,36 @@ public class GameState {
 
     public GameCell getXYCell(int x, int y){
         if(x >= getSizeX() || y >= getSizeY() || x < 0 || y < 0)
-            throw new RuntimeException("");
+            throw new RuntimeException("No cells at x: " + x + ", y: " + y);
 
         return gameStateRows.get(y).getCellRow().get(x);
     }
 
     public void updateNeighbors() {
-        int x = 0;
+
         for(GameStateRow row : gameStateRows)
         {
-            int y = 0;
             for(GameCell cell : row.getCellRow()) {
 
-                int xMin = (x-1) > 0 ? (x-1) : 0;
-                int xMax = (x+1) < getSizeX() ? (x+1) : 0;
+                Integer x = cell.getX();
+                Integer y = cell.getY();
 
-                for(int i = xMin; i < xMax; i++){
+                int yMin = (y-1) < 0 ? 0 : (y-1);
+                int yMax = (y+1) > getSizeY()-1 ? getSizeY()-1 : (y+1);
 
-                    int yMin = (y-1) > 0 ? (y-1) : 0;
-                    int yMax = (y+1) < getSizeY() ? (y+1) : 0;
+                for(int j = yMin; j <= yMax; j++){
 
-                    for(int j = yMin; j < yMax; j++){
-                        if(i != j){
-                                cell.addNeighbor(getXYCell(i, j));
+                    int xMin = (x-1) < 0 ? 0 : (x-1);
+                    int xMax = (x+1) > getSizeX()-1 ? getSizeX()-1 : (x+1);
+
+                    for(int i = xMin; i <= xMax; i++) {
+                        if(i != x || j != y){
+                            cell.addNeighbor(getXYCell(i, j));
                         }
                     }
                 }
 
-                y++;
             }
-            x++;
         }
     }
 

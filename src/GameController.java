@@ -8,6 +8,10 @@ public class GameController {
 
     public void discoverCell(int x, int y){
         GameCell cell = this.gameState.getXYCell(x, y);
+        discoverCell(cell);
+    }
+
+    public void discoverCell(GameCell cell){
 
         if(cell.isMined()) {
             gameState.setLost(true);
@@ -17,16 +21,42 @@ public class GameController {
         showCell(cell);
     }
 
+    public void markCellWithQuestionMark(int x, int y){
+        GameCell cell = this.gameState.getXYCell(x, y);
+        markCellWithQuestionMark(cell);
+    }
+
+    public void markCellWithQuestionMark(GameCell cell){
+        if(cell.isVisible()) return;
+
+        cell.setState(GameCellState.FLAG_QUESTIONMARK);
+    }
+
+    public void markCellWithExclamationMark(int x, int y){
+        GameCell cell = this.gameState.getXYCell(x, y);
+        markCellWithExclamationMark(cell);
+    }
+
+    public void markCellWithExclamationMark(GameCell cell){
+        if(cell.isVisible()) return;
+
+        cell.setState(GameCellState.FLAG_EXCLAMATIONMARK);
+    }
+
     private void showCell(GameCell cell) {
 
-        if(cell.getNumberBombsNear() > 0) {
-            cell.setState(GameCellState.VISIBLE);
-            return;
-        }
+        if(cell.isMined()) return;
+        cell.setState(GameCellState.VISIBLE);
 
-        for(GameCell neighbor : cell.getNeighbor()) {
-            showCell(cell);
+        if(cell.getNumberBombsNear() == 0) {
+            for(GameCell neighbor : cell.getNeighbor()) {
+                if(neighbor.isHidden() && !neighbor.isMined())
+                    showCell(neighbor);
+            }
         }
 
     }
+
+
+
 }

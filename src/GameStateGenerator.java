@@ -9,12 +9,12 @@ public class GameStateGenerator {
 
         List<GameStateRow> gameStateRows = new ArrayList<>(y);
 
-        for(int i = 0; i < y; i++)
+        for(int j = 0; j < y; j++)
         {
             GameStateRow row;
             List<GameCell> cells = new ArrayList<>(x);
 
-            for(int j = 0; j < x; j++) {
+            for(int i = 0; i < x; i++) {
                 cells.add(new GameCell(i, j, false, GameCellState.HIDDEN));
             }
 
@@ -26,12 +26,12 @@ public class GameStateGenerator {
         gs.updateNeighbors();
         return gs;
     }
-    public static GameState newGame(Integer perCent,Integer x, Integer y){
+    public static GameState newGame(Integer perCent, Integer x, Integer y){
 
         GameState gs = newBlankGameState(x,y);
         Random rand = new Random();
 
-        for(int i = 0; i<x; i++ ){
+        for(int i = 0; i < x; i++ ){
             for(int j = 0; j < y; j++){
                 int randomNum = rand.nextInt(101);
                 if(randomNum <= perCent ){
