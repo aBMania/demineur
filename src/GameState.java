@@ -34,6 +34,13 @@ public class GameState {
     }
 
     public GameCell getXYCell(int x, int y){
+        if(x >= getSizeX() || y >= getSizeY() || x < 0 || y < 0)
+            return null;
+
+        if(y >= getSizeY())
+            return null;
+
+        //System.out.print("x : " + x + ", y :" + y);
         return gameStateRows.get(y).getCellRow().get(x);
     }
 

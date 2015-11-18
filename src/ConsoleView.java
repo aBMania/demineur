@@ -1,5 +1,18 @@
 public class ConsoleView {
 
+    public ConsoleView(GameState gameState) {
+        Integer sizeX = gameState.getSizeX();
+        Integer sizeY = gameState.getSizeY();
+
+        for(int x = 0;x < sizeX; x++){
+            for(int y = 0;y < sizeY;y++){
+                System.out.print(getCellRepresentation(gameState.getXYCell(x, y)) + " ");
+            }
+            System.out.println();
+        }
+
+    }
+
     public String getCellRepresentation(GameCell gameCell) {
 
         if(gameCell.isHidden()){
@@ -26,16 +39,5 @@ public class ConsoleView {
         }
 
         throw new RuntimeException("Cannot find symbol for this cell");
-    }
-    public void ConsoleView(GameState gameState) {
-        Integer sizeX = gameState.getSizeX();
-        Integer sizeY = gameState.getSizeY();
-
-        for(int x = 0;x < sizeX; x++){
-            for(int y = 0;y < sizeY;y++){
-
-            }
-        }
-
     }
 }
