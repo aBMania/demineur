@@ -9,15 +9,6 @@ public class GameCell {
     private GameCellState state = null;
     private List<GameCell> neighbor;
 
-
-    public GameCell(Integer x, Integer y, boolean mined, GameCellState state) {
-        this.x = x;
-        this.y = y;
-        this.mined = mined;
-        this.state = state;
-        this.neighbor = new ArrayList<>();
-    }
-
     public GameCell(Integer x, Integer y, boolean mined, GameCellState state, List<GameCell> neighbors) {
         this.x = x;
         this.y = y;
@@ -25,6 +16,11 @@ public class GameCell {
         this.state = state;
         this.neighbor = neighbors;
     }
+
+    public GameCell(Integer x, Integer y, boolean mined, GameCellState state) {
+        this(x, y, mined, state, new ArrayList<>());
+    }
+
     public void addNeighbor(GameCell cell) {
         neighbor.add(cell);
     }
@@ -47,6 +43,7 @@ public class GameCell {
     public boolean isHidden() {
         return this.getState().equals(GameCellState.HIDDEN);
     }
+
     public int getNumberBombsNear() {
         int nbBonbsNear = 0;
 

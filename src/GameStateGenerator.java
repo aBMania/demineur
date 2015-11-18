@@ -27,8 +27,10 @@ public class GameStateGenerator {
         return gs;
     }
     public static GameState newGame(Integer perCent,Integer x, Integer y){
+
         GameState gs = newBlankGameState(x,y);
         Random rand = new Random();
+
         for(int i = 0; i<x; i++ ){
             for(int j = 0; j < y; j++){
                 int randomNum = rand.nextInt(101);
@@ -37,6 +39,7 @@ public class GameStateGenerator {
                 }
             }
         }
+
         return gs;
     }
 }
