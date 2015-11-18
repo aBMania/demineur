@@ -1,5 +1,6 @@
 public enum GameCellState {
     HIDDEN,
     VISIBLE,
-    FLAG_
+    FLAG_QUESTIONMARK,
+    FLAG_EXCLAMATIONMARK
 }
