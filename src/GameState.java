@@ -35,12 +35,8 @@ public class GameState {
 
     public GameCell getXYCell(int x, int y){
         if(x >= getSizeX() || y >= getSizeY() || x < 0 || y < 0)
-            return null;
+            throw new RuntimeException("");
 
-        if(y >= getSizeY())
-            return null;
-
-        //System.out.print("x : " + x + ", y :" + y);
         return gameStateRows.get(y).getCellRow().get(x);
     }
 
@@ -51,13 +47,17 @@ public class GameState {
             int y = 0;
             for(GameCell cell : row.getCellRow()) {
 
-                for(int i=(x-1); i<(x+1); i++){
-                    for(int j=(y-1); j<(y+1); j++){
-                        if(i != j){
-                            GameCell neighbor = getXYCell(i, j);
+                int xMin = (x-1) > 0 ? (x-1) : 0;
+                int xMax = (x+1) < getSizeX() ? (x+1) : 0;
 
-                            if(neighbor != null)
-                                cell.addNeighbor(neighbor);
+                for(int i = xMin; i < xMax; i++){
+
+                    int yMin = (y-1) > 0 ? (y-1) : 0;
+                    int yMax = (y+1) < getSizeY() ? (y+1) : 0;
+
+                    for(int j = yMin; j < yMax; j++){
+                        if(i != j){
+                                cell.addNeighbor(getXYCell(i, j));
                         }
                     }
                 }

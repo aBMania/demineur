@@ -11,8 +11,8 @@ public class GameStateGenerator {
             GameStateRow row;
             List<GameCell> cells = new ArrayList<>(x);
 
-            for(int j = 0; j < y; j++) {
-                cells.add(new GameCell(i, j, false, GameCellState.FLAG_EXCLAMATIONMARK));
+            for(int j = 0; j < x; j++) {
+                cells.add(new GameCell(i, j, false, GameCellState.HIDDEN));
             }
 
             row = new GameStateRow(cells);
