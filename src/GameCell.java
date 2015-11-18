@@ -1,12 +1,13 @@
+import java.util.List;
+import java.util.ArrayList;
+
+
 public class GameCell {
     private Integer x = 0;
     private Integer y = 0;
     private boolean mined = false; // true if cell is mined
     private GameCellState state = null;
-    private GameCell eastGameCell = null;
-    private GameCell westGameCell = null;
-    private GameCell northGameCell = null;
-    private GameCell southGameCell = null;
+    private List<GameCell> neihgboor;
 
 
     public GameCell(Integer x, Integer y, boolean mined, GameCellState state) {
@@ -14,17 +15,19 @@ public class GameCell {
         this.y = y;
         this.mined = mined;
         this.state = state;
+        this.neihgboor = new ArrayList<GameCell>();
     }
 
-    public GameCell(Integer x, Integer y, boolean mined, GameCellState state, GameCell northGameCell, GameCell eastGameCell, GameCell southGameCell, GameCell westGameCell) {
-        this(x, y, mined, state);
-
-        this.eastGameCell = eastGameCell;
-        this.westGameCell = westGameCell;
-        this.northGameCell = northGameCell;
-        this.southGameCell = southGameCell;
+    public GameCell(Integer x, Integer y, boolean mined, GameCellState state, List<GameCell> neighbors) {
+        this.x = x;
+        this.y = y;
+        this.mined = mined;
+        this.state = state;
+        this.neihgboor = neighbors;
     }
-
+    public void addNeighboor(GameCell cell) {
+        neihgboor.add(cell);
+    }
     public boolean isMined() {
         return mined;
     }
@@ -39,62 +42,6 @@ public class GameCell {
 
     public void setState(GameCellState state) {
         this.state = state;
-    }
-
-    public GameCell getEastGameCell() {
-        return eastGameCell;
-    }
-
-    public void setEastGameCell(GameCell eastGameCell) {
-        this.eastGameCell = eastGameCell;
-    }
-
-    public GameCell getWestGameCell() {
-        return westGameCell;
-    }
-
-    public void setWestGameCell(GameCell westGameCell) {
-        this.westGameCell = westGameCell;
-    }
-
-    public GameCell getNorthGameCell() {
-        return northGameCell;
-    }
-
-    public void setNorthGameCell(GameCell northGameCell) {
-        this.northGameCell = northGameCell;
-    }
-
-    public GameCell getSouthGameCell() {
-        return southGameCell;
-    }
-
-    public void setSouthGameCell(GameCell southGameCell) {
-        this.southGameCell = southGameCell;
-    }
-    public Integer getNumberBombsNear(){
-        Integer nbBonbsNear = 0;
-        if (this.getEastGameCell() != null && this.getEastGameCell().isMined() == true){
-            nbBonbsNear++;
-        }
-        if (this.getNorthGameCell() != null && this.getNorthGameCell().isMined() == true){
-            nbBonbsNear++;
-        }
-        if (this.getSouthGameCell() != null && this.getSouthGameCell().isMined() == true){
-            nbBonbsNear++;
-        }
-        if (this.getWestGameCell() != null && this.getWestGameCell().isMined() == true){
-            nbBonbsNear++;
-        }
-
-        if (this.getWestGameCell() != null && this.getWestGameCell().isMined() == true){
-            nbBonbsNear++;
-        }
-        if (this.getWestGameCell() != null && this.getWestGameCell().isMined() == true){
-            nbBonbsNear++;
-        }
-
-        return nbBonbsNear;
     }
 
     public boolean isHidden() {
