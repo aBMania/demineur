@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class GameState {
+public class GameState extends Observable {
     private List<GameStateRow> gameStateRows;
     private Integer sizeX;
     private Integer sizeY;
@@ -19,6 +19,55 @@ public class GameState {
             throw new RuntimeException("No cells at x: " + x + ", y: " + y);
 
         return gameStateRows.get(y).getCellRow().get(x);
+    }
+
+    public void discoverCell(int x, int y){
+        GameCell cell = this.getXYCell(x, y);
+        discoverCell(cell);
+    }
+
+    public void discoverCell(GameCell cell){
+
+        if(cell.isMined()) {
+            this.setLost(true);
+            return;
+        }
+
+        showCell(cell);
+    }
+
+    public void markCellWithQuestionMark(int x, int y){
+        GameCell cell = this.getXYCell(x, y);
+        markCellWithQuestionMark(cell);
+    }
+
+    public void markCellWithQuestionMark(GameCell cell){
+        if(cell.isHidden())
+            cell.setState(GameCellState.FLAG_QUESTIONMARK);
+    }
+
+    public void markCellWithExclamationMark(int x, int y){
+        GameCell cell = this.getXYCell(x, y);
+        markCellWithExclamationMark(cell);
+    }
+
+    public void markCellWithExclamationMark(GameCell cell){
+        if(cell.isHidden())
+            cell.setState(GameCellState.FLAG_EXCLAMATIONMARK);
+    }
+
+    private void showCell(GameCell cell) {
+
+        if(cell.isMined()) return;
+
+        cell.setState(GameCellState.VISIBLE);
+
+        if(cell.getNumberBombsNear() == 0) {
+            for(GameCell neighbor : cell.getNeighbor()) {
+                if(neighbor.isHidden() && !neighbor.isMined())
+                    showCell(neighbor);
+            }
+        }
     }
 
     public void updateNeighbors() {
@@ -49,23 +98,6 @@ public class GameState {
         }
     }
 
-    public boolean isWon() {
-        return won;
-    }
-
-    public void setWon(boolean won) {
-        this.won = won;
-    }
-
-
-    public boolean isLost() {
-        return lost;
-    }
-
-    public void setLost(boolean lost) {
-        this.lost = lost;
-    }
-
     public Integer getSizeX() {
         return sizeX;
     }
@@ -85,5 +117,21 @@ public class GameState {
             throw new RuntimeException("GameState X size cannot be null or negative");
 
         this.sizeY = sizeY;
+    }
+
+    public boolean isWon() {
+        return won;
+    }
+
+    public void setWon(boolean won) {
+        this.won = won;
+    }
+
+    public boolean isLost() {
+        return lost;
+    }
+
+    public void setLost(boolean lost) {
+        this.lost = lost;
     }
 }

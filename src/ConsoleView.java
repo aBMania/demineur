@@ -1,10 +1,14 @@
-public class ConsoleView {
+import java.util.Observable;
+import java.util.Observer;
+
+public class ConsoleView implements Observer {
 
     private boolean debug = false;
     private GameState gs;
 
     public ConsoleView(GameState gameState) {
         this.gs = gameState;
+        gameState.addObserver(this);
     }
 
     public ConsoleView(GameState gameState, boolean debug) {
@@ -17,7 +21,7 @@ public class ConsoleView {
 
         if(gameCell.isHidden()){
             if(this.debug && gameCell.isMined())
-                return "$";
+                return "x";
             return "#";
         }
 
@@ -50,5 +54,10 @@ public class ConsoleView {
             }
             System.out.println();
         }
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        this.printGameState();
     }
 }
