@@ -31,7 +31,7 @@ public class GameStateGenerator {
         Random rand = new Random();
         for(int i = 0; i<x; i++ ){
             for(int j = 0; j < y; j++){
-                int randomNum = rand.nextInt((100 - 0) + 1) + 0;
+                int randomNum = rand.nextInt(101);
                 if(randomNum <= per_cent ){
                     gs.getXYCell(i,j).setMined(true);
                 }
