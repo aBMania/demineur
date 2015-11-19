@@ -30,8 +30,8 @@ public class GameState extends Observable {
 
         if(cell.isMined())
             this.setLost(true);
-        else
-            showCell(cell);
+
+        showCell(cell);
 
         setChanged();
         notifyObservers();
@@ -65,7 +65,7 @@ public class GameState extends Observable {
 
     private void showCell(GameCell cell) {
 
-        if(cell.isMined()) return;
+        //if(cell.isMined()) return;
 
         cell.setState(GameCellState.VISIBLE);
 
