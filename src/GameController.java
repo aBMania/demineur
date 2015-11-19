@@ -1,11 +1,12 @@
-public class ConsoleController implements GameCellListener {
-    private ConsoleView view;
+public class GameController implements GameCellListener {
     private GameState gameState;
+    private GameView view;
 
-    public ConsoleController(ConsoleView view) {
-        view.addGameListener(this);
+    public GameController(GameView view, GameState gameState) {
         this.view = view;
-        this.gameState = view.getGameState();
+        this.gameState = gameState;
+
+        view.addGameListener(this);
     }
 
     @Override

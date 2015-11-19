@@ -22,9 +22,10 @@ public class GameStateGenerator {
 
         GameState gs = new GameState(gameStateRows);
         gs.updateNeighbors();
+
         return gs;
     }
-    public static GameState newGame(Integer perCent, Integer x, Integer y){
+    public static GameState newGameState(Integer perCent, Integer x, Integer y){
 
         GameState gs = newBlankGameState(x,y);
         Integer nCells = x*y;
@@ -45,7 +46,7 @@ public class GameStateGenerator {
 
             int cellY = cellNumber % y;
             int cellX = (cellNumber-cellY)/y;
-
+        
             GameCell cell = gs.getXYCell(cellX, cellY);
 
             cell.setMined(true);
