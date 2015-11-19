@@ -1,13 +1,13 @@
 import java.util.Observable;
 import java.util.Observer;
 
-public class ConsoleView implements Observer {
+public class ConsoleView extends GameView implements Observer {
 
     private boolean debug = false;
-    private GameState gs;
+    private GameState gameState;
 
     public ConsoleView(GameState gameState) {
-        this.gs = gameState;
+        this.gameState = gameState;
         gameState.addObserver(this);
     }
 
@@ -47,9 +47,9 @@ public class ConsoleView implements Observer {
     }
 
     public void printGameState(){
-        for(int y = 0; y < this.gs.getSizeY(); y++){
-            for(int x = 0; x < this.gs.getSizeX();x++){
-                System.out.print(getCellRepresentation(this.gs.getXYCell(x, y)) + " ");
+        for(int y = 0; y < this.gameState.getSizeY(); y++){
+            for(int x = 0; x < this.gameState.getSizeX();x++){
+                System.out.print(getCellRepresentation(this.gameState.getXYCell(x, y)) + " ");
             }
             System.out.println();
         }
@@ -59,5 +59,9 @@ public class ConsoleView implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         this.printGameState();
+    }
+
+    public GameState getGameState() {
+        return gameState;
     }
 }

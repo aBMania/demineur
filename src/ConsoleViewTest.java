@@ -4,11 +4,7 @@ public class ConsoleViewTest {
         GameState gs = GameStateGenerator.newGame(25, 20, 10);
 
         ConsoleView debugView = new ConsoleView(gs, true);
-
-
         debugView.printGameState();
-        gs.discoverCell(1, 1);
-
 
     }
 }
