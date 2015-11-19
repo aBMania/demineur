@@ -1,12 +1,12 @@
 public class ConsoleViewTest {
 
     public static void main(String[] args) {
-        GameState gameState = GameStateGenerator.newGameState(25, 20, 10);
+        GameState gameState = GameStateGenerator.newGameState(25, 5, 4);
 
-        ConsoleView debugView = new ConsoleView(gameState, true);
-        GameController consoleController = new GameController(debugView, gameState);
+        ConsoleView debugView = new ConsoleView(gameState);
+        new GameController(debugView, gameState);
 
-        debugView.printGameState();
+        debugView.start();
 
     }
 }

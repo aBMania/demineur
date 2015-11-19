@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Scanner;
 
 public abstract class GameView {
 
@@ -36,4 +37,6 @@ public abstract class GameView {
     public Collection<GameCellListener> getGameListenersList() {
         return gameListenersList;
     }
+
+
 }
