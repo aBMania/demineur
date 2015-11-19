@@ -16,7 +16,6 @@ public class ConsoleView implements Observer {
         this.debug = debug;
     }
 
-
     public String getCellRepresentation(GameCell gameCell) {
 
         if(gameCell.isHidden()){
@@ -54,6 +53,7 @@ public class ConsoleView implements Observer {
             }
             System.out.println();
         }
+        System.out.println();
     }
 
     @Override

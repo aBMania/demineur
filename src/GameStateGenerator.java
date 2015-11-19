@@ -37,6 +37,7 @@ public class GameStateGenerator {
 
         // On mélange un tableau contenant les n premiers chiffres, n le nombre de cellules dans le jeu
         // On selectionne alors les x premièrs chiffres et on mine les cellules associées
+        // On pense aussi à indiquer aux cellules voisines qu'on a miné leur voisine.
         Collections.shuffle(cells);
 
         for(int i = 0; i < nBombs; i++){
@@ -45,7 +46,14 @@ public class GameStateGenerator {
             int cellY = cellNumber % y;
             int cellX = (cellNumber-cellY)/y;
 
-            gs.getXYCell(cellX, cellY).setMined(true);
+            GameCell cell = gs.getXYCell(cellX, cellY);
+
+            cell.setMined(true);
+
+            for(GameCell neighbor : cell.getNeighbor())
+            {
+                neighbor.setNumberBombsNear(neighbor.getNumberBombsNear() + 1);
+            }
         }
 
         return gs;

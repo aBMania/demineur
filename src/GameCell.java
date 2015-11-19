@@ -8,6 +8,7 @@ public class GameCell {
     private boolean mined = false; // true if cell is mined
     private GameCellState state = null;
     private List<GameCell> neighbor;
+    private Integer numberBombsNear = 0;
 
     public GameCell(Integer x, Integer y, boolean mined, GameCellState state, List<GameCell> neighbors) {
         this.x = x;
@@ -24,6 +25,7 @@ public class GameCell {
     public void addNeighbor(GameCell cell) {
         neighbor.add(cell);
     }
+
     public boolean isMined() {
         return this.mined;
     }
@@ -49,16 +51,13 @@ public class GameCell {
     }
 
     public int getNumberBombsNear() {
-        int nbBombsNear = 0;
-
-        for(GameCell cell : this.neighbor ){
-            if(cell.isMined()){
-                nbBombsNear++;
-            }
-        }
-
-        return nbBombsNear;
+        return numberBombsNear;
     }
+
+    public void setNumberBombsNear(Integer numberBombsNear) {
+        this.numberBombsNear = numberBombsNear;
+    }
+
 
     public List<GameCell> getNeighbor() {
         return neighbor;

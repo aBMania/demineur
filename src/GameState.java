@@ -28,12 +28,13 @@ public class GameState extends Observable {
 
     public void discoverCell(GameCell cell){
 
-        if(cell.isMined()) {
+        if(cell.isMined())
             this.setLost(true);
-            return;
-        }
+        else
+            showCell(cell);
 
-        showCell(cell);
+        setChanged();
+        notifyObservers();
     }
 
     public void markCellWithQuestionMark(int x, int y){
@@ -42,8 +43,11 @@ public class GameState extends Observable {
     }
 
     public void markCellWithQuestionMark(GameCell cell){
-        if(cell.isHidden())
+        if(cell.isHidden()) {
             cell.setState(GameCellState.FLAG_QUESTIONMARK);
+            setChanged();
+        }
+        notifyObservers();
     }
 
     public void markCellWithExclamationMark(int x, int y){
@@ -52,8 +56,11 @@ public class GameState extends Observable {
     }
 
     public void markCellWithExclamationMark(GameCell cell){
-        if(cell.isHidden())
+        if(cell.isHidden()) {
             cell.setState(GameCellState.FLAG_EXCLAMATIONMARK);
+            setChanged();
+        }
+        notifyObservers();
     }
 
     private void showCell(GameCell cell) {
