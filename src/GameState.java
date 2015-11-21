@@ -6,6 +6,10 @@ public class GameState extends Observable {
     private Integer sizeY;
     private boolean won = false;
     private boolean lost = false;
+    private boolean firstMoveDone = false;
+    private Integer perCent;
+    private GameCell firstCell = null;
+
 
     public GameState(List<GameStateRow> gameStateRows) {
         this.setSizeY(gameStateRows.size());
@@ -26,8 +30,15 @@ public class GameState extends Observable {
         discoverCell(cell);
     }
 
-    public void discoverCell(GameCell cell){
+    public boolean isFirstMoveDone() {
+        return firstMoveDone;
+    }
 
+    public void discoverCell(GameCell cell){
+        if(firstCell == null){
+            firstCell = cell;
+            placeBomb();
+        }
         if(cell.isMined())
             this.setLost(true);
 
@@ -77,6 +88,47 @@ public class GameState extends Observable {
         }
     }
 
+    public void placeBomb(){
+        int x = this.getSizeX();
+        int y = this.getSizeY();
+        if(this.firstCell != null ) {
+            Integer nCells = x * y;
+            Integer nBombs = nCells * this.getPerCent() / 100;
+            List<Integer> cells = new LinkedList<>();
+
+            for (int i = 0; i < nCells; i++) {
+                cells.add(i);
+            }
+
+            // On mélange un tableau contenant les n premiers chiffres, n le nombre de cellules dans le jeu
+            // On selectionne alors les x premièrs chiffres et on mine les cellules associées
+            // On pense aussi à indiquer aux cellules voisines qu'on a miné leur voisine.
+            Collections.shuffle(cells);
+
+            for (int i = 0; i < nBombs; i++) {
+                Integer cellNumber = cells.get(i);
+
+                int cellY = cellNumber % y;
+                int cellX = (cellNumber - cellY) / y;
+
+                GameCell cell = this.getXYCell(cellX, cellY);
+                if(cell != firstCell) {
+                    cell.setMined(true);
+                }
+                else{
+                    int cellYSecure = nBombs % y;
+                    int cellXSecure = (nBombs - cellY) / y;
+                    GameCell cellSecure = this.getXYCell(cellXSecure, cellYSecure);
+                    cellSecure.setMined(true);
+                }
+
+                for (GameCell neighbor : cell.getNeighbor()) {
+                    neighbor.setNumberBombsNear(neighbor.getNumberBombsNear() + 1);
+                }
+            }
+        }
+    }
+
     public void updateNeighbors() {
 
         for(GameStateRow row : gameStateRows)
@@ -103,6 +155,13 @@ public class GameState extends Observable {
 
             }
         }
+    }
+    public Integer getPerCent() {
+        return perCent;
+    }
+
+    public void setPerCent(Integer perCent) {
+        this.perCent = perCent;
     }
 
     public Integer getSizeX() {
