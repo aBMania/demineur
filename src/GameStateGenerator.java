@@ -4,7 +4,7 @@ import java.util.*;
 public class GameStateGenerator {
 
 
-    public static GameState newBlankGameState(Integer x, Integer y,Integer perCent) {
+    public static GameState newGameState(Integer x, Integer y, Integer perCent) {
 
         List<GameStateRow> gameStateRows = new ArrayList<>(y);
 
@@ -21,8 +21,10 @@ public class GameStateGenerator {
         }
 
         GameState gs = new GameState(gameStateRows);
+
         gs.updateNeighbors();
         gs.setPerCent(perCent);
+
         return gs;
     }
 

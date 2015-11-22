@@ -6,9 +6,8 @@ public class GameState extends Observable {
     private Integer sizeY;
     private boolean won = false;
     private boolean lost = false;
-    private boolean firstMoveDone = false;
+    private boolean bombesPlaced = false;
     private Integer perCent;
-    private GameCell firstCell = null;
 
 
     public GameState(List<GameStateRow> gameStateRows) {
@@ -30,14 +29,9 @@ public class GameState extends Observable {
         discoverCell(cell);
     }
 
-    public boolean isFirstMoveDone() {
-        return firstMoveDone;
-    }
-
     public void discoverCell(GameCell cell){
-        if(firstCell == null){
-            firstCell = cell;
-            placeBomb();
+        if(!bombesPlaced){
+            placeBomb(cell);
         }
         if(cell.isMined())
             this.setLost(true);
@@ -88,43 +82,37 @@ public class GameState extends Observable {
         }
     }
 
-    public void placeBomb(){
+    public void placeBomb(GameCell cellToAvoid){
         int x = this.getSizeX();
         int y = this.getSizeY();
-        if(this.firstCell != null ) {
-            Integer nCells = x * y;
-            Integer nBombs = nCells * this.getPerCent() / 100;
-            List<Integer> cells = new LinkedList<>();
+        Integer nCells = x * y;
+        Integer nBombs = nCells * this.getPerCent() / 100;
+        List<Integer> cells = new LinkedList<>();
 
-            for (int i = 0; i < nCells; i++) {
+        /*
+         * Pour distribuer les bombes, nous crÃ©ons un tableau et y ajoutons pour chaque cellule un entier qui lui correspondra.
+         * Pour Ã©viter que le premier coup soit perdant, nous retirons l'entier correspondant Ã  la premiÃ¨re case dÃ©couverte
+         * Nous mÃ©langeons ensuite le tableau et prenons les n premieres valeurs, qui seront les entiers correspondant aux cases minÃ©es
+         */
+
+        for (int i = 0; i < nCells; i++) {
+            if(cellToAvoid == null || cellToAvoid.getX() * y + cellToAvoid.getY() != i)
                 cells.add(i);
-            }
+        }
 
-            // On mélange un tableau contenant les n premiers chiffres, n le nombre de cellules dans le jeu
-            // On selectionne alors les x premièrs chiffres et on mine les cellules associées
-            // On pense aussi à indiquer aux cellules voisines qu'on a miné leur voisine.
-            Collections.shuffle(cells);
+        Collections.shuffle(cells);
 
-            for (int i = 0; i < nBombs; i++) {
-                Integer cellNumber = cells.get(i);
+        for (int i = 0; i < nBombs; i++) {
+            Integer cellNumber = cells.get(i);
 
-                int cellY = cellNumber % y;
-                int cellX = (cellNumber - cellY) / y;
+            int cellY = cellNumber % y;
+            int cellX = (cellNumber - cellY) / y;
 
-                GameCell cell = this.getXYCell(cellX, cellY);
-                if(cell != firstCell) {
-                    cell.setMined(true);
-                }
-                else{
-                    int cellYSecure = nBombs % y;
-                    int cellXSecure = (nBombs - cellY) / y;
-                    GameCell cellSecure = this.getXYCell(cellXSecure, cellYSecure);
-                    cellSecure.setMined(true);
-                }
+            GameCell cell = this.getXYCell(cellX, cellY);
+            cell.setMined(true);
 
-                for (GameCell neighbor : cell.getNeighbor()) {
-                    neighbor.setNumberBombsNear(neighbor.getNumberBombsNear() + 1);
-                }
+            for (GameCell neighbor : cell.getNeighbor()) {
+                neighbor.setNumberBombsNear(neighbor.getNumberBombsNear() + 1);
             }
         }
     }
