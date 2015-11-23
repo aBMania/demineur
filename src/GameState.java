@@ -83,6 +83,11 @@ public class GameState extends Observable {
     }
 
     public void placeBomb(GameCell cellToAvoid){
+
+        if(bombesPlaced) return;
+
+        bombesPlaced = true;
+
         int x = this.getSizeX();
         int y = this.getSizeY();
         Integer nCells = x * y;
