@@ -39,6 +39,7 @@ public class GameState extends Observable {
         showCell(cell);
 
         setChanged();
+        setWon(checkWon());
         notifyObservers();
     }
 
@@ -192,5 +193,16 @@ public class GameState extends Observable {
 
     public void setLost(boolean lost) {
         this.lost = lost;
+    }
+
+    public boolean checkWon(){
+        for (GameStateRow row:gameStateRows){
+            for (GameCell cell:row.getCellRow()){
+                if(cell.getState() != GameCellState.VISIBLE && !cell.isMined()){
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
