@@ -1,7 +1,13 @@
+package Model;
+
+import Model.GameCell;
+import Model.GameCellState;
+import Model.GameState;
+
 import java.util.*;
 
 
-public class GameStateGenerator {
+public class GameStateFactory {
 
 
     public static GameState newGameState(Integer x, Integer y, Integer perCent) {

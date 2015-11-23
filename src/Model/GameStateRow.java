@@ -1,4 +1,7 @@
-import java.util.ArrayList;
+package Model;
+
+import Model.GameCell;
+
 import java.util.List;
 
 public class GameStateRow {

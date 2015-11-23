@@ -1,6 +1,9 @@
+package View;
+
+import Model.*;
+
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Scanner;
 
 public abstract class GameView {
 

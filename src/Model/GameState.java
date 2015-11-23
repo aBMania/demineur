@@ -1,3 +1,8 @@
+package Model;
+
+import Model.GameCell;
+import Model.GameCellState;
+
 import java.util.*;
 
 public class GameState extends Observable {
@@ -6,7 +11,7 @@ public class GameState extends Observable {
     private Integer sizeY;
     private boolean won = false;
     private boolean lost = false;
-    private boolean bombesPlaced = false;
+    private boolean bombsPlaced = false;
     private Integer perCent;
 
 
@@ -30,7 +35,7 @@ public class GameState extends Observable {
     }
 
     public void discoverCell(GameCell cell){
-        if(!bombesPlaced){
+        if(!bombsPlaced){
             placeBomb(cell);
         }
         if(cell.isMined())
@@ -85,9 +90,9 @@ public class GameState extends Observable {
 
     public void placeBomb(GameCell cellToAvoid){
 
-        if(bombesPlaced) return;
+        if(bombsPlaced) return;
 
-        bombesPlaced = true;
+        bombsPlaced = true;
 
         int x = this.getSizeX();
         int y = this.getSizeY();

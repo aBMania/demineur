@@ -1,3 +1,7 @@
+package Model;
+
+import Model.GameCell;
+
 public class GameCellEvent {
     private GameCell gameCell;
 

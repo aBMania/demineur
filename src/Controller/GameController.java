@@ -1,3 +1,10 @@
+package Controller;
+
+import Model.GameCellEvent;
+import Model.GameCellListener;
+import Model.GameState;
+import View.GameView;
+
 public class GameController implements GameCellListener {
     private GameState gameState;
     private GameView view;
