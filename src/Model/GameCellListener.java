@@ -1,7 +1,5 @@
 package Model;
 
-import Model.GameCellEvent;
-
 public interface GameCellListener {
     void markCellWithQuestionMark(GameCellEvent e);
 

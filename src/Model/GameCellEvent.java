@@ -1,8 +1,6 @@
 package Model;
 
-import Model.GameCell;
-
-public class GameCellEvent {
+public class GameCellEvent{
     private GameCell gameCell;
 
     public GameCellEvent(GameCell gameCell) {
