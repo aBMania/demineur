@@ -140,13 +140,13 @@ public class ConsoleView extends GameView implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
+        this.printGameState();
+
         if(this.gameState.isWon())
         {
             System.out.println("Vous avez gagné !");
             this.quit = true;
         }
-
-        this.printGameState();
 
         if(this.gameState.isLost())
         {
