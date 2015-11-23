@@ -1,4 +1,4 @@
-package Model;
+package Model.GameCell;
 
 import java.util.List;
 import java.util.ArrayList;

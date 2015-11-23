@@ -1,7 +1,7 @@
-package Model;
+package Model.GameState;
 
-import Model.GameCell;
-import Model.GameCellState;
+import Model.GameCell.GameCell;
+import Model.GameCell.GameCellState;
 
 import java.util.*;
 

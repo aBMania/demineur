@@ -1,8 +1,7 @@
-package Model;
+package Model.GameState;
 
-import Model.GameCell;
-import Model.GameCellState;
-import Model.GameState;
+import Model.GameCell.GameCell;
+import Model.GameCell.GameCellState;
 
 import java.util.*;
 
@@ -10,7 +9,14 @@ import java.util.*;
 public class GameStateFactory {
 
 
+    private static final Integer MAX_PERCENTAGE = 85;
+
     public static GameState newGameState(Integer x, Integer y, Integer perCent) {
+
+        if(perCent >= MAX_PERCENTAGE)
+        {
+            throw new RuntimeException("You cannot have more than " + MAX_PERCENTAGE + "% of bombs");
+        }
 
         List<GameStateRow> gameStateRows = new ArrayList<>(y);
 

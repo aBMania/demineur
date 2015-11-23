@@ -1,18 +1,15 @@
 package Controller;
 
-import Model.GameCellEvent;
-import Model.GameCellListener;
-import Model.GameState;
+import Model.GameCell.GameCellEvent;
+import Model.GameCell.GameCellListener;
+import Model.GameState.GameState;
 import View.GameView;
 
 public class GameController implements GameCellListener {
     private GameState gameState;
-    private GameView view;
 
-    public GameController(GameView view, GameState gameState) {
-        this.view = view;
-        this.gameState = gameState;
-
+    public GameController(GameView view) {
+        this.gameState = view.getGameState();
         view.addGameListener(this);
     }
 
@@ -30,4 +27,9 @@ public class GameController implements GameCellListener {
     public void discoverCell(GameCellEvent e) {
         gameState.discoverCell(e.getGameCell());
     }
+
+    public GameState getGameState() {
+        return gameState;
+    }
+
 }

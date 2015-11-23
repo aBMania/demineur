@@ -1,14 +1,18 @@
 package View;
 
-import Model.*;
+import Model.GameCell.GameCell;
+import Model.GameCell.GameCellEvent;
+import Model.GameCell.GameCellListener;
+import Model.GameState.GameState;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 public abstract class GameView {
 
-    private final Collection<GameCellListener> gameListenersList = new ArrayList<>();
+    private GameState gameState;
 
+    private final Collection<GameCellListener> gameListenersList = new ArrayList<>();
     public void addGameListener(GameCellListener listener) {
         gameListenersList.add(listener);
     }
@@ -41,5 +45,11 @@ public abstract class GameView {
         return gameListenersList;
     }
 
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
+    }
 
+    public GameState getGameState() {
+        return gameState;
+    }
 }

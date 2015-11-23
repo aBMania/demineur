@@ -1,4 +1,4 @@
-package Model;
+package Model.GameCell;
 
 public enum GameCellState {
     HIDDEN,
