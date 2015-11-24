@@ -1,28 +1,27 @@
 package Controller;
 
 import Model.GameCell.GameCell;
-import Model.GameState.GameState;
-import View.ConsoleView;
+import View.ConsoleGameView;
 
 import java.util.Scanner;
 
-public class ConsoleController extends GameController {
+public class ConsoleGameController extends GameController {
 
-    private ConsoleView consoleView;
+    private ConsoleGameView consoleGameView;
 
-    public ConsoleController(ConsoleView view) {
+    public ConsoleGameController(ConsoleGameView view) {
         super(view);
-        this.consoleView = view;
+        this.consoleGameView = view;
 
         start();
     }
 
     public void start(){
-        this.consoleView.printBienvenue();
-        this.consoleView.printHelp();
-        this.consoleView.printGameState();
+        this.consoleGameView.printBienvenue();
+        this.consoleGameView.printHelp();
+        this.consoleGameView.printGameState();
 
-        while(!consoleView.haveToQuit()){
+        while(!consoleGameView.haveToQuit()){
             try {
                 waitForCommand();
             } catch (Exception e) {
@@ -45,17 +44,17 @@ public class ConsoleController extends GameController {
         switch (parts[0]){
             case "help":
             case "h":
-                consoleView.printHelp();
+                consoleGameView.printHelp();
                 break;
             case "q":
-                consoleView.quit();
+                consoleGameView.quit();
                 break;
             case "d":
                 if(parts.length != 3 || !parts[1].matches("\\d+") || !parts[2].matches("\\d+"))
                     throw new Exception("Le format de la commande est : d i j");
 
                 cell = this.getGameState().getXYCell(Integer.valueOf(parts[1]), Integer.valueOf(parts[2]));
-                consoleView.fireDiscoverCell(cell);
+                consoleGameView.fireDiscoverCell(cell);
                 break;
             case "m":
                 if(parts.length != 4 || !parts[1].matches("\\d+") || !parts[2].matches("\\d+"))
@@ -66,10 +65,10 @@ public class ConsoleController extends GameController {
                 switch (parts[3])
                 {
                     case "x":
-                        consoleView.fireMarkCellWithExclamationMark(cell);
+                        consoleGameView.fireMarkCellWithExclamationMark(cell);
                         break;
                     case "?":
-                        consoleView.fireMarkCellWithQuestionMark(cell);
+                        consoleGameView.fireMarkCellWithQuestionMark(cell);
                         break;
                 }
 

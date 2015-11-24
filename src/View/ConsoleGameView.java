@@ -6,18 +6,18 @@ import Model.GameState.GameState;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ConsoleView extends GameView implements Observer {
+public class ConsoleGameView extends GameView implements Observer {
 
     private boolean debug = false;
     private boolean quit = false;
     private GameState gameState;
 
-    public ConsoleView(GameState gameState) {
+    public ConsoleGameView(GameState gameState) {
         this.gameState = gameState;
         gameState.addObserver(this);
     }
 
-    public ConsoleView(GameState gameState, boolean debug) {
+    public ConsoleGameView(GameState gameState, boolean debug) {
         this(gameState);
         this.debug = debug;
     }
