@@ -3,6 +3,7 @@ package View.Graphical;
 import Model.GameCell.GameCell;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class GraphicalCellView extends JButton{
     private GameCell cell;
@@ -11,9 +12,17 @@ public class GraphicalCellView extends JButton{
     public GraphicalCellView(GameCell cell) {
 
         this.cell = cell;
-        this.setView();
+        setView();
 
     }
+
+    @Override
+    protected void printComponent(Graphics g) {
+        super.printComponent(g);
+        System.out.print(".");
+        setView();
+    }
+
     private void setView(){
         switch (this.cell.getState()){
             case VISIBLE:

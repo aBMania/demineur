@@ -28,9 +28,6 @@ public class GraphicalGameView extends GameView {
 
     }
 
-    private JPanel generateButtonPanel() {
-        return null;
-    }
 
     @Override
     public void update(Observable o, Object arg) {

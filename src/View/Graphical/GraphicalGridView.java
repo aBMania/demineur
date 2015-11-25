@@ -31,4 +31,9 @@ public class GraphicalGridView extends JPanel {
         }
     }
 
+    @Override
+    protected void printComponent(Graphics g) {
+        super.printComponent(g);
+        System.out.print(".");
+    }
 }
