@@ -13,6 +13,8 @@ public class GameState extends Observable {
     private boolean lost = false;
     private boolean bombsPlaced = false;
     private Integer perCent;
+    private int nbFlag = 0;
+    private int nbBombs = 0;
 
 
     public GameState(List<GameStateRow> gameStateRows) {
@@ -66,10 +68,19 @@ public class GameState extends Observable {
         markCellWithExclamationMark(cell);
     }
 
+    public void setNbFlag(int nbFlag) {
+        this.nbFlag = nbFlag;
+    }
+
+    public int getNbFlag() {
+        return nbFlag;
+    }
+
     public void markCellWithExclamationMark(GameCell cell){
         if(cell.isHidden()) {
             cell.setState(GameCellState.FLAG_EXCLAMATIONMARK);
             setChanged();
+
         }
         notifyObservers();
     }
@@ -210,4 +221,5 @@ public class GameState extends Observable {
         }
         return true;
     }
+
 }

@@ -10,7 +10,7 @@ public class GraphicalCellView extends JButton{
     private boolean debug = true;
 
     public GraphicalCellView(GameCell cell) {
-
+        this.setSize(100,100);
         this.cell = cell;
         setView();
 
