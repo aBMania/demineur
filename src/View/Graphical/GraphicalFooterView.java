@@ -10,6 +10,8 @@ public class GraphicalFooterView extends JPanel{
 
     public GraphicalFooterView(GameState gameState) {
         this.gameState = gameState;
+        JTextArea sentence = new JTextArea("Drapeaux restant : " + (gameState.getnBombs()-gameState.getnFlag()));
+        this.add(sentence);
     }
 
     private GameState getGameState() {
