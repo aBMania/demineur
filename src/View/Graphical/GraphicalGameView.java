@@ -1,18 +1,17 @@
 package View.Graphical;
 
-import Model.GameCell.GameCell;
 import Model.GameState.GameState;
 import View.GameView;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.WindowEvent;
 import java.util.Observable;
 
 public class GraphicalGameView extends GameView {
 
     private JFrame frame;
     private GraphicalGridView grid;
+    private GraphicalFooterView footer;
     private final static String FRAME_TITLE = "Demineur";
 
 
@@ -24,9 +23,11 @@ public class GraphicalGameView extends GameView {
         frame.setLayout(new BorderLayout());
 
         grid = new GraphicalGridView(gameState);
+        footer = new GraphicalFooterView(gameState);
 
         frame.setJMenuBar(new GraphicalMenuView());
         frame.add(grid, BorderLayout.CENTER);
+        frame.add(footer, BorderLayout.SOUTH);
 
         frame.pack();
         frame.setVisible(true);
