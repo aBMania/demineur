@@ -9,7 +9,7 @@ import View.Graphical.GraphicalGameView;
 public class GraphicalTest {
 
     public static void main(String[] args) {
-        GameState gameState = GameStateFactory.newGameState(5, 5, 20);
+        GameState gameState = GameStateFactory.newGameState(20, 10, 20);
         ConsoleGameView debugView = new ConsoleGameView(gameState, true);
         GraphicalGameView graphicalView = new GraphicalGameView(gameState);
 

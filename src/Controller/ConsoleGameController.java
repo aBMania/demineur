@@ -22,21 +22,22 @@ public class ConsoleGameController extends GameController {
         this.consoleGameView.printGameState();
 
         while(!consoleGameView.haveToQuit()){
+
             try {
                 waitForCommand();
-            } catch (Exception e) {
+            } catch (IllegalArgumentException e) {
                 System.out.println("Erreur : " + e.getMessage());
             }
         }
     }
 
-    private void waitForCommand() throws Exception {
+    private void waitForCommand(){
         Scanner sc = new Scanner(System.in);
         String line = sc.nextLine();
         String[] parts = line.split(" ");
 
         if(parts.length <= 0) {
-            throw new Exception("Commande inconnue");
+            throw new IllegalArgumentException("Commande inconnue");
         }
 
         GameCell cell;
@@ -51,14 +52,14 @@ public class ConsoleGameController extends GameController {
                 break;
             case "d":
                 if(parts.length != 3 || !parts[1].matches("\\d+") || !parts[2].matches("\\d+"))
-                    throw new Exception("Le format de la commande est : d i j");
+                    throw new IllegalArgumentException("Le format de la commande est : d i j");
 
                 cell = this.getGameState().getXYCell(Integer.valueOf(parts[1]), Integer.valueOf(parts[2]));
                 consoleGameView.fireDiscoverCell(cell);
                 break;
             case "m":
                 if(parts.length != 4 || !parts[1].matches("\\d+") || !parts[2].matches("\\d+"))
-                    throw new Exception("Le format de la commande est : m i j x ou m i j ?");
+                    throw new IllegalArgumentException("Le format de la commande est : m i j x ou m i j ?");
 
                 cell = this.getGameState().getXYCell(Integer.valueOf(parts[1]), Integer.valueOf(parts[2]));
 
@@ -74,7 +75,7 @@ public class ConsoleGameController extends GameController {
 
                 break;
             default:
-                throw new Exception("Commande inconnue");
+                throw new IllegalArgumentException("Commande inconnue");
         }
 
     }
