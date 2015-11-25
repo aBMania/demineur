@@ -12,10 +12,12 @@ public class GraphicalGridView extends JPanel {
 
     private GameState gameState;
     private List<GraphicalCellView> cellsViews;
+    private Dimension cellDimension;
 
     public GraphicalGridView(GameState gameState) {
         this.gameState = gameState;
         this.cellsViews = new ArrayList<>();
+        this.cellDimension = new Dimension(20, 20);
 
         setLayout(new GridLayout(gameState.getSizeY(), gameState.getSizeX()));
 
@@ -23,7 +25,7 @@ public class GraphicalGridView extends JPanel {
             for(int y = 0; y < gameState.getSizeY(); y++){
 
                 GameCell cell = gameState.getXYCell(x, y);
-                GraphicalCellView cellView = new GraphicalCellView(cell);
+                GraphicalCellView cellView = new GraphicalCellView(cell, cellDimension);
 
                 cellsViews.add(cellView);
                 add(cellView);
@@ -31,9 +33,15 @@ public class GraphicalGridView extends JPanel {
         }
     }
 
+    public void refresh(){
+        for(GraphicalCellView cellView : cellsViews)
+        {
+            cellView.refresh();
+        }
+    }
+
     @Override
-    protected void printComponent(Graphics g) {
-        super.printComponent(g);
-        System.out.print(".");
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
     }
 }

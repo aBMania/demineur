@@ -5,6 +5,7 @@ import Model.GameState.GameState;
 import View.GameView;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.Observable;
 
 public class GraphicalGameView extends GameView {
@@ -25,12 +26,11 @@ public class GraphicalGameView extends GameView {
         frame.add(grid);
         frame.pack();
         frame.setVisible(true);
-
     }
 
 
     @Override
     public void update(Observable o, Object arg) {
-
+        grid.refresh();
     }
 }
