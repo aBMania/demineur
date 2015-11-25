@@ -7,12 +7,18 @@ import Model.GameState.GameState;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Observable;
 
 public abstract class GameView {
 
     private GameState gameState;
 
     private final Collection<GameCellListener> gameListenersList = new ArrayList<>();
+
+    public GameView(GameState gameState) {
+        this.gameState = gameState;
+    }
+
     public void addGameListener(GameCellListener listener) {
         gameListenersList.add(listener);
     }
@@ -52,4 +58,6 @@ public abstract class GameView {
     public GameState getGameState() {
         return gameState;
     }
+
+    public abstract void update(Observable o, Object arg);
 }

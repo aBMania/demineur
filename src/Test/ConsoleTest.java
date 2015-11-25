@@ -8,7 +8,7 @@ import View.ConsoleGameView;
 import java.util.Scanner;
 
 
-public class ConsoleViewTest {
+public class ConsoleTest {
 
     private static final boolean DEBUG = false;
 

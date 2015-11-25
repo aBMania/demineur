@@ -5,7 +5,7 @@ import Model.GameCell.GameCellListener;
 import Model.GameState.GameState;
 import View.GameView;
 
-public class GameController implements GameCellListener {
+abstract public class GameController implements GameCellListener {
     private GameState gameState;
 
     public GameController(GameView view) {

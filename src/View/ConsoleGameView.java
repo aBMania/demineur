@@ -10,15 +10,14 @@ public class ConsoleGameView extends GameView implements Observer {
 
     private boolean debug = false;
     private boolean quit = false;
-    private GameState gameState;
 
     public ConsoleGameView(GameState gameState) {
-        this.gameState = gameState;
+        super(gameState);
         gameState.addObserver(this);
     }
 
     public ConsoleGameView(GameState gameState, boolean debug) {
-        this(gameState);
+        super(gameState);
         this.debug = debug;
     }
 
@@ -67,9 +66,9 @@ public class ConsoleGameView extends GameView implements Observer {
     }
 
     public void printGameState(){
-        for(int y = 0; y < this.gameState.getSizeY(); y++){
-            for(int x = 0; x < this.gameState.getSizeX();x++){
-                System.out.print(getCellRepresentation(this.gameState.getXYCell(x, y)) + " ");
+        for(int y = 0; y < getGameState().getSizeY(); y++){
+            for(int x = 0; x < getGameState().getSizeX();x++){
+                System.out.print(getCellRepresentation(getGameState().getXYCell(x, y)) + " ");
             }
             System.out.println();
         }
@@ -80,13 +79,13 @@ public class ConsoleGameView extends GameView implements Observer {
     public void update(Observable o, Object arg) {
         this.printGameState();
 
-        if(this.gameState.isWon())
+        if(getGameState().isWon())
         {
             System.out.println("Vous avez gagné !");
             quit();
         }
 
-        if(this.gameState.isLost())
+        if(getGameState().isLost())
         {
             System.out.println("Vous avez perdu !");
             quit();
@@ -94,7 +93,7 @@ public class ConsoleGameView extends GameView implements Observer {
     }
 
     public GameState getGameState() {
-        return gameState;
+        return super.getGameState();
     }
 
     public void quit(){
