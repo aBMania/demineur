@@ -3,23 +3,37 @@ package View.Graphical.GamePanel;
 import javax.swing.*;
 import java.awt.*;
 
-public class NewGamePanel extends JPanel{
+public class NewGamePanel extends JPanel {
 
-    private GamePanelParameterRow rowsPanel;
-    private GamePanelParameterRow columnPanel;
-    private GamePanelParameterRow minesPanel;
+    private CustomGamePanel customGamePanel;
+
+    private ButtonGroup buttonGroup;
+    private JRadioButtonMenuItem beginnerRadioButton;
+    private JRadioButtonMenuItem intermediateRadioButton;
+    private JRadioButtonMenuItem expertRadioButton;
+    private JRadioButtonMenuItem customRadioButton;
 
     public NewGamePanel() {
-        setLayout(new BorderLayout());
+        buttonGroup = new ButtonGroup();
 
-        rowsPanel   = new GamePanelParameterRow("Rows", 9, 24, 9);
-        add(rowsPanel, BorderLayout.NORTH);
+        beginnerRadioButton = new JRadioButtonMenuItem("Beginner: 10 mines in a 9x9 field");
+        buttonGroup.add(beginnerRadioButton);
+        add(beginnerRadioButton);
 
-        columnPanel = new GamePanelParameterRow("Columns", 9, 30, 19);
-        add(columnPanel, BorderLayout.CENTER);
+        intermediateRadioButton = new JRadioButtonMenuItem("Intermediate: 40 mines in a 16x16 field");
+        buttonGroup.add(intermediateRadioButton);
+        add(intermediateRadioButton);
 
-        minesPanel  = new GamePanelParameterRow("Mines", 10, (int) Math.floor(0.85*9*19), 76);
-        add(minesPanel, BorderLayout.SOUTH);
+        expertRadioButton = new JRadioButtonMenuItem("Expert: 99 mines in a 16x30 field");
+        buttonGroup.add(expertRadioButton);
+        add(expertRadioButton);
+
+        customRadioButton = new JRadioButtonMenuItem("Custom: ");
+        buttonGroup.add(customRadioButton);
+        add(customRadioButton);
+
+        customGamePanel = new CustomGamePanel();
+        add(customGamePanel);
 
     }
 }
