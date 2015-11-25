@@ -19,14 +19,45 @@ public class GraphicalGameView extends GameView {
     public GraphicalGameView(GameState gameState) {
         super(gameState);
 
-        grid = new GraphicalGridView(gameState);
-
         JFrame frame = new JFrame(FRAME_TITLE);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.add(grid);
+        frame.setLayout(new BorderLayout());
+
+        grid = new GraphicalGridView(gameState);
+        JMenuBar menuBar = generateMenu();
+
+        frame.setJMenuBar(menuBar);
+        frame.add(grid, BorderLayout.CENTER);
 
         frame.pack();
         frame.setVisible(true);
+    }
+
+    private JMenuBar generateMenu() {
+        JMenuBar menuBar = new JMenuBar();
+
+        JMenu gameMenu = new JMenu("Game");
+        menuBar.add(gameMenu);
+
+        JMenu newMenu = new JMenu("New");
+        gameMenu.add(newMenu);
+
+        JMenuItem beginnerMenuItem = new JMenuItem("Beginner");
+        newMenu.add(beginnerMenuItem);
+
+        JMenuItem intermediateMenuItem = new JMenuItem("Intermediate");
+        newMenu.add(intermediateMenuItem);
+
+        JMenuItem expertMenuItem = new JMenuItem("Expert");
+        newMenu.add(expertMenuItem);
+
+        JMenuItem customMenuItem = new JMenuItem("Custom");
+        newMenu.add(customMenuItem);
+
+        JMenuItem quitMenuItem = new JMenuItem("Quit");
+        gameMenu.add(quitMenuItem);
+
+        return menuBar;
     }
 
 
