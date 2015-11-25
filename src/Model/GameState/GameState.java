@@ -13,8 +13,8 @@ public class GameState extends Observable {
     private boolean lost = false;
     private boolean bombsPlaced = false;
     private Integer perCent;
-    private int nbFlag = 0;
-    private int nbBombs = 0;
+    private Integer nFlag = 0;
+    private Integer nBombs = 0;
 
 
     public GameState(List<GameStateRow> gameStateRows) {
@@ -68,19 +68,19 @@ public class GameState extends Observable {
         markCellWithExclamationMark(cell);
     }
 
-    public void setNbFlag(int nbFlag) {
-        this.nbFlag = nbFlag;
+    public void setnFlag(Integer nFlag) {
+        this.nFlag = nFlag;
     }
 
-    public int getNbFlag() {
-        return nbFlag;
+    public Integer getnFlag() {
+        return nFlag;
     }
 
     public void markCellWithExclamationMark(GameCell cell){
         if(cell.isHidden()) {
             cell.setState(GameCellState.FLAG_EXCLAMATIONMARK);
             setChanged();
-
+            setnFlag(getnFlag() + 1);
         }
         notifyObservers();
     }
@@ -108,7 +108,7 @@ public class GameState extends Observable {
         int x = this.getSizeX();
         int y = this.getSizeY();
         Integer nCells = x * y;
-        Integer nBombs = nCells * this.getPerCent() / 100;
+        nBombs = nCells * this.getPerCent() / 100;
         List<Integer> cells = new LinkedList<>();
 
         /*
@@ -209,6 +209,10 @@ public class GameState extends Observable {
 
     public void setLost(boolean lost) {
         this.lost = lost;
+    }
+
+    public Integer getnBombs() {
+        return nBombs;
     }
 
     public boolean checkWon(){

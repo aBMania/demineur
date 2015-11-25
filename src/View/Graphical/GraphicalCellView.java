@@ -26,10 +26,13 @@ public class GraphicalCellView extends JButton{
                 if(this.cell.getNumberBombsNear() != 0){
                     this.setText(Integer.toString(cell.getNumberBombsNear()));
                 }
+                break;
             case FLAG_EXCLAMATIONMARK:
                 this.setText("!");
+                break;
             case FLAG_QUESTIONMARK:
                 this.setText("?");
+                break;
         }
 
       //  throw new RuntimeException("Cannot find symbol for this cell");
