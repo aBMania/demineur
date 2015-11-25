@@ -8,14 +8,16 @@ import Model.GameState.GameState;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Observable;
+import java.util.Observer;
 
-public abstract class GameView {
+public abstract class GameView  implements Observer {
 
     private GameState gameState;
 
     private final Collection<GameCellListener> gameListenersList = new ArrayList<>();
 
     public GameView(GameState gameState) {
+        gameState.addObserver(this);
         this.gameState = gameState;
     }
 

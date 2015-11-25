@@ -21,10 +21,10 @@ public class GraphicalGameView extends GameView {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setLayout(new GridLayout(gameState.getSizeY(), gameState.getSizeX()));
 
-        for(int y = 0; y < getGameState().getSizeY(); y++){
-            for(int x = 0; x < getGameState().getSizeX();x++){
+        for(int x = 0; x < getGameState().getSizeX();x++){
+            for(int y = 0; y < getGameState().getSizeY(); y++){
                 GameCell cell = getGameState().getXYCell(x, y);
-                //frame.add(new GraphicalCellView(cell));
+                frame.add(new GraphicalCellView(cell));
             }
         }
 
