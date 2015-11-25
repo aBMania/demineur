@@ -68,7 +68,7 @@ public class GameState extends Observable {
         markCellWithExclamationMark(cell);
     }
 
-    public void setnFlag(Integer nFlag) {
+    private void setnFlag(Integer nFlag) {
         this.nFlag = nFlag;
     }
 
