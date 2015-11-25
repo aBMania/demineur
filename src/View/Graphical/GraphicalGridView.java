@@ -21,25 +21,26 @@ public class GraphicalGridView extends JPanel {
         this.cellsViews = new ArrayList<>();
         this.cellDimension = new Dimension(CELL_SIZE, CELL_SIZE);
 
-        setLayout(new GridLayout(gameState.getSizeY(), gameState.getSizeX()));
+        setLayout(new GridLayout(getGameState().getSizeY(), getGameState().getSizeX()));
 
-        for(int y = 0; y < gameState.getSizeY(); y++){
-            for(int x = 0; x < gameState.getSizeX(); x++){
+        for(int y = 0; y < getGameState().getSizeY(); y++){
+            for(int x = 0; x < getGameState().getSizeX(); x++){
 
-                GameCell cell = gameState.getXYCell(x, y);
+                GameCell cell = getGameState().getXYCell(x, y);
                 GraphicalCellView cellView = new GraphicalCellView(cell, cellDimension);
 
-                cellsViews.add(cellView);
+                this.cellsViews.add(cellView);
                 add(cellView);
             }
         }
     }
 
     public void refresh(){
-        for(GraphicalCellView cellView : cellsViews)
-        {
-            cellView.refresh();
-        }
+        cellsViews.forEach(GraphicalCellView::refresh);
+    }
+
+    public GameState getGameState() {
+        return gameState;
     }
 
     @Override
