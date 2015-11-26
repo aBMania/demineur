@@ -1,7 +1,6 @@
 package View.Graphical.GamePanel;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class NewGamePanel extends JPanel {
 
@@ -28,7 +27,7 @@ public class NewGamePanel extends JPanel {
         buttonGroup.add(expertRadioButton);
         add(expertRadioButton);
 
-        customRadioButton = new JRadioButtonMenuItem("Custom: ");
+        customRadioButton =  new JRadioButtonMenuItem("Custom: ");
         buttonGroup.add(customRadioButton);
         add(customRadioButton);
 

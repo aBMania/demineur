@@ -4,7 +4,6 @@ import Model.GameCell.GameCell;
 import Model.GameState.GameState;
 
 import java.util.Observable;
-import java.util.Observer;
 
 public class ConsoleGameView extends GameView {
 

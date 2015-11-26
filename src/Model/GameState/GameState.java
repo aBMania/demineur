@@ -3,7 +3,10 @@ package Model.GameState;
 import Model.GameCell.GameCell;
 import Model.GameCell.GameCellState;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Observable;
 
 public class GameState extends Observable {
     private List<GameStateRow> gameStateRows;
@@ -12,14 +15,14 @@ public class GameState extends Observable {
     private boolean won = false;
     private boolean lost = false;
     private boolean bombsPlaced = false;
-    private Integer perCent;
     private Integer nFlag = 0;
     private Integer nBombs = 0;
 
 
-    public GameState(List<GameStateRow> gameStateRows) {
+    public GameState(List<GameStateRow> gameStateRows, Integer nBombs) {
         this.setSizeY(gameStateRows.size());
         this.setSizeX(gameStateRows.get(0).getCellRow().size());
+        this.setNBombs(nBombs);
 
         this.gameStateRows = gameStateRows;
     }
@@ -29,11 +32,6 @@ public class GameState extends Observable {
             throw new RuntimeException("No cells at x: " + x + ", y: " + y);
 
         return gameStateRows.get(y).getCellRow().get(x);
-    }
-
-    public void discoverCell(int x, int y){
-        GameCell cell = this.getXYCell(x, y);
-        discoverCell(cell);
     }
 
     public void discoverCell(GameCell cell){
@@ -50,11 +48,6 @@ public class GameState extends Observable {
         notifyObservers();
     }
 
-    public void markCellWithQuestionMark(int x, int y){
-        GameCell cell = this.getXYCell(x, y);
-        markCellWithQuestionMark(cell);
-    }
-
     public void markCellWithQuestionMark(GameCell cell){
         if(cell.isHidden()) {
             cell.setState(GameCellState.FLAG_QUESTIONMARK);
@@ -63,16 +56,11 @@ public class GameState extends Observable {
         notifyObservers();
     }
 
-    public void markCellWithExclamationMark(int x, int y){
-        GameCell cell = this.getXYCell(x, y);
-        markCellWithExclamationMark(cell);
-    }
-
-    private void setnFlag(Integer nFlag) {
+    private void setNFlag(Integer nFlag) {
         this.nFlag = nFlag;
     }
 
-    public Integer getnFlag() {
+    public Integer getNFlag() {
         return nFlag;
     }
 
@@ -80,7 +68,7 @@ public class GameState extends Observable {
         if(cell.isHidden()) {
             cell.setState(GameCellState.FLAG_EXCLAMATIONMARK);
             setChanged();
-            setnFlag(getnFlag() + 1);
+            setNFlag(getNFlag() + 1);
         }
         notifyObservers();
     }
@@ -92,10 +80,10 @@ public class GameState extends Observable {
         cell.setState(GameCellState.VISIBLE);
 
         if(cell.getNumberBombsNear() == 0) {
-            for(GameCell neighbor : cell.getNeighbor()) {
-                if(neighbor.isHidden() && !neighbor.isMined())
-                    showCell(neighbor);
-            }
+            cell.getNeighbor()
+                .stream()
+                .filter(neighbor -> neighbor.isHidden() && !neighbor.isMined())
+                .forEach(this::showCell);
         }
     }
 
@@ -108,7 +96,6 @@ public class GameState extends Observable {
         int x = this.getSizeX();
         int y = this.getSizeY();
         Integer nCells = x * y;
-        nBombs = nCells * this.getPerCent() / 100;
         List<Integer> cells = new LinkedList<>();
 
         /*
@@ -166,13 +153,6 @@ public class GameState extends Observable {
             }
         }
     }
-    public Integer getPerCent() {
-        return perCent;
-    }
-
-    public void setPerCent(Integer perCent) {
-        this.perCent = perCent;
-    }
 
     public Integer getSizeX() {
         return sizeX;
@@ -199,7 +179,7 @@ public class GameState extends Observable {
         return won;
     }
 
-    public void setWon(boolean won) {
+    private void setWon(boolean won) {
         this.won = won;
     }
 
@@ -207,11 +187,15 @@ public class GameState extends Observable {
         return lost;
     }
 
-    public void setLost(boolean lost) {
+    private void setLost(boolean lost) {
         this.lost = lost;
     }
 
-    public Integer getnBombs() {
+    private void setNBombs(Integer nBombs) {
+        this.nBombs = nBombs;
+    }
+
+    public Integer getNBombs() {
         return nBombs;
     }
 

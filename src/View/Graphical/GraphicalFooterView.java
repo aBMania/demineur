@@ -16,7 +16,7 @@ public class GraphicalFooterView extends JPanel{
     }
 
     public void refresh(){
-        sentence.setText("Drapeaux restant : " + (gameState.getnBombs()-gameState.getnFlag()));
+        sentence.setText("Drapeaux restant : " + (gameState.getNBombs()-gameState.getNFlag()));
     }
 
     private GameState getGameState() {

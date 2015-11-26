@@ -16,7 +16,7 @@ public class ConsoleGameController extends GameController {
         start();
     }
 
-    public void start(){
+    private void start(){
         this.consoleGameView.printBienvenue();
         this.consoleGameView.printHelp();
         this.consoleGameView.printGameState();

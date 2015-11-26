@@ -43,7 +43,7 @@ public class ConsoleTest {
             GameState gameState;
 
             try{
-                gameState = GameStateFactory.newGameState(x, y, percentage);
+                gameState = GameStateFactory.newGameStateByPercentage(x, y, percentage);
             }
             catch (IllegalArgumentException e){
                 System.out.println(e.getMessage());

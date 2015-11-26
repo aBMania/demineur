@@ -1,7 +1,7 @@
 package Model.GameCell;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 public class GameCell {
     private Integer x = 0;
