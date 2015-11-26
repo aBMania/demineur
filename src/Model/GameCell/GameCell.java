@@ -75,4 +75,5 @@ public class GameCell {
     public Integer getY() {
         return y;
     }
+
 }

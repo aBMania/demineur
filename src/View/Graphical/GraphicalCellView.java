@@ -23,7 +23,7 @@ public class GraphicalCellView extends JButton{
                 if(this.cell.isMined()){
                     this.setText("BOOM!");
                 }
-                if(this.cell.getNumberBombsNear() != 0){
+                else if(this.cell.getNumberBombsNear() != 0){
                     this.setText(Integer.toString(cell.getNumberBombsNear()));
                 }
                 break;
