@@ -3,7 +3,7 @@ package Test;
 import Controller.ConsoleGameController;
 import Model.GameState.GameState;
 import Model.GameState.GameStateFactory;
-import View.ConsoleGameView;
+import View.Console.ConsoleGameView;
 import View.Graphical.GraphicalGameView;
 
 public class GraphicalTest {

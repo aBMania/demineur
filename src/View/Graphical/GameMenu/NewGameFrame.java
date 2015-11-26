@@ -1,4 +1,4 @@
-package View.Graphical.GamePanel;
+package View.Graphical.GameMenu;
 
 import javax.swing.*;
 

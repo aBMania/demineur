@@ -1,9 +1,9 @@
-package View.Graphical;
+package View.Graphical.GameMenu;
 
 import javax.swing.*;
 
-public class GraphicalMenuView extends JMenuBar {
-    public GraphicalMenuView() {
+public class GameMenu extends JMenuBar {
+    public GameMenu() {
         JMenu gameMenu = new JMenu("Game");
         this.add(gameMenu);
 

@@ -1,11 +1,9 @@
 package Test;
 
-import View.Graphical.GamePanel.NewGameFrame;
-
-import javax.swing.*;
+import View.Graphical.GameMenu.NewGameFrame;
 
 public class NewGameFrameTest {
     public static void main(String[] args) {
-        JFrame frame = new NewGameFrame();
+        new NewGameFrame();
     }
 }

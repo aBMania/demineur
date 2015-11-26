@@ -1,7 +1,8 @@
-package View;
+package View.Console;
 
 import Model.GameCell.GameCell;
 import Model.GameState.GameState;
+import View.GameView;
 
 import java.util.Observable;
 

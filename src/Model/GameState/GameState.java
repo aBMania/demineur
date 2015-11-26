@@ -86,10 +86,10 @@ public class GameState extends Observable {
 
     public void changeMark(GameCell cell, GameCellState newState){
         if(cell.getState() == GameCellState.FLAG_EXCLAMATIONMARK){
-            setnFlag(getnFlag() - 1);
+            setNFlag(getNFlag() - 1);
         }
         if(newState == GameCellState.FLAG_EXCLAMATIONMARK ){
-            setnFlag(getnFlag() + 1);
+            setNFlag(getNFlag() + 1);
         }
         cell.setState(newState);
     }
@@ -230,4 +230,7 @@ public class GameState extends Observable {
         return true;
     }
 
+    public int getRemainingFlag() {
+        return nBombs - nFlag;
+    }
 }

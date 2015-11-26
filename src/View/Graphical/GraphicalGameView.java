@@ -2,6 +2,9 @@ package View.Graphical;
 
 import Model.GameState.GameState;
 import View.GameView;
+import View.Graphical.GameComponents.FooterView;
+import View.Graphical.GameComponents.GridView;
+import View.Graphical.GameMenu.GameMenu;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,8 +14,8 @@ import java.util.Observable;
 public class GraphicalGameView extends GameView {
 
     private JFrame frame;
-    private GraphicalGridView grid;
-    private GraphicalFooterView footer;
+    private GridView grid;
+    private FooterView footer;
     private final static String FRAME_TITLE = "Demineur";
 
 
@@ -21,10 +24,10 @@ public class GraphicalGameView extends GameView {
 
         initFrame();
 
-        frame.setJMenuBar(new GraphicalMenuView());
+        frame.setJMenuBar(new GameMenu());
 
-        grid = new GraphicalGridView(gameState);
-        footer = new GraphicalFooterView(gameState);
+        grid = new GridView(gameState);
+        footer = new FooterView(gameState);
 
         frame.add(grid, BorderLayout.CENTER);
         frame.add(footer, BorderLayout.SOUTH);

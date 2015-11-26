@@ -1,14 +1,14 @@
-package View.Graphical;
+package View.Graphical.GameComponents;
 
 import Model.GameCell.GameCell;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class GraphicalCellView extends JButton{
+public class CellView extends JButton{
     private GameCell cell;
 
-    public GraphicalCellView(GameCell cell, Dimension d) {
+    public CellView(GameCell cell, Dimension d) {
         this.cell = cell;
 
         setPreferredSize(d);

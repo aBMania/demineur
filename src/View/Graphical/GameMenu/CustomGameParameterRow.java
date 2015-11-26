@@ -1,12 +1,12 @@
-package View.Graphical.GamePanel;
+package View.Graphical.GameMenu;
 
 import javax.swing.*;
 
-public class GamePanelParameterRow extends JPanel {
+public class CustomGameParameterRow extends JPanel {
 
     private static final int FIELD_SIZE = 4;
 
-    public GamePanelParameterRow(String parameterName, int min, int max, Integer defaultValue) {
+    public CustomGameParameterRow(String parameterName, int min, int max, Integer defaultValue) {
         JLabel name = new JLabel(parameterName);
         add(name);
 

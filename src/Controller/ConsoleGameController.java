@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.GameCell.GameCell;
-import View.ConsoleGameView;
+import View.Console.ConsoleGameView;
 
 import java.util.Scanner;
 
