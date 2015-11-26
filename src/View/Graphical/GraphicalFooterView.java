@@ -7,16 +7,16 @@ import javax.swing.*;
 public class GraphicalFooterView extends JPanel{
 
     private GameState gameState;
-    private JTextArea sentence;
+    private JLabel sentence;
 
     public GraphicalFooterView(GameState gameState) {
         this.gameState = gameState;
-        sentence = new JTextArea("");
+        sentence = new JLabel("");
         this.add(sentence);
     }
 
     public void refresh(){
-        sentence.setText("Drapeaux restant : " + (gameState.getNBombs()-gameState.getNFlag()));
+        sentence.setText("Drapeaux restant : " + (gameState.getnBombs() - gameState.getnFlag()));
     }
 
     private GameState getGameState() {

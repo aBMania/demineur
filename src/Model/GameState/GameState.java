@@ -35,6 +35,7 @@ public class GameState extends Observable {
     }
 
     public void discoverCell(GameCell cell){
+
         if(!bombsPlaced){
             placeBomb(cell);
         }
@@ -50,7 +51,12 @@ public class GameState extends Observable {
 
     public void markCellWithQuestionMark(GameCell cell){
         if(cell.isHidden()) {
-            cell.setState(GameCellState.FLAG_QUESTIONMARK);
+            if (cell.getState() == GameCellState.FLAG_EXCLAMATIONMARK ){
+                changeMark(cell,GameCellState.FLAG_QUESTIONMARK);
+            }
+            else{
+                cell.setState(GameCellState.FLAG_QUESTIONMARK);
+            }
             setChanged();
         }
         notifyObservers();
@@ -66,19 +72,33 @@ public class GameState extends Observable {
 
     public void markCellWithExclamationMark(GameCell cell){
         if(cell.isHidden()) {
-            cell.setState(GameCellState.FLAG_EXCLAMATIONMARK);
+            if(cell.getState() == GameCellState.FLAG_EXCLAMATIONMARK){
+                changeMark(cell,GameCellState.HIDDEN);
+
+            }
+            else{
+                changeMark(cell, GameCellState.FLAG_EXCLAMATIONMARK);
+            }
             setChanged();
-            setNFlag(getNFlag() + 1);
         }
         notifyObservers();
+    }
+
+    public void changeMark(GameCell cell, GameCellState newState){
+        if(cell.getState() == GameCellState.FLAG_EXCLAMATIONMARK){
+            setnFlag(getnFlag() - 1);
+        }
+        if(newState == GameCellState.FLAG_EXCLAMATIONMARK ){
+            setnFlag(getnFlag() + 1);
+        }
+        cell.setState(newState);
     }
 
     private void showCell(GameCell cell) {
 
         //if(cell.isMined()) return;
 
-        cell.setState(GameCellState.VISIBLE);
-
+        changeMark(cell,GameCellState.VISIBLE);
         if(cell.getNumberBombsNear() == 0) {
             cell.getNeighbor()
                 .stream()
