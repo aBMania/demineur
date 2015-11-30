@@ -33,6 +33,8 @@ public class CellView extends JButton{
             case FLAG_QUESTIONMARK:
                 this.setText("?");
                 break;
+            case HIDDEN:
+                this.setText(null);
         }
 
       //  throw new RuntimeException("Cannot find symbol for this cell");
