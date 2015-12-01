@@ -12,8 +12,8 @@ public class CellView extends JButton{
 
     public CellView(GameCell cell, Dimension d) {
 
-        ImageIcon flagTemp = createImageIcon("images/drap.png","?");
-        ImageIcon interrogationMarkTemp = createImageIcon("images/Interro.gif","?");
+        ImageIcon flagTemp = new ImageIcon(getClass().getClassLoader().getResource("ressources/images/drap.png"));
+        ImageIcon interrogationMarkTemp = new ImageIcon(getClass().getClassLoader().getResource("ressources/images/Interro.gif"));
         int h = (int)d.getHeight();
         int w = (int)d.getWidth();
         flag = new ImageIcon(flagTemp.getImage().getScaledInstance(h,w,Image.SCALE_DEFAULT));

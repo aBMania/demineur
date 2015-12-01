@@ -15,8 +15,7 @@ public class FooterView extends JPanel{
         this.gameState = gameState;
         sentence = new JLabel("");
 
-        java.net.URL imgURL = getClass().getResource("images/drap.png");
-        image = new JLabel(new ImageIcon(imgURL));
+        image = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("ressources/images/drap.png")));
 
 
         this.add(image);
