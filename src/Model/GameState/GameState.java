@@ -71,22 +71,20 @@ public class GameState extends Observable {
     }
 
     public void markCellWithExclamationMark(GameCell cell){
-        if(getNBombs()-getNFlag()>0) {
-            if (cell.isHidden()) {
-                if (cell.getState() == GameCellState.FLAG_EXCLAMATIONMARK) {
-                  changeMark(cell, GameCellState.HIDDEN);
+        if(getNFlag() >= getNBombs())
+            return; // On ne peux pas marquer plus qu'il n'y a de bombes
 
-                }
-                else {
-                  changeMark(cell, GameCellState.FLAG_EXCLAMATIONMARK);
-                }
-                setChanged();
-          }
-          notifyObservers();
-        }
-        else{
-            System.out.println("Déja trop de drapeaux posés");
-        }
+        if (cell.isHidden()) {
+            if (cell.getState() == GameCellState.FLAG_EXCLAMATIONMARK) {
+              changeMark(cell, GameCellState.HIDDEN);
+
+            }
+            else {
+              changeMark(cell, GameCellState.FLAG_EXCLAMATIONMARK);
+            }
+            setChanged();
+      }
+      notifyObservers();
     }
 
     public void changeMark(GameCell cell, GameCellState newState){
