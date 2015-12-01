@@ -45,6 +45,26 @@ public class CellView extends JButton{
                 }
                 else if(this.cell.getNumberBombsNear() != 0){
                     this.setText(Integer.toString(cell.getNumberBombsNear()));
+                    this.setEnabled(true);
+                    switch (this.cell.getNumberBombsNear()){
+                        case 1:
+                            setForeground(Color.red);
+                            break;
+                        case 2:
+                            setForeground(Color.BLUE);
+                            break;
+                        case 3:
+                            setForeground(Color.CYAN);
+                            break;
+                        case 4:
+                            setForeground(Color.GRAY);
+                            break;
+                        case 5:
+                            setForeground(Color.YELLOW);
+                            break;
+                        case 6:
+
+                    }
                 }
                 break;
             case FLAG_EXCLAMATIONMARK:
