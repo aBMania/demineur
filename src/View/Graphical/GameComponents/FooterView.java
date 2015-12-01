@@ -15,15 +15,16 @@ public class FooterView extends JPanel{
         this.gameState = gameState;
         sentence = new JLabel("");
 
+        java.net.URL imgURL = getClass().getResource("images/drap.png");
+        image = new JLabel(new ImageIcon(imgURL));
+
+
         this.add(image);
         this.add(sentence);
     }
 
-    public void refresh(){
-        java.net.URL imgURL = getClass().getResource("images/drap.png");
+    public void refresh() {
         sentence.setText("Drapeaux restant : " + (gameState.getRemainingFlag()));
-        if(image == null)
-            image = new JLabel(new ImageIcon(imgURL));
     }
 
     private GameState getGameState() {
