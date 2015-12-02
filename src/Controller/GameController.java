@@ -28,6 +28,11 @@ abstract public class GameController implements GameCellListener {
         gameState.discoverCell(e.getGameCell());
     }
 
+    @Override
+    public void clearCellMark(GameCellEvent e){
+        gameState.clearCellMarkAction(e.getGameCell());
+    }
+
     public GameState getGameState() {
         return gameState;
     }

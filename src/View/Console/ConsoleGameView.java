@@ -53,11 +53,12 @@ public class ConsoleGameView extends GameView {
 
     public void printHelp() {
         System.out.println("Voici les commandes :");
-        System.out.println("d i j   : Dévoiler la case i j");
-        System.out.println("m i j x : Marquer la case i j comme contenant une mine");
-        System.out.println("m i j ? : Marquer la case i j comme étant indécise");
-        System.out.println("q       : Quitter le jeu");
-        System.out.println("help(h) : Afficher les commandes");
+        System.out.println("d i j       : Dévoiler la case i j");
+        System.out.println("m i j x     : Marquer la case i j comme contenant une mine");
+        System.out.println("m i j ?     : Marquer la case i j comme étant indécise");
+        System.out.println("m i j clear : Retirer le marquage de la case i j");
+        System.out.println("q           : Quitter le jeu");
+        System.out.println("help(h)     : Afficher les commandes");
     }
 
     public void printBienvenue() {

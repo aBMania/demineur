@@ -49,6 +49,14 @@ public abstract class GameView  implements Observer {
         }
     }
 
+    public void fireClearCellMark(GameCell gameCell){
+        GameCellEvent event = new GameCellEvent(gameCell);
+
+        for(GameCellListener listener : getGameListenersList()){
+            listener.clearCellMark(event);
+        }
+    }
+
     public Collection<GameCellListener> getGameListenersList() {
         return gameListenersList;
     }

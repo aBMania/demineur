@@ -6,4 +6,6 @@ public interface GameCellListener {
     void markCellWithExclamationMark(GameCellEvent e);
 
     void discoverCell(GameCellEvent e);
+
+    void clearCellMark(GameCellEvent e);
 }

@@ -59,7 +59,7 @@ public class ConsoleGameController extends GameController {
                 break;
             case "m":
                 if(parts.length != 4 || !parts[1].matches("\\d+") || !parts[2].matches("\\d+"))
-                    throw new IllegalArgumentException("Le format de la commande est : m i j x ou m i j ?");
+                    throw new IllegalArgumentException("Le format de la commande est : \"m i j x`\" ou \"m i j ?\" ou \"m i j clear\"");
 
                 cell = this.getGameState().getXYCell(Integer.valueOf(parts[1]), Integer.valueOf(parts[2]));
 
@@ -71,6 +71,8 @@ public class ConsoleGameController extends GameController {
                     case "?":
                         consoleGameView.fireMarkCellWithQuestionMark(cell);
                         break;
+                    case "clear":
+                        consoleGameView.fireClearCellMark(cell);
                 }
 
                 break;
