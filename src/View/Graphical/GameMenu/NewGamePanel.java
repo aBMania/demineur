@@ -12,6 +12,10 @@ public class NewGamePanel extends JPanel {
     private JRadioButtonMenuItem expertRadioButton;
     private JRadioButtonMenuItem customRadioButton;
 
+    public CustomGamePanel getCustomGamePanel() {
+        return customGamePanel;
+    }
+
     public NewGamePanel() {
         buttonGroup = new ButtonGroup();
 
