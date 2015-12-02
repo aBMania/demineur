@@ -29,16 +29,15 @@ public class GameState extends Observable {
 
     public GameCell getXYCell(int x, int y){
         if(x >= getSizeX() || y >= getSizeY() || x < 0 || y < 0)
-            throw new RuntimeException("No cells at x: " + x + ", y: " + y);
+            throw new IllegalArgumentException("No cells at x: " + x + ", y: " + y);
 
         return gameStateRows.get(y).getCellRow().get(x);
     }
 
     public void discoverCell(GameCell cell){
-
-        if(!bombsPlaced){
+        if(!bombsPlaced)
             placeBomb(cell);
-        }
+
         if(cell.isMined())
             this.setLost(true);
 
@@ -49,16 +48,32 @@ public class GameState extends Observable {
         notifyObservers();
     }
 
-    public void markCellWithQuestionMark(GameCell cell){
-        if(cell.isHidden()) {
-            if (cell.getState() == GameCellState.FLAG_EXCLAMATIONMARK ){
-                changeMark(cell,GameCellState.FLAG_QUESTIONMARK);
-            }
-            else{
-                cell.setState(GameCellState.FLAG_QUESTIONMARK);
-            }
+    public void clearCellMark(GameCell cell){
+        if(cell.isVisible())
+            return;
+
+        if(cell.getState() != GameCellState.HIDDEN)
             setChanged();
-        }
+
+        if(cell.getState() == GameCellState.FLAG_EXCLAMATIONMARK)
+            setNFlag(getNFlag() - 1);
+
+        cell.setState(GameCellState.HIDDEN);
+    }
+
+    public void clearCellMarkAction(GameCell cell){
+        clearCellMark(cell);
+        notifyObservers();
+    }
+
+    public void markCellWithQuestionMark(GameCell cell){
+        if(cell.isVisible())
+            return;
+
+        clearCellMark(cell);
+        cell.setState(GameCellState.FLAG_QUESTIONMARK);
+
+        setChanged();
         notifyObservers();
     }
 
@@ -71,37 +86,27 @@ public class GameState extends Observable {
     }
 
     public void markCellWithExclamationMark(GameCell cell){
+        if(cell.isVisible())
+            return;
+
         if(getNFlag() >= getNBombs())
             return; // On ne peux pas marquer plus qu'il n'y a de bombes
 
-        if (cell.isHidden()) {
-            if (cell.getState() == GameCellState.FLAG_EXCLAMATIONMARK) {
-              changeMark(cell, GameCellState.HIDDEN);
+        clearCellMark(cell);
+        cell.setState(GameCellState.FLAG_EXCLAMATIONMARK);
+        setNFlag(getNFlag() + 1);
 
-            }
-            else {
-              changeMark(cell, GameCellState.FLAG_EXCLAMATIONMARK);
-            }
-            setChanged();
-      }
-      notifyObservers();
-    }
-
-    public void changeMark(GameCell cell, GameCellState newState){
-        if(cell.getState() == GameCellState.FLAG_EXCLAMATIONMARK){
-            setNFlag(getNFlag() - 1);
-        }
-        if(newState == GameCellState.FLAG_EXCLAMATIONMARK ){
-            setNFlag(getNFlag() + 1);
-        }
-        cell.setState(newState);
+        setChanged();
+        notifyObservers();
     }
 
     private void showCell(GameCell cell) {
 
-        //if(cell.isMined()) return;
+        if(cell.isVisible())
+            return;
 
-        changeMark(cell,GameCellState.VISIBLE);
+        cell.setState(GameCellState.VISIBLE);
+
         if(cell.getNumberBombsNear() == 0) {
             cell.getNeighbor()
                 .stream()
