@@ -3,26 +3,63 @@ package View.Graphical.GameMenu;
 import javax.swing.*;
 
 public class GameMenu extends JMenuBar {
+    private final JMenu gameMenu;
+    private final JMenu newMenu;
+    private final JMenuItem beginnerMenuItem;
+    private final JMenuItem intermediateMenuItem;
+    private final JMenuItem expertMenuItem;
+    private final JMenuItem customMenuItem;
+    private final JMenuItem quitMenuItem;
+
     public GameMenu() {
-        JMenu gameMenu = new JMenu("Game");
+        gameMenu = new JMenu("Game");
         this.add(gameMenu);
 
-        JMenu newMenu = new JMenu("New");
+        newMenu = new JMenu("New");
         gameMenu.add(newMenu);
 
-        JMenuItem beginnerMenuItem = new JMenuItem("Beginner");
+        beginnerMenuItem = new JMenuItem("Beginner");
         newMenu.add(beginnerMenuItem);
 
-        JMenuItem intermediateMenuItem = new JMenuItem("Intermediate");
+        intermediateMenuItem = new JMenuItem("Intermediate");
         newMenu.add(intermediateMenuItem);
 
-        JMenuItem expertMenuItem = new JMenuItem("Expert");
+        expertMenuItem = new JMenuItem("Expert");
         newMenu.add(expertMenuItem);
 
-        JMenuItem customMenuItem = new JMenuItem("Custom");
+        customMenuItem = new JMenuItem("Custom");
         newMenu.add(customMenuItem);
 
-        JMenuItem quitMenuItem = new JMenuItem("Quit");
+        quitMenuItem = new JMenuItem("Quit");
         gameMenu.add(quitMenuItem);
     }
+
+    public JMenuItem getQuitMenuItem() {
+        return quitMenuItem;
+    }
+
+    public JMenuItem getCustomMenuItem() {
+        return customMenuItem;
+    }
+
+    public JMenuItem getExpertMenuItem() {
+        return expertMenuItem;
+    }
+
+    public JMenuItem getIntermediateMenuItem() {
+        return intermediateMenuItem;
+    }
+
+    public JMenuItem getBeginnerMenuItem() {
+        return beginnerMenuItem;
+    }
+
+    public JMenu getNewMenu() {
+        return newMenu;
+    }
+
+    public JMenu getGameMenu() {
+        return gameMenu;
+    }
+
 }

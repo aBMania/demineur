@@ -1,23 +1,20 @@
 package Controller.Graphical;
 
 import Controller.GameController;
-import Model.GameCell.GameCell;
-import View.Graphical.GameComponents.CellView;
 import View.Graphical.GraphicalGameView;
 
-import javax.swing.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 public class GraphicalGameController extends GameController{
-    private GraphicalGameView view;
-    private GraphicalGridController gridController;
+    private final GraphicalGameView view;
+    private final GraphicalGridController gridController;
+    private final GraphicalMenuController menuController;
 
     public GraphicalGameController(GraphicalGameView view) {
         super(view);
 
         this.view = view;
         this.gridController = new GraphicalGridController(this);
+        this.menuController = new GraphicalMenuController(this);
     }
 
     public GraphicalGameView getView() {

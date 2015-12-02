@@ -14,10 +14,10 @@ import java.util.Observable;
 public class GraphicalGameView extends GameView {
 
     private JFrame frame;
+    private GameMenu menu;
     private GridView grid;
     private FooterView footer;
     private final static String FRAME_TITLE = "Demineur";
-
 
     public GridView getGrid() {
         return grid;
@@ -27,8 +27,9 @@ public class GraphicalGameView extends GameView {
         super(gameState);
 
         initFrame();
+        menu = new GameMenu();
 
-        frame.setJMenuBar(new GameMenu());
+        frame.setJMenuBar(menu);
 
         grid = new GridView(gameState);
         footer = new FooterView(gameState);
@@ -38,6 +39,10 @@ public class GraphicalGameView extends GameView {
 
         frame.pack();
         frame.setVisible(true);
+    }
+
+    public GameMenu getMenu() {
+        return menu;
     }
 
     public void initFrame(){
