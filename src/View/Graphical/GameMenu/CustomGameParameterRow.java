@@ -1,5 +1,7 @@
 package View.Graphical.GameMenu;
 
+import Controller.Graphical.GraphicalMenuCustomController;
+
 import javax.swing.*;
 
 public class CustomGameParameterRow extends JPanel {
@@ -19,5 +21,8 @@ public class CustomGameParameterRow extends JPanel {
 
         JTextField field = new JTextField(defaultValue.toString(), FIELD_SIZE);
         add(field);
+    }
+
+    public void addComponentListener(GraphicalMenuCustomController graphicalMenuCustomController) {
     }
 }

@@ -22,4 +22,16 @@ public class CustomGamePanel extends JPanel{
         add(minesPanel, BorderLayout.SOUTH);
 
     }
+
+    public CustomGameParameterRow getRowsPanel() {
+        return rowsPanel;
+    }
+
+    public CustomGameParameterRow getColumnPanel() {
+        return columnPanel;
+    }
+
+    public CustomGameParameterRow getMinesPanel() {
+        return minesPanel;
+    }
 }
