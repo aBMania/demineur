@@ -1,7 +1,6 @@
 package Test;
 
-import Controller.ConsoleGameController;
-import Controller.GraphicalGameController;
+import Controller.Graphical.GraphicalGameController;
 import Model.GameState.GameState;
 import Model.GameState.GameStateFactory;
 import View.Console.ConsoleGameView;

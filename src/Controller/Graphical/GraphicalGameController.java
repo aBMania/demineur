@@ -1,5 +1,6 @@
-package Controller;
+package Controller.Graphical;
 
+import Controller.GameController;
 import Model.GameCell.GameCell;
 import View.Graphical.GameComponents.CellView;
 import View.Graphical.GraphicalGameView;
@@ -51,7 +52,6 @@ public class GraphicalGameController extends GameController implements MouseList
                 }
             }
         }
-
     }
 
 

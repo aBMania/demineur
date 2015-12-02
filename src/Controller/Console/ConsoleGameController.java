@@ -1,5 +1,6 @@
-package Controller;
+package Controller.Console;
 
+import Controller.GameController;
 import Model.GameCell.GameCell;
 import View.Console.ConsoleGameView;
 
