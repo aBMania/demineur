@@ -1,6 +1,7 @@
 package Test;
 
 import Controller.ConsoleGameController;
+import Controller.GraphicalGameController;
 import Model.GameState.GameState;
 import Model.GameState.GameStateFactory;
 import View.Console.ConsoleGameView;
@@ -13,6 +14,6 @@ public class GraphicalTest {
         ConsoleGameView debugView = new ConsoleGameView(gameState, true);
         GraphicalGameView graphicalView = new GraphicalGameView(gameState);
 
-        new ConsoleGameController(debugView);
+        new GraphicalGameController(graphicalView);
     }
 }

@@ -14,7 +14,7 @@ public abstract class GameView  implements Observer {
 
     private GameState gameState;
 
-    private final Collection<GameCellListener> gameListenersList = new ArrayList<>();
+    private Collection<GameCellListener> gameListenersList = new ArrayList<>();
 
     public GameView(GameState gameState) {
         gameState.addObserver(this);

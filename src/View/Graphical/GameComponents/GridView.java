@@ -13,6 +13,11 @@ public class GridView extends JPanel {
     public static final int CELL_SIZE = 50;
 
     private GameState gameState;
+
+    public List<CellView> getCellsViews() {
+        return cellsViews;
+    }
+
     private List<CellView> cellsViews;
     private Dimension cellDimension;
 

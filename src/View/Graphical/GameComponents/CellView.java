@@ -4,20 +4,41 @@ import Model.GameCell.GameCell;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.FileNotFoundException;
+import java.net.URL;
 
 public class CellView extends JButton{
     private GameCell cell;
     private ImageIcon flag;
     private ImageIcon interrogationMark;
 
+    public GameCell getCell() {
+        return cell;
+    }
+
     public CellView(GameCell cell, Dimension d) {
 
-        ImageIcon flagTemp = new ImageIcon(getClass().getClassLoader().getResource("ressources/images/drap.png"));
-        ImageIcon interrogationMarkTemp = new ImageIcon(getClass().getClassLoader().getResource("ressources/images/Interro.gif"));
         int h = (int)d.getHeight();
         int w = (int)d.getWidth();
+
+        URL flagURL = getClass().getClassLoader().getResource("ressources/images/drap.png");
+        URL interrogationMarkURL = getClass().getClassLoader().getResource("ressources/images/interro.gif");
+
+        if(flagURL == null || interrogationMarkURL == null){
+            throw new RuntimeException("Can't find images");
+        }
+
+        ImageIcon flagTemp;
+        ImageIcon interrogationMarkTemp;
+
+        flagTemp = new ImageIcon(flagURL);
+        interrogationMarkTemp = new ImageIcon(interrogationMarkURL);
+
         flag = new ImageIcon(flagTemp.getImage().getScaledInstance(h,w,Image.SCALE_DEFAULT));
         interrogationMark = new ImageIcon(interrogationMarkTemp.getImage().getScaledInstance(h,w,Image.SCALE_DEFAULT));
+
+
+
 
         this.cell = cell;
 
@@ -25,17 +46,7 @@ public class CellView extends JButton{
 
         refresh();
     }
-    /** Returns an ImageIcon, or null if the path was invalid. */
-    protected ImageIcon createImageIcon(String path,
-                                        String description) {
-        java.net.URL imgURL = getClass().getResource(path);
-        if (imgURL != null) {
-            return new ImageIcon(imgURL, description);
-        } else {
-            System.err.println("Couldn't find file: " + path);
-            return null;
-        }
-    }
+
     public void refresh(){
         switch (this.cell.getState()){
             case VISIBLE:
@@ -75,6 +86,7 @@ public class CellView extends JButton{
                 break;
             case HIDDEN:
                 this.setText(null);
+                this.setIcon(null);
         }
 
       //  throw new RuntimeException("Cannot find symbol for this cell");
