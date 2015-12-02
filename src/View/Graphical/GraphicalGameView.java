@@ -19,6 +19,10 @@ public class GraphicalGameView extends GameView {
     private final static String FRAME_TITLE = "Demineur";
 
 
+    public GridView getGrid() {
+        return grid;
+    }
+
     public GraphicalGameView(GameState gameState) {
         super(gameState);
 
