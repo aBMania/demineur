@@ -27,17 +27,35 @@ public class CustomGameParameterRowController {
         textField.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                updateSlider(Integer.valueOf(textField.getText()));
+                try{
+                    int value = Integer.valueOf(textField.getText());
+                    updateSlider(value);
+                }
+                catch (Exception exception){
+
+                }
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                updateSlider(Integer.valueOf(textField.getText()));
+                try{
+                    int value = Integer.valueOf(textField.getText());
+                    updateSlider(value);
+                }
+                catch (Exception exception){
+
+                }
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                updateSlider(Integer.valueOf(textField.getText()));
+                try{
+                    int value = Integer.valueOf(textField.getText());
+                    updateSlider(value);
+                }
+                catch (Exception exception){
+
+                }
             }
         });
     }
