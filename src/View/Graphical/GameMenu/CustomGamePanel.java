@@ -1,5 +1,7 @@
 package View.Graphical.GameMenu;
 
+import Model.GameState.GameConstants;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -12,13 +14,13 @@ public class CustomGamePanel extends JPanel{
     public CustomGamePanel() {
         setLayout(new BorderLayout());
 
-        rowsPanel   = new CustomGameParameterRow("Rows", 9, 24, 9);
+        rowsPanel   = new CustomGameParameterRow("Rows", GameConstants.CUSTOM_MIN_ROW, GameConstants.CUSTOM_MAX_ROW, GameConstants.CUSTOM_DEFAULT_ROW);
         add(rowsPanel, BorderLayout.NORTH);
 
-        columnPanel = new CustomGameParameterRow("Columns", 9, 30, 19);
+        columnPanel = new CustomGameParameterRow("Columns", GameConstants.CUSTOM_MIN_COLS, GameConstants.CUSTOM_MAX_COLS, GameConstants.CUSTOM_DEFAULT_COLS);
         add(columnPanel, BorderLayout.CENTER);
 
-        minesPanel  = new CustomGameParameterRow("Mines", 10, (int) Math.floor(0.85*9*19), 76);
+        minesPanel  = new CustomGameParameterRow("Mines", GameConstants.CUSTOM_MIN_MINES, GameConstants.getCustomMaxMines(GameConstants.CUSTOM_DEFAULT_COLS, GameConstants.CUSTOM_DEFAULT_COLS), GameConstants.CUSTOM_DEFAULT_MINES);
         add(minesPanel, BorderLayout.SOUTH);
 
     }

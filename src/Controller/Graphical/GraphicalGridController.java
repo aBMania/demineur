@@ -7,24 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GraphicalGridController {
-    private GraphicalGameController gameController;
-    private GridView gridView;
     private List<GraphicalCellController> cellControllerList = new ArrayList<>();
 
-    public GraphicalGridController(GraphicalGameController gameController) {
-        this.gameController = gameController;
-
-        this.gridView = gameController.getView().getGrid();
-
+    public GraphicalGridController(GridView gridView) {
         for(CellView cellView : gridView.getCellsViews())
         {
-            GraphicalCellController cellController = new GraphicalCellController(this, cellView);
+            GraphicalCellController cellController = new GraphicalCellController(cellView);
             cellControllerList.add(cellController);
         }
-    }
-
-
-    public GraphicalGameController getGameController() {
-        return gameController;
     }
 }

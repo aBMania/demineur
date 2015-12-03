@@ -2,6 +2,7 @@ package View.Graphical.GameComponents;
 
 import Model.GameCell.GameCell;
 import Model.GameState.GameState;
+import View.Graphical.GraphicalGameView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,8 +12,7 @@ import java.util.List;
 public class GridView extends JPanel {
 
     public static final int CELL_SIZE = 50;
-
-    private GameState gameState;
+    private GameFrame gameFrame;
 
     public List<CellView> getCellsViews() {
         return cellsViews;
@@ -21,8 +21,8 @@ public class GridView extends JPanel {
     private List<CellView> cellsViews;
     private Dimension cellDimension;
 
-    public GridView(GameState gameState) {
-        this.gameState = gameState;
+    public GridView(GameFrame gameFrame) {
+        this.gameFrame = gameFrame;
         this.cellsViews = new ArrayList<>();
         this.cellDimension = new Dimension(CELL_SIZE, CELL_SIZE);
 
@@ -32,7 +32,7 @@ public class GridView extends JPanel {
             for(int x = 0; x < getGameState().getSizeX(); x++){
 
                 GameCell cell = getGameState().getXYCell(x, y);
-                CellView cellView = new CellView(cell, cellDimension);
+                CellView cellView = new CellView(this, cell, cellDimension);
 
                 this.cellsViews.add(cellView);
                 add(cellView);
@@ -45,11 +45,28 @@ public class GridView extends JPanel {
     }
 
     public GameState getGameState() {
-        return gameState;
+        return gameFrame.getGameState();
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+    }
+
+
+    public void fireMarkCellWithQuestionMark(GameCell cell) {
+        gameFrame.fireMarkCellWithQuestionMark(cell);
+    }
+
+    public void fireClearCellMark(GameCell cell) {
+        gameFrame.fireClearCellMark(cell);
+    }
+
+    public void fireMarkCellWithExclamationMark(GameCell cell) {
+        gameFrame.fireMarkCellWithExclamationMark(cell);
+    }
+
+    public void fireDiscoverCell(GameCell cell) {
+        gameFrame.fireDiscoverCell(cell);
     }
 }

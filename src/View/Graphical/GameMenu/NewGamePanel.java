@@ -1,5 +1,7 @@
 package View.Graphical.GameMenu;
 
+import Model.GameState.GameConstants;
+
 import javax.swing.*;
 
 public class NewGamePanel extends JPanel {
@@ -19,15 +21,15 @@ public class NewGamePanel extends JPanel {
     public NewGamePanel() {
         buttonGroup = new ButtonGroup();
 
-        beginnerRadioButton = new JRadioButtonMenuItem("Beginner: 10 mines in a 9x9 field");
+        beginnerRadioButton = new JRadioButtonMenuItem("Beginner: " + GameConstants.BEGINNER_MINES + " mines in a " + GameConstants.BEGINNER_ROW + "x " + GameConstants.BEGINNER_COLS + " field");
         buttonGroup.add(beginnerRadioButton);
         add(beginnerRadioButton);
 
-        intermediateRadioButton = new JRadioButtonMenuItem("Intermediate: 40 mines in a 16x16 field");
+        intermediateRadioButton = new JRadioButtonMenuItem("Intermediate: " + GameConstants.INTERMEDIATE_MINES + " mines in a " + GameConstants.INTERMEDIATE_ROW + "x " + GameConstants.INTERMEDIATE_COLS + " field");
         buttonGroup.add(intermediateRadioButton);
         add(intermediateRadioButton);
 
-        expertRadioButton = new JRadioButtonMenuItem("Expert: 99 mines in a 16x30 field");
+        expertRadioButton = new JRadioButtonMenuItem("Expert: " + GameConstants.EXPERT_MINES + " mines in a " + GameConstants.EXPERT_ROW + "x " + GameConstants.EXPERT_COLS + " field");
         buttonGroup.add(expertRadioButton);
         add(expertRadioButton);
 

@@ -1,11 +1,14 @@
 package Model.GameCell;
 
+import Model.GameState.GameState;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameCell {
     private Integer x = 0;
     private Integer y = 0;
+    private GameState gameState;
     private boolean mined = false; // true if cell is mined
     private GameCellState state = GameCellState.HIDDEN;
     private List<GameCell> neighbor;
@@ -75,5 +78,4 @@ public class GameCell {
     public Integer getY() {
         return y;
     }
-
 }

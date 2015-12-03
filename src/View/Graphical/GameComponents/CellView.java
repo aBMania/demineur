@@ -1,13 +1,14 @@
 package View.Graphical.GameComponents;
 
 import Model.GameCell.GameCell;
+import Model.GameState.GameState;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.FileNotFoundException;
 import java.net.URL;
 
 public class CellView extends JButton{
+    private GridView gridView;
     private GameCell cell;
     private ImageIcon flag;
     private ImageIcon interrogationMark;
@@ -16,7 +17,8 @@ public class CellView extends JButton{
         return cell;
     }
 
-    public CellView(GameCell cell, Dimension d) {
+    public CellView(GridView gridView, GameCell cell, Dimension d) {
+        this.gridView = gridView;
 
         int h = (int)d.getHeight();
         int w = (int)d.getWidth();
@@ -91,4 +93,25 @@ public class CellView extends JButton{
 
       //  throw new RuntimeException("Cannot find symbol for this cell");
     }
+
+    public GameState getGameState(){
+        return gridView.getGameState();
+    }
+
+    public void fireMarkCellWithQuestionMark(){
+        gridView.fireMarkCellWithQuestionMark(cell);
+    }
+
+    public void fireMarkCellWithExclamationMark(){
+        gridView.fireMarkCellWithExclamationMark(cell);
+    }
+
+    public void fireDiscoverCell(){
+        gridView.fireDiscoverCell(cell);
+    }
+
+    public void fireClearCellMark(){
+        gridView.fireClearCellMark(cell);
+    }
+
 }

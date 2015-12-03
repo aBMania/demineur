@@ -1,18 +1,10 @@
 package Test;
 
-import Controller.Graphical.GraphicalGameController;
-import Model.GameState.GameState;
-import Model.GameState.GameStateFactory;
-import View.Console.ConsoleGameView;
-import View.Graphical.GraphicalGameView;
+import service.MineSweeperService;
 
 public class GraphicalTest {
 
     public static void main(String[] args) {
-        GameState gameState = GameStateFactory.newGameState(20, 10, 20);
-        ConsoleGameView debugView = new ConsoleGameView(gameState, true);
-        GraphicalGameView graphicalView = new GraphicalGameView(gameState);
-
-        new GraphicalGameController(graphicalView);
+        MineSweeperService.newBeginnerGame();
     }
 }

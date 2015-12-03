@@ -9,16 +9,10 @@ import java.awt.event.MouseEvent;
 
 public class GraphicalCellController extends MouseAdapter {
     private final CellView cellView;
-    private final GraphicalGridController gridController;
 
-    public GraphicalCellController(GraphicalGridController gridController, CellView cellView) {
-        this.gridController = gridController;
+    public GraphicalCellController(CellView cellView) {
         this.cellView = cellView;
         cellView.addMouseListener(this);
-    }
-
-    public GraphicalGridController getGridController() {
-        return gridController;
     }
 
     public void mouseClicked(MouseEvent mouseEvent){
@@ -26,20 +20,20 @@ public class GraphicalCellController extends MouseAdapter {
         GameCell cell = cellView.getCell();
 
         if(SwingUtilities.isLeftMouseButton(mouseEvent))
-            gridController.getGameController().getView().fireDiscoverCell(cell);
+            cellView.fireDiscoverCell();
 
         if(SwingUtilities.isRightMouseButton(mouseEvent))
         {
             switch (cell.getState())
             {
                 case HIDDEN:
-                    gridController.getGameController().getView().fireMarkCellWithExclamationMark(cell);
+                    cellView.fireMarkCellWithExclamationMark();
                     break;
                 case FLAG_EXCLAMATIONMARK:
-                    gridController.getGameController().getView().fireMarkCellWithQuestionMark(cell);
+                    cellView.fireMarkCellWithQuestionMark();
                     break;
                 case FLAG_QUESTIONMARK:
-                    gridController.getGameController().getView().fireClearCellMark(cell);
+                    cellView.fireClearCellMark();
                     break;
                 case VISIBLE:
                 default:
