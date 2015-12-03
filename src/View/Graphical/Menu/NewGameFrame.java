@@ -1,4 +1,4 @@
-package View.Graphical.GameMenu;
+package View.Graphical.Menu;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,12 +10,16 @@ public class NewGameFrame extends JFrame{
         return newGamePanel;
     }
 
-    public NewGameFrame() {
+    public NewGameFrame(String title) {
+        this(title, new Dimension(350, 300));
+    }
 
-        this.newGamePanel = new NewGamePanel();
-        Dimension d = new Dimension(350, 300);
+    public NewGameFrame(String title, Dimension d) {
+        super(title);
+        newGamePanel = new NewGamePanel();
+
         newGamePanel.setPreferredSize(d);
-        add(this.newGamePanel);
+        add(newGamePanel);
         pack();
         setVisible(true);
     }

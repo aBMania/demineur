@@ -1,23 +1,22 @@
-package View.Graphical.GameComponents;
+package View.Graphical.Components;
 
 import Model.GameCell.GameCell;
 import Model.GameState.GameState;
-import View.Graphical.GameMenu.GameMenu;
-import View.Graphical.GraphicalGameView;
+import View.Graphical.Menu.GameMenu;
+import View.Graphical.GameView;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowEvent;
-import java.util.Observable;
 
 public class GameFrame extends JFrame {
-    private GraphicalGameView gameView;
+    private GameView gameView;
     private GameMenu menu;
     private GridView grid;
     private FooterView footer;
     private final static String TITLE = "Demineur";
 
-    public GameFrame(GraphicalGameView gameView){
+    public GameFrame(GameView gameView){
         super(TITLE);
 
         this.gameView = gameView;
@@ -49,20 +48,8 @@ public class GameFrame extends JFrame {
         return gameView.getGameState();
     }
 
-    public void fireMarkCellWithQuestionMark(GameCell cell) {
-        gameView.fireMarkCellWithQuestionMark(cell);
-    }
-
-    public void fireClearCellMark(GameCell cell) {
-        gameView.fireClearCellMark(cell);
-    }
-
-    public void fireMarkCellWithExclamationMark(GameCell cell) {
-        gameView.fireMarkCellWithExclamationMark(cell);
-    }
-
-    public void fireDiscoverCell(GameCell cell) {
-        gameView.fireDiscoverCell(cell);
+    public GameView getGameView() {
+        return gameView;
     }
 
     public GameMenu getMenu() {

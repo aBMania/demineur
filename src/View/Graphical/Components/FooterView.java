@@ -1,4 +1,4 @@
-package View.Graphical.GameComponents;
+package View.Graphical.Components;
 
 import Model.GameState.GameState;
 

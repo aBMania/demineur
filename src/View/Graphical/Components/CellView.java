@@ -1,7 +1,8 @@
-package View.Graphical.GameComponents;
+package View.Graphical.Components;
 
 import Model.GameCell.GameCell;
 import Model.GameState.GameState;
+import View.GameView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -94,24 +95,28 @@ public class CellView extends JButton{
       //  throw new RuntimeException("Cannot find symbol for this cell");
     }
 
-    public GameState getGameState(){
-        return gridView.getGameState();
+    public GridView getGridView() {
+        return gridView;
+    }
+
+    public GameView getGameView() {
+        return getGridView().getGameView();
     }
 
     public void fireMarkCellWithQuestionMark(){
-        gridView.fireMarkCellWithQuestionMark(cell);
+        getGameView().fireMarkCellWithQuestionMark(cell);
     }
 
     public void fireMarkCellWithExclamationMark(){
-        gridView.fireMarkCellWithExclamationMark(cell);
+        getGameView().fireMarkCellWithExclamationMark(cell);
     }
 
     public void fireDiscoverCell(){
-        gridView.fireDiscoverCell(cell);
+        getGameView().fireDiscoverCell(cell);
     }
 
     public void fireClearCellMark(){
-        gridView.fireClearCellMark(cell);
+        getGameView().fireClearCellMark(cell);
     }
 
 }

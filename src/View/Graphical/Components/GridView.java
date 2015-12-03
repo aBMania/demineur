@@ -1,8 +1,8 @@
-package View.Graphical.GameComponents;
+package View.Graphical.Components;
 
 import Model.GameCell.GameCell;
 import Model.GameState.GameState;
-import View.Graphical.GraphicalGameView;
+import View.GameView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,15 +13,10 @@ public class GridView extends JPanel {
 
     public static final int CELL_SIZE = 50;
     private GameFrame gameFrame;
-
-    public List<CellView> getCellsViews() {
-        return cellsViews;
-    }
-
     private List<CellView> cellsViews;
     private Dimension cellDimension;
 
-    public GridView(GameFrame gameFrame) {
+        public GridView(GameFrame gameFrame) {
         this.gameFrame = gameFrame;
         this.cellsViews = new ArrayList<>();
         this.cellDimension = new Dimension(CELL_SIZE, CELL_SIZE);
@@ -44,29 +39,20 @@ public class GridView extends JPanel {
         cellsViews.forEach(CellView::refresh);
     }
 
+    public List<CellView> getCellsViews() {
+        return cellsViews;
+    }
+
     public GameState getGameState() {
         return gameFrame.getGameState();
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
+    public GameFrame getGameFrame() {
+        return gameFrame;
     }
 
-
-    public void fireMarkCellWithQuestionMark(GameCell cell) {
-        gameFrame.fireMarkCellWithQuestionMark(cell);
+    public GameView getGameView() {
+        return getGameFrame().getGameView();
     }
 
-    public void fireClearCellMark(GameCell cell) {
-        gameFrame.fireClearCellMark(cell);
-    }
-
-    public void fireMarkCellWithExclamationMark(GameCell cell) {
-        gameFrame.fireMarkCellWithExclamationMark(cell);
-    }
-
-    public void fireDiscoverCell(GameCell cell) {
-        gameFrame.fireDiscoverCell(cell);
-    }
 }

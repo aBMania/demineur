@@ -1,10 +1,9 @@
-package View.Graphical.GameMenu;
+package View.Graphical.Menu;
 
 import Model.GameState.GameState;
 import Model.GameState.GameStateFactory;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class CustomGameFrame extends JFrame {
 

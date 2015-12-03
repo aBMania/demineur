@@ -1,18 +1,18 @@
-package Controller.Graphical;
+package Controller.Graphical.Menu;
 
-import View.Graphical.GameMenu.GameMenu;
+import View.Graphical.Menu.GameMenu;
 import service.MineSweeperService;
 
-public class GraphicalMenuController {
+public class MenuController {
     private final GameMenu gameMenu;
 
-    public GraphicalMenuController(GameMenu gameMenu) {
+    public MenuController(GameMenu gameMenu) {
         this.gameMenu = gameMenu;
 
         gameMenu.getBeginnerMenuItem().addActionListener(e -> MineSweeperService.newBeginnerGame());
         gameMenu.getIntermediateMenuItem().addActionListener(e -> MineSweeperService.newIntermediateGame());
         gameMenu.getExpertMenuItem().addActionListener(e -> MineSweeperService.newExpertGame());
-        gameMenu.getCustomMenuItem().addActionListener(e -> MineSweeperService.newCustomGame());
+        //gameMenu.getCustomMenuItem().addActionListener(e -> MineSweeperService.newCustomGame());
 
     }
 }

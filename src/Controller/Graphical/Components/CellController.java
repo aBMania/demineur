@@ -1,22 +1,23 @@
-package Controller.Graphical;
+package Controller.Graphical.Components;
 
 import Model.GameCell.GameCell;
-import View.Graphical.GameComponents.CellView;
+import Model.GameCell.GameCellEvent;
+import Model.GameCell.GameCellListener;
+import View.Graphical.Components.CellView;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class GraphicalCellController extends MouseAdapter {
+public class CellController extends MouseAdapter{
     private final CellView cellView;
 
-    public GraphicalCellController(CellView cellView) {
+    public CellController(CellView cellView) {
         this.cellView = cellView;
         cellView.addMouseListener(this);
     }
 
     public void mouseClicked(MouseEvent mouseEvent){
-        CellView cellView = (CellView) mouseEvent.getSource();
         GameCell cell = cellView.getCell();
 
         if(SwingUtilities.isLeftMouseButton(mouseEvent))

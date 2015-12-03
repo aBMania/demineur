@@ -1,4 +1,4 @@
-package View.Graphical.GameMenu;
+package View.Graphical.Menu;
 
 import Model.GameState.GameConstants;
 

@@ -1,4 +1,4 @@
-package View.Graphical.GameMenu;
+package View.Graphical.Menu;
 
 import Model.GameState.GameConstants;
 
@@ -20,7 +20,7 @@ public class CustomGamePanel extends JPanel{
         columnPanel = new CustomGameParameterRow("Columns", GameConstants.CUSTOM_MIN_COLS, GameConstants.CUSTOM_MAX_COLS, GameConstants.CUSTOM_DEFAULT_COLS);
         add(columnPanel, BorderLayout.CENTER);
 
-        minesPanel  = new CustomGameParameterRow("Mines", GameConstants.CUSTOM_MIN_MINES, GameConstants.getCustomMaxMines(GameConstants.CUSTOM_DEFAULT_COLS, GameConstants.CUSTOM_DEFAULT_COLS), GameConstants.CUSTOM_DEFAULT_MINES);
+        minesPanel  = new CustomGameParameterRow("Mines", GameConstants.CUSTOM_MIN_MINES, GameConstants.getCustomMaxMines(GameConstants.CUSTOM_DEFAULT_ROW, GameConstants.CUSTOM_DEFAULT_COLS), GameConstants.CUSTOM_DEFAULT_MINES);
         add(minesPanel, BorderLayout.SOUTH);
 
     }

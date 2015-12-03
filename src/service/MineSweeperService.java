@@ -1,13 +1,13 @@
 package service;
 
-import Controller.Graphical.GraphicalGameController;
+import Controller.Graphical.Components.GameController;
 import Model.GameState.GameConstants;
 import Model.GameState.GameState;
 import Model.GameState.GameStateFactory;
 import View.Console.ConsoleGameView;
-import View.Graphical.GraphicalGameView;
+import View.Graphical.GameView;
 
-public class MineSweeperService {
+public class MineSweeperService{
 
     public final static boolean DEBUG = true;
 
@@ -28,20 +28,16 @@ public class MineSweeperService {
         GameState gameState = GameStateFactory.newGameState(x, y, nBombs);
 
         // Attach view
-        GraphicalGameView graphicalView = new GraphicalGameView(gameState);
+        GameView graphicalView = new GameView(gameState);
 
         // Attach controller
-        new GraphicalGameController(graphicalView);
+        new GameController(graphicalView);
 
 
         // Attach debug console
         if(DEBUG) {
             new ConsoleGameView(gameState, DEBUG);
         }
-
-    }
-
-    public static void newCustomGame() {
 
     }
 }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="-194.0" y="76.0">Model.GameState.GameState</node>
+    <node x="0.0" y="0.0">Controller.GameController</node>
+    <node x="0.0" y="148.0">View.GameView</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="Controller.GameController" target="View.GameView">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Controller.GameController" target="Model.GameState.GameState">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="View.GameView" target="Model.GameState.GameState">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="133.0" y="360.5" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

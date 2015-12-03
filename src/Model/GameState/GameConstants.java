@@ -15,11 +15,11 @@ public class GameConstants {
 
     public static final int CUSTOM_DEFAULT_ROW = 9;
     public static final int CUSTOM_MIN_ROW = 9;
-    public static final int CUSTOM_MAX_ROW = 9;
+    public static final int CUSTOM_MAX_ROW = 24;
 
     public static final int CUSTOM_DEFAULT_COLS = 19;
     public static final int CUSTOM_MIN_COLS = 9;
-    public static final int CUSTOM_MAX_COLS = 9;
+    public static final int CUSTOM_MAX_COLS = 30;
 
     public static final int CUSTOM_DEFAULT_MINES = 76;
     public static final int CUSTOM_MIN_MINES = 9;
