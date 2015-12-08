@@ -1,9 +1,13 @@
 package Controller.Graphical.Menu;
 
+import Model.GameState.GameConstants;
 import View.Graphical.Menu.CustomGamePanel;
 import View.Graphical.Menu.CustomGameParameterRow;
 
-public class CustomGamePanelController{
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
+public class CustomGamePanelController implements ChangeListener{
     private final CustomGameParameterRow rows;
     private final CustomGameParameterRow column;
     private final CustomGameParameterRow mines;
@@ -22,10 +26,9 @@ public class CustomGamePanelController{
 
         mines = customGamePanel.getMinesPanel();
         minesController = new CustomGameParameterRowController(mines);
-    }
 
-    public void updateMinesMaxValue(int value){
-        minesController.updateMaxValue(value);
+        column.addChangeListener(this);
+        rows.addChangeListener(this);
     }
 
     public CustomGameParameterRowController getRowsController() {
@@ -38,5 +41,10 @@ public class CustomGamePanelController{
 
     public CustomGameParameterRowController getMinesController() {
         return minesController;
+    }
+
+    @Override
+    public void stateChanged(ChangeEvent e) {
+        minesController.updateMaxValue(GameConstants.getCustomMaxMines(column.getValue(), rows.getValue()));
     }
 }
