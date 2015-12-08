@@ -1,7 +1,6 @@
 package View.Graphical.Components;
 
 import Model.GameCell.GameCell;
-import Model.GameState.GameState;
 import View.GameView;
 
 import javax.swing.*;

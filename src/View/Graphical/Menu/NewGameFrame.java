@@ -22,5 +22,6 @@ public class NewGameFrame extends JFrame{
         add(newGamePanel);
         pack();
         setVisible(true);
+        setResizable(false);
     }
 }

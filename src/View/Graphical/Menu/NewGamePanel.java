@@ -13,6 +13,7 @@ public class NewGamePanel extends JPanel {
     private JRadioButtonMenuItem intermediateRadioButton;
     private JRadioButtonMenuItem expertRadioButton;
     private JRadioButtonMenuItem customRadioButton;
+    private JButton start;
 
     public CustomGamePanel getCustomGamePanel() {
         return customGamePanel;
@@ -40,5 +41,32 @@ public class NewGamePanel extends JPanel {
         customGamePanel = new CustomGamePanel();
         add(customGamePanel);
 
+        start = new JButton("start");
+        add(start);
+
+    }
+
+    public ButtonGroup getButtonGroup() {
+        return buttonGroup;
+    }
+
+    public JRadioButtonMenuItem getBeginnerRadioButton() {
+        return beginnerRadioButton;
+    }
+
+    public JRadioButtonMenuItem getIntermediateRadioButton() {
+        return intermediateRadioButton;
+    }
+
+    public JRadioButtonMenuItem getExpertRadioButton() {
+        return expertRadioButton;
+    }
+
+    public JRadioButtonMenuItem getCustomRadioButton() {
+        return customRadioButton;
+    }
+
+    public JButton getStart() {
+        return start;
     }
 }

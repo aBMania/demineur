@@ -1,8 +1,6 @@
 package Controller.Graphical.Components;
 
 import Model.GameCell.GameCell;
-import Model.GameCell.GameCellEvent;
-import Model.GameCell.GameCellListener;
 import View.Graphical.Components.CellView;
 
 import javax.swing.*;

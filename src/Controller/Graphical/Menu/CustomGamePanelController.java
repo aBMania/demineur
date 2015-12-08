@@ -3,48 +3,40 @@ package Controller.Graphical.Menu;
 import View.Graphical.Menu.CustomGamePanel;
 import View.Graphical.Menu.CustomGameParameterRow;
 
-import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-public class CustomGamePanelController implements DocumentListener{
+public class CustomGamePanelController{
     private final CustomGameParameterRow rows;
     private final CustomGameParameterRow column;
     private final CustomGameParameterRow mines;
 
+    private final CustomGameParameterRowController rowsController;
+    private final CustomGameParameterRowController columnController;
+    private final CustomGameParameterRowController minesController;
+
     public CustomGamePanelController(CustomGamePanel customGamePanel) {
 
         rows = customGamePanel.getRowsPanel();
-        new CustomGameParameterRowController(rows);
+        rowsController = new CustomGameParameterRowController(rows);
 
         column = customGamePanel.getColumnPanel();
-        new CustomGameParameterRowController(column);
+        columnController = new CustomGameParameterRowController(column);
 
         mines = customGamePanel.getMinesPanel();
-        new CustomGameParameterRowController(mines);
-
-        //rows.add
-        //column.getDocument().addDocumentListener(this);
+        minesController = new CustomGameParameterRowController(mines);
     }
 
-    public void updateMinesMaxValue(){
-
+    public void updateMinesMaxValue(int value){
+        minesController.updateMaxValue(value);
     }
 
-    @Override
-    public void insertUpdate(DocumentEvent e) {
-        updateMinesMaxValue();
+    public CustomGameParameterRowController getRowsController() {
+        return rowsController;
     }
 
-    @Override
-    public void removeUpdate(DocumentEvent e) {
-        updateMinesMaxValue();
+    public CustomGameParameterRowController getColumnController() {
+        return columnController;
     }
 
-    @Override
-    public void changedUpdate(DocumentEvent e) {
-        updateMinesMaxValue();
+    public CustomGameParameterRowController getMinesController() {
+        return minesController;
     }
 }

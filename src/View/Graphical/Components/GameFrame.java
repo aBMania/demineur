@@ -1,9 +1,8 @@
 package View.Graphical.Components;
 
-import Model.GameCell.GameCell;
 import Model.GameState.GameState;
-import View.Graphical.Menu.GameMenu;
 import View.Graphical.GameView;
+import View.Graphical.Menu.GameMenu;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,7 +20,7 @@ public class GameFrame extends JFrame {
 
         this.gameView = gameView;
 
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        //setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
         menu = new GameMenu();
