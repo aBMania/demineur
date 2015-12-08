@@ -111,7 +111,11 @@ public class CustomGameParameterRow extends JPanel {
 
 
     public void updateMaxValue(int value) {
+        int previousMax = max;
         max = value;
         slider.setMaximum(value);
+
+        if(this.value > value)
+            updateValue(value);
     }
 }

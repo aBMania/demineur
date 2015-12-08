@@ -24,7 +24,7 @@ public class CustomGamePanel extends JPanel{
         int x = Integer.valueOf(columnPanel.getField().getText());
         System.out.print(x+" ,"+y);
 
-        minesPanel  = new CustomGameParameterRow("Mines", GameConstants.CUSTOM_MIN_COLS, GameConstants.getCustomMaxMines(x,y),GameConstants.CUSTOM_DEFAULT_MINES);
+        minesPanel  = new CustomGameParameterRow("Mines", GameConstants.CUSTOM_MIN_MINES, GameConstants.getCustomMaxMines(x,y),GameConstants.CUSTOM_DEFAULT_MINES);
         add(minesPanel, BorderLayout.SOUTH);
 
     }

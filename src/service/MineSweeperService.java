@@ -1,11 +1,15 @@
 package service;
 
 import Controller.Graphical.Components.GameController;
+import Controller.Graphical.Menu.NewGamePanelController;
 import Model.GameState.GameConstants;
 import Model.GameState.GameState;
 import Model.GameState.GameStateFactory;
 import View.Console.ConsoleGameView;
 import View.Graphical.GameView;
+import View.Graphical.Menu.CustomGameFrame;
+import View.Graphical.Menu.CustomGamePanel;
+import View.Graphical.Menu.NewGameFrame;
 
 public class MineSweeperService{
 
@@ -21,6 +25,11 @@ public class MineSweeperService{
 
     public static void newExpertGame(){
         newCustomGame(GameConstants.EXPERT_COLS, GameConstants.EXPERT_ROW, GameConstants.EXPERT_MINES);
+    }
+
+    public static void newCustomGame(){
+        NewGameFrame gameFrame = new NewGameFrame("Test");
+        new NewGamePanelController(gameFrame.getNewGamePanel());
     }
 
     public static void newCustomGame(int x, int y, int nBombs){
