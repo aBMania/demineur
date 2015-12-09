@@ -1,5 +1,6 @@
 package Controller.Graphical.Menu;
 
+import Model.GameState.GameDifficulty;
 import View.Graphical.Menu.NewGamePanel;
 import service.MineSweeperService;
 
@@ -11,64 +12,43 @@ import java.awt.event.WindowEvent;
 public class NewGamePanelController {
     private NewGamePanel gamePanel;
     private int choice = CHOICE_UNDEFINED;
+    private GameDifficulty predefinedDifficulty;
     public static final int CHOICE_UNDEFINED = 0;
-    public static final int CHOICE_BEGINNER = 1;
-    public static final int CHOICE_INTERMEDIATE = 2;
-    public static final int CHOICE_EXPERT = 3;
-    public static final int CHOICE_CUSTOM = 4;
+    public static final int CHOICE_PREDEFINED_DIFFICULTY = 1;
+    public static final int CHOICE_CUSTOM = 2;
 
 
 
     public NewGamePanelController(NewGamePanel gamePanel) {
         this.gamePanel = gamePanel;
 
-        CustomGamePanelController customGamePanelController= new CustomGamePanelController(gamePanel.getCustomGamePanel());
+        CustomGamePanelController customGamePanelController = new CustomGamePanelController(gamePanel.getCustomGamePanel());
 
-        JRadioButtonMenuItem beginner = gamePanel.getBeginnerRadioButton();
-        JRadioButtonMenuItem intermediate = gamePanel.getIntermediateRadioButton();
-        JRadioButtonMenuItem expert = gamePanel.getExpertRadioButton();
-        JRadioButtonMenuItem custom = gamePanel.getCustomRadioButton();
-        JButton start = gamePanel.getStart();
+        for(GameDifficultyChoiceRadioButton radioButton : gamePanel.getGameDifficultyChoiceRadioButtonList()) {
+            radioButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    choice = CHOICE_PREDEFINED_DIFFICULTY;
+                    predefinedDifficulty = radioButton.getGameDifficulty();
+                }
+            });
+        }
 
-        beginner.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                choice = CHOICE_BEGINNER;
-            }
-        });
-        intermediate.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                choice = CHOICE_INTERMEDIATE;
-            }
-        });
-        expert.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                choice = CHOICE_EXPERT;
-            }
-        });
-        custom.addActionListener(new ActionListener() {
+        gamePanel.getCustomRadioButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 choice = CHOICE_CUSTOM;
             }
         });
 
-        start.addActionListener(new ActionListener() {
+        gamePanel.getStart().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 switch (choice){
                     case CHOICE_UNDEFINED:
                         return;
-                    case CHOICE_BEGINNER:
-                        MineSweeperService.newBeginnerGame();
-                        break;
-                    case CHOICE_INTERMEDIATE:
-                        MineSweeperService.newIntermediateGame();
-                        break;
-                    case  CHOICE_EXPERT:
-                        MineSweeperService.newExpertGame();
+                    case CHOICE_PREDEFINED_DIFFICULTY:
+                        MineSweeperService.newGame(predefinedDifficulty);
                         break;
                     case CHOICE_CUSTOM:
                         MineSweeperService.newCustomGame(customGamePanelController.getRowsController().getValue(),customGamePanelController.getColumnController().getValue(),customGamePanelController.getMinesController().getValue());

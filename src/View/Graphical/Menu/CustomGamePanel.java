@@ -20,8 +20,8 @@ public class CustomGamePanel extends JPanel{
         columnPanel = new CustomGameParameterRow("Columns", GameConstants.CUSTOM_MIN_COLS, GameConstants.CUSTOM_MAX_COLS, GameConstants.CUSTOM_DEFAULT_COLS);
         add(columnPanel, BorderLayout.CENTER);
 
-        int y = Integer.valueOf(rowsPanel.getField().getText());
-        int x = Integer.valueOf(columnPanel.getField().getText());
+        int y = rowsPanel.getValue();
+        int x = columnPanel.getValue();
         System.out.print(x+" ,"+y);
 
         minesPanel  = new CustomGameParameterRow("Mines", GameConstants.CUSTOM_MIN_MINES, GameConstants.getCustomMaxMines(x,y),GameConstants.CUSTOM_DEFAULT_MINES);

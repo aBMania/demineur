@@ -1,15 +1,18 @@
 package View.Graphical.Menu;
 
+import Model.GameState.GameConstants;
+import Model.GameState.GameDifficulty;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameMenu extends JMenuBar {
     private final JMenu gameMenu;
     private final JMenu newMenu;
-    private final JMenuItem beginnerMenuItem;
-    private final JMenuItem intermediateMenuItem;
-    private final JMenuItem expertMenuItem;
+    private final List<GameDifficultyMenuItem> gameDifficultyMenuItemList = new ArrayList<>();
     private final JMenuItem customMenuItem;
     private final JMenuItem quitMenuItem;
 
@@ -22,21 +25,11 @@ public class GameMenu extends JMenuBar {
         newMenu.setMnemonic(KeyEvent.VK_N);
         gameMenu.add(newMenu);
 
-        beginnerMenuItem = new JMenuItem("Beginner");
-        beginnerMenuItem.setMnemonic(KeyEvent.VK_B);
-
-        beginnerMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, ActionEvent.CTRL_MASK));
-        newMenu.add(beginnerMenuItem);
-
-        intermediateMenuItem = new JMenuItem("Intermediate");
-        intermediateMenuItem.setMnemonic(KeyEvent.VK_I);
-        intermediateMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, ActionEvent.CTRL_MASK));
-        newMenu.add(intermediateMenuItem);
-
-        expertMenuItem = new JMenuItem("Expert");
-        expertMenuItem.setMnemonic(KeyEvent.VK_E);
-        expertMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
-        newMenu.add(expertMenuItem);
+        for(GameDifficulty gameDifficulty : GameConstants.GAME_DIFFICULTIES){
+            GameDifficultyMenuItem gameDifficultyMenuItem = new GameDifficultyMenuItem(gameDifficulty);
+            gameDifficultyMenuItemList.add(gameDifficultyMenuItem);
+            newMenu.add(gameDifficultyMenuItem);
+        }
 
         customMenuItem = new JMenuItem("Custom");
         customMenuItem.setMnemonic(KeyEvent.VK_C);
@@ -48,32 +41,16 @@ public class GameMenu extends JMenuBar {
         gameMenu.add(quitMenuItem);
     }
 
+    public List<GameDifficultyMenuItem> getGameDifficultyMenuItemList() {
+        return gameDifficultyMenuItemList;
+    }
+
     public JMenuItem getQuitMenuItem() {
         return quitMenuItem;
     }
 
     public JMenuItem getCustomMenuItem() {
         return customMenuItem;
-    }
-
-    public JMenuItem getExpertMenuItem() {
-        return expertMenuItem;
-    }
-
-    public JMenuItem getIntermediateMenuItem() {
-        return intermediateMenuItem;
-    }
-
-    public JMenuItem getBeginnerMenuItem() {
-        return beginnerMenuItem;
-    }
-
-    public JMenu getNewMenu() {
-        return newMenu;
-    }
-
-    public JMenu getGameMenu() {
-        return gameMenu;
     }
 
 }

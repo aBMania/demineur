@@ -1,7 +1,5 @@
 package View.Graphical.Menu;
 
-import Model.GameCell.GameCellListener;
-
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -17,7 +15,6 @@ public class CustomGameParameterRow extends JPanel {
     private final JTextField field;
     private final JSlider slider;
     private int min,max;
-    private final int defaultValue;
     private int value;
 
     public void addChangeListener(ChangeListener listener) {
@@ -28,7 +25,6 @@ public class CustomGameParameterRow extends JPanel {
         JLabel name = new JLabel(parameterName);
         add(name);
         this.value = defaultValue;
-        this.defaultValue = defaultValue;
         this.min = min;
         this.max = max;
 
@@ -66,12 +62,7 @@ public class CustomGameParameterRow extends JPanel {
             }
         });
 
-        slider.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                updateValue(slider.getValue());
-            }
-        });
+        slider.addChangeListener(e -> updateValue(slider.getValue()));
     }
 
     private void updateValue(Integer value) {
@@ -97,25 +88,11 @@ public class CustomGameParameterRow extends JPanel {
         return value;
     }
 
-    public int getMax() {
-        return max;
-    }
+    public void updateMaxValue(int max) {
+        this.max = max;
+        slider.setMaximum(max);
 
-    public JTextField getField() {
-        return field;
-    }
-
-    public JSlider getSlider() {
-        return slider;
-    }
-
-
-    public void updateMaxValue(int value) {
-        int previousMax = max;
-        max = value;
-        slider.setMaximum(value);
-
-        if(this.value > value)
-            updateValue(value);
+        if(this.value > max)
+            updateValue(max);
     }
 }

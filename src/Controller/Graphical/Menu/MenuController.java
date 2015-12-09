@@ -1,5 +1,6 @@
 package Controller.Graphical.Menu;
 
+import View.Graphical.Menu.GameDifficultyMenuItem;
 import View.Graphical.Menu.GameMenu;
 import service.MineSweeperService;
 
@@ -14,32 +15,17 @@ public class MenuController {
     public MenuController(GameMenu gameMenu) {
         this.gameMenu = gameMenu;
 
-        gameMenu.getBeginnerMenuItem().addActionListener(actionEvent -> {
-            MineSweeperService.newBeginnerGame();
-            JFrame frame = (JFrame)SwingUtilities.windowForComponent(gameMenu);
-            frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
-        });
-
-        gameMenu.getIntermediateMenuItem().addActionListener(actionEvent -> {
-            MineSweeperService.newIntermediateGame();
-            JFrame frame = (JFrame)SwingUtilities.windowForComponent(gameMenu);
-            frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
-        });
-
-        gameMenu.getExpertMenuItem().addActionListener(actionEvent -> {
-            MineSweeperService.newExpertGame();
-            JFrame frame = (JFrame)SwingUtilities.windowForComponent(gameMenu);
-            frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
-        });
+        for(GameDifficultyMenuItem menuItem : gameMenu.getGameDifficultyMenuItemList()){
+            menuItem.addActionListener(e -> {
+                MineSweeperService.newGame(menuItem.getGameDifficulty());
+                JFrame frame = (JFrame)SwingUtilities.windowForComponent(gameMenu);
+                frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+            });
+        }
 
         gameMenu.getCustomMenuItem().addActionListener(e -> MineSweeperService.newCustomGame());
 
-        gameMenu.getQuitMenuItem().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
+        gameMenu.getQuitMenuItem().addActionListener(e -> System.exit(0));
 
     }
 }

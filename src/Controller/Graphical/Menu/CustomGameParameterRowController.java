@@ -1,13 +1,6 @@
 package Controller.Graphical.Menu;
 
-import Model.GameState.GameConstants;
 import View.Graphical.Menu.CustomGameParameterRow;
-
-import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
 public class CustomGameParameterRowController{
 

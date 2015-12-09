@@ -1,17 +1,20 @@
 package Model.GameState;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
+
 public class GameConstants {
-    public static final int BEGINNER_ROW = 9;
-    public static final int BEGINNER_COLS = 9;
-    public static final int BEGINNER_MINES = 10;
-    
-    public static final int INTERMEDIATE_ROW = 16;
-    public static final int INTERMEDIATE_COLS = 16;
-    public static final int INTERMEDIATE_MINES = 40;
-    
-    public static final int EXPERT_ROW = 16;
-    public static final int EXPERT_COLS = 30;
-    public static final int EXPERT_MINES = 99;
+
+    public static final List<GameDifficulty> GAME_DIFFICULTIES = new ArrayList<>();
+
+    static {
+        GAME_DIFFICULTIES.add(new GameDifficulty("Beginner", 9, 9, 10, KeyEvent.VK_B, KeyStroke.getKeyStroke(KeyEvent.VK_B, ActionEvent.CTRL_MASK)));
+        GAME_DIFFICULTIES.add(new GameDifficulty("Intermediate", 16, 16, 40, KeyEvent.VK_I, KeyStroke.getKeyStroke(KeyEvent.VK_I, ActionEvent.CTRL_MASK)));
+        GAME_DIFFICULTIES.add(new GameDifficulty("Expert", 16, 30, 99, KeyEvent.VK_E, KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK)));
+    }
 
     public static final int CUSTOM_DEFAULT_ROW = 9;
     public static final int CUSTOM_MIN_ROW = 9;

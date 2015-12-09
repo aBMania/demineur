@@ -1,18 +1,18 @@
 package View.Graphical.Menu;
 
+import Controller.Graphical.Menu.GameDifficultyChoiceRadioButton;
 import Model.GameState.GameConstants;
+import Model.GameState.GameDifficulty;
 
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class NewGamePanel extends JPanel {
 
     private CustomGamePanel customGamePanel;
-
-    private ButtonGroup buttonGroup;
-    private JRadioButtonMenuItem beginnerRadioButton;
-    private JRadioButtonMenuItem intermediateRadioButton;
-    private JRadioButtonMenuItem expertRadioButton;
     private JRadioButtonMenuItem customRadioButton;
+    private List<GameDifficultyChoiceRadioButton> gameDifficultyChoiceRadioButtonList = new ArrayList<>();
     private JButton start;
 
     public CustomGamePanel getCustomGamePanel() {
@@ -20,21 +20,16 @@ public class NewGamePanel extends JPanel {
     }
 
     public NewGamePanel() {
-        buttonGroup = new ButtonGroup();
+        ButtonGroup buttonGroup = new ButtonGroup();
 
-        beginnerRadioButton = new JRadioButtonMenuItem("Beginner: " + GameConstants.BEGINNER_MINES + " mines in a " + GameConstants.BEGINNER_ROW + "x " + GameConstants.BEGINNER_COLS + " field");
-        buttonGroup.add(beginnerRadioButton);
-        add(beginnerRadioButton);
+        for(GameDifficulty gameDifficulty : GameConstants.GAME_DIFFICULTIES){
+            GameDifficultyChoiceRadioButton radioButton = new GameDifficultyChoiceRadioButton(gameDifficulty);
+            gameDifficultyChoiceRadioButtonList.add(radioButton);
+            buttonGroup.add(radioButton);
+            add(radioButton);
+        }
 
-        intermediateRadioButton = new JRadioButtonMenuItem("Intermediate: " + GameConstants.INTERMEDIATE_MINES + " mines in a " + GameConstants.INTERMEDIATE_ROW + "x " + GameConstants.INTERMEDIATE_COLS + " field");
-        buttonGroup.add(intermediateRadioButton);
-        add(intermediateRadioButton);
-
-        expertRadioButton = new JRadioButtonMenuItem("Expert: " + GameConstants.EXPERT_MINES + " mines in a " + GameConstants.EXPERT_ROW + "x " + GameConstants.EXPERT_COLS + " field");
-        buttonGroup.add(expertRadioButton);
-        add(expertRadioButton);
-
-        customRadioButton =  new JRadioButtonMenuItem("Custom: ");
+        customRadioButton = new JRadioButtonMenuItem("Custom: ");
         buttonGroup.add(customRadioButton);
         add(customRadioButton);
 
@@ -46,20 +41,8 @@ public class NewGamePanel extends JPanel {
 
     }
 
-    public ButtonGroup getButtonGroup() {
-        return buttonGroup;
-    }
-
-    public JRadioButtonMenuItem getBeginnerRadioButton() {
-        return beginnerRadioButton;
-    }
-
-    public JRadioButtonMenuItem getIntermediateRadioButton() {
-        return intermediateRadioButton;
-    }
-
-    public JRadioButtonMenuItem getExpertRadioButton() {
-        return expertRadioButton;
+    public List<GameDifficultyChoiceRadioButton> getGameDifficultyChoiceRadioButtonList() {
+        return gameDifficultyChoiceRadioButtonList;
     }
 
     public JRadioButtonMenuItem getCustomRadioButton() {
