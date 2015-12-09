@@ -10,8 +10,10 @@ public class ScoreListPanel extends JPanel {
     public ScoreListPanel(List<Score> scoreList) {
         setLayout(new GridLayout(scoreList.size(), 1));
 
+        int i = 1;
         for(Score score : scoreList){
-            add(new ScoreView(score));
+            add(new ScoreView(score, i));
+            i++;
         }
     }
 }

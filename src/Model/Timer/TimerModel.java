@@ -8,22 +8,20 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class TimerModel {
-    private Duration duration;
-    private Timer t;
+    private Duration duration = Duration.ZERO;
+    TimerTask incrementTimerTask = new TimerTask() {
+        @Override
+        public void run() {
+            duration = duration.plusSeconds(1);
+        }
+    };
+    private Timer t = new Timer();
 
-    public TimerModel(){
-        t = new Timer();
-        duration = duration.ofSeconds(0);
-
-        TimerTask task = new TimerTask() {
-            @Override
-            public void run() {
-                 duration = duration.plusSeconds(1);
-            }
-        };
-        t.schedule(task, 1000, 1000);
+    public void start(){
+        t.schedule(incrementTimerTask, 1000, 1000);
     }
-    public void Stop(){
+
+    public void stop(){
         t.cancel();
     }
 
