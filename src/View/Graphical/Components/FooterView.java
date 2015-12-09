@@ -20,9 +20,9 @@ public class FooterView extends JPanel{
         imageFlag = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("ressources/images/drap.png")));
         timer = new TimerView(getGameState().getTimer());
 
-        this.add(timer);
-        this.add(imageFlag);
-        this.add(sentence);
+        add(timer);
+        add(imageFlag);
+        add(sentence);
     }
 
     public void refresh() {
