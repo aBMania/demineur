@@ -10,10 +10,6 @@ public class NewGameFrame extends JFrame{
         return newGamePanel;
     }
 
-    public NewGameFrame(String title) {
-        this(title, new Dimension(350, 300));
-    }
-
     public NewGameFrame(String title, Dimension d) {
         super(title);
         newGamePanel = new NewGamePanel();
@@ -23,5 +19,9 @@ public class NewGameFrame extends JFrame{
         pack();
         setVisible(true);
         setResizable(false);
+    }
+
+    public NewGameFrame(String title) {
+        this(title, new Dimension(350, 300));
     }
 }

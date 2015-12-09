@@ -9,6 +9,7 @@ public class GameDifficulty implements Serializable {
     private Integer rows;
     private Integer cols;
     private Integer mines;
+
     private int mnemonicKey;
     private KeyStroke accelerator;
 

@@ -14,6 +14,7 @@ public class Score implements Serializable{
     public Score(Duration duration, GameDifficulty gameDifficulty) {
         this.duration = duration;
         this.gameDifficulty = gameDifficulty;
+        date = new Date();
     }
 
     public Date getDate() {

@@ -2,6 +2,7 @@ package Model.GameState;
 
 import Model.GameCell.GameCell;
 import Model.GameCell.GameCellState;
+import Model.Timer.TimerModel;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -10,6 +11,7 @@ import java.util.Observable;
 
 public class GameState extends Observable {
     private List<GameStateRow> gameStateRows;
+    private TimerModel timer = new TimerModel();
     private Integer sizeX;
     private Integer sizeY;
     private boolean won = false;
@@ -35,16 +37,25 @@ public class GameState extends Observable {
     }
 
     public void discoverCell(GameCell cell){
-        if(!bombsPlaced)
+        if(!bombsPlaced){
+            timer.start();
             placeBomb(cell);
+        }
+
 
         if(cell.isMined())
+        {
+            timer.stop();
             this.setLost(true);
+        }
 
         showCell(cell);
 
         setChanged();
-        setWon(checkWon());
+        if(checkWon()){
+            setWon(true);
+            timer.stop();
+        }
         notifyObservers();
     }
 
@@ -177,7 +188,6 @@ public class GameState extends Observable {
                         }
                     }
                 }
-
             }
         }
     }
@@ -240,5 +250,9 @@ public class GameState extends Observable {
 
     public int getRemainingFlag() {
         return nBombs - nFlag;
+    }
+
+    public TimerModel getTimer() {
+        return timer;
     }
 }

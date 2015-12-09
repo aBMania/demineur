@@ -8,23 +8,20 @@ import javax.swing.*;
 import java.util.*;
 import java.util.Timer;
 
-/**
- * Created by ISEN on 09/12/2015.
- */
 public class TimerView extends JLabel {
-    private String sentence;
-    private TimerModel timerModel = new TimerModel();
+    private TimerModel timerModel;
 
-    public TimerView() {
-        this.setText(sentence);
+    public TimerView(TimerModel timerModel) {
+        this.timerModel = timerModel;
         Timer t = new java.util.Timer();
-        TimerTask task = new TimerTask() {
+
+        TimerTask refreshTask = new TimerTask() {
             @Override
             public void run() {
                 refresh();
             }
         };
-        t.schedule(task, 1000, 1000);
+        t.schedule(refreshTask, 1000, 1000);
 
     }
 
