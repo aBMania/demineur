@@ -10,6 +10,7 @@ public class FooterView extends JPanel{
     private GameFrame gameFrame;
     private JLabel sentence;
     private JLabel imageFlag;
+    private JLabel imageTimer;
     private JLabel timer;
 
     public FooterView(GameFrame gameFrame) {
@@ -18,7 +19,9 @@ public class FooterView extends JPanel{
         sentence = new JLabel("");
 
         imageFlag = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("ressources/images/drap.png")));
+        imageTimer = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("ressources/images/timer.png")));
 
+        this.add(imageTimer);
         this.add(timer);
         this.add(imageFlag);
         this.add(sentence);
