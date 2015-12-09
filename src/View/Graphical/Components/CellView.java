@@ -48,7 +48,6 @@ public class CellView extends JButton{
 
     public void refresh(){
         if(getGameView().getGameState().isFinished() && cell.isMined()) {
-            System.out.print(".");
             setText("X");
             setIcon(null);
 

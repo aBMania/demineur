@@ -20,7 +20,6 @@ public class GameState extends Observable {
     private Integer nFlag = 0;
     private Integer nBombs = 0;
 
-
     public GameState(List<GameStateRow> gameStateRows, Integer nBombs) {
         this.setSizeY(gameStateRows.size());
         this.setSizeX(gameStateRows.get(0).getCellRow().size());

@@ -29,7 +29,7 @@ public class NewGamePanel extends JPanel {
             add(radioButton);
         }
 
-        customRadioButton = new JRadioButtonMenuItem("Custom: ");
+        customRadioButton = new JRadioButtonMenuItem("Custom:");
         buttonGroup.add(customRadioButton);
         add(customRadioButton);
 
