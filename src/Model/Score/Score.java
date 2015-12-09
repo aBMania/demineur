@@ -13,6 +13,7 @@ public class Score implements Serializable{
 
     public Score(Duration duration, GameDifficulty gameDifficulty) {
         this.duration = duration;
+        this.gameDifficulty = gameDifficulty;
     }
 
     public Date getDate() {
@@ -29,5 +30,13 @@ public class Score implements Serializable{
 
     public void setDuration(Duration duration) {
         this.duration = duration;
+    }
+
+    public GameDifficulty getGameDifficulty() {
+        return gameDifficulty;
+    }
+
+    public void setGameDifficulty(GameDifficulty gameDifficulty) {
+        this.gameDifficulty = gameDifficulty;
     }
 }

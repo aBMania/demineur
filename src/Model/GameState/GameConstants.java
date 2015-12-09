@@ -10,6 +10,8 @@ public class GameConstants {
 
     public static final List<GameDifficulty> GAME_DIFFICULTIES = new ArrayList<>();
 
+    private GameConstants(){}
+
     static {
         GAME_DIFFICULTIES.add(new GameDifficulty("Beginner", 9, 9, 10, KeyEvent.VK_B, KeyStroke.getKeyStroke(KeyEvent.VK_B, ActionEvent.CTRL_MASK)));
         GAME_DIFFICULTIES.add(new GameDifficulty("Intermediate", 16, 16, 40, KeyEvent.VK_I, KeyStroke.getKeyStroke(KeyEvent.VK_I, ActionEvent.CTRL_MASK)));

@@ -1,8 +1,9 @@
 package Model.GameState;
 
 import javax.swing.*;
+import java.io.Serializable;
 
-public class GameDifficulty {
+public class GameDifficulty implements Serializable {
     private String name;
 
     private Integer rows;
@@ -42,5 +43,10 @@ public class GameDifficulty {
 
     public KeyStroke getAccelerator() {
         return accelerator;
+    }
+
+    @Override
+    public String toString() {
+        return getName();
     }
 }
