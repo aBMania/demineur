@@ -37,29 +37,30 @@ public class GameState extends Observable {
     }
 
     public void discoverCell(GameCell cell){
+        if(isFinished())
+            return;
+
         if(!bombsPlaced){
             timer.start();
             placeBomb(cell);
         }
 
-
         if(cell.isMined())
-        {
-            timer.stop();
-            this.setLost(true);
-        }
+            this.setLost();
 
         showCell(cell);
 
+        if(checkWon())
+            setWon();
+
         setChanged();
-        if(checkWon()){
-            setWon(true);
-            timer.stop();
-        }
         notifyObservers();
     }
 
     public void clearCellMark(GameCell cell){
+        if(isFinished())
+            return;
+
         if(cell.isVisible())
             return;
 
@@ -73,11 +74,17 @@ public class GameState extends Observable {
     }
 
     public void clearCellMarkAction(GameCell cell){
+        if(isFinished())
+            return;
+
         clearCellMark(cell);
         notifyObservers();
     }
 
     public void markCellWithQuestionMark(GameCell cell){
+        if(isFinished())
+            return;
+
         if(cell.isVisible())
             return;
 
@@ -88,15 +95,10 @@ public class GameState extends Observable {
         notifyObservers();
     }
 
-    private void setNFlag(Integer nFlag) {
-        this.nFlag = nFlag;
-    }
-
-    public Integer getNFlag() {
-        return nFlag;
-    }
-
     public void markCellWithExclamationMark(GameCell cell){
+        if(isFinished())
+            return;
+
         if(cell.isVisible())
             return;
 
@@ -213,20 +215,34 @@ public class GameState extends Observable {
         this.sizeY = sizeY;
     }
 
+    private void setNFlag(Integer nFlag) {
+        this.nFlag = nFlag;
+    }
+
+    public Integer getNFlag() {
+        return nFlag;
+    }
+
+    public boolean isFinished() {
+        return isLost() || isWon();
+    }
+
     public boolean isWon() {
         return won;
     }
 
-    private void setWon(boolean won) {
-        this.won = won;
+    private void setWon() {
+        this.won = true;
+        timer.stop();
     }
 
     public boolean isLost() {
         return lost;
     }
 
-    private void setLost(boolean lost) {
-        this.lost = lost;
+    private void setLost() {
+        this.lost = true;
+        timer.stop();
     }
 
     private void setNBombs(Integer nBombs) {

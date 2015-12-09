@@ -39,9 +39,6 @@ public class CellView extends JButton{
         flag = new ImageIcon(flagTemp.getImage().getScaledInstance(h,w,Image.SCALE_DEFAULT));
         interrogationMark = new ImageIcon(interrogationMarkTemp.getImage().getScaledInstance(h,w,Image.SCALE_DEFAULT));
 
-
-
-
         this.cell = cell;
 
         setPreferredSize(d);
@@ -50,16 +47,28 @@ public class CellView extends JButton{
     }
 
     public void refresh(){
-        switch (this.cell.getState()){
+        if(getGameView().getGameState().isFinished() && cell.isMined()) {
+            System.out.print(".");
+            setText("X");
+            setIcon(null);
+
+            if(cell.isVisible())
+                setEnabled(false);
+
+            return;
+        }
+        switch (cell.getState()){
             case VISIBLE:
-                this.setEnabled(false);
-                if(this.cell.isMined()){
-                    this.setText("BOOM!");
+                setEnabled(false);
+                setIcon(null);
+                if(cell.isMined()) {
+                    setText("X");
+                    break;
                 }
-                else if(this.cell.getNumberBombsNear() != 0){
-                    this.setText(Integer.toString(cell.getNumberBombsNear()));
-                    this.setEnabled(true);
-                    switch (this.cell.getNumberBombsNear()){
+                if(cell.getNumberBombsNear() != 0){
+                    setText(Integer.toString(cell.getNumberBombsNear()));
+                    setEnabled(false);
+                    switch (cell.getNumberBombsNear()){
                         case 1:
                             setForeground(Color.red);
                             break;
@@ -76,19 +85,18 @@ public class CellView extends JButton{
                             setForeground(Color.YELLOW);
                             break;
                         case 6:
-
                     }
                 }
                 break;
             case FLAG_EXCLAMATIONMARK:
-                this.setIcon(flag);
+                setIcon(flag);
                 break;
             case FLAG_QUESTIONMARK:
                 this.setIcon(interrogationMark);
                 break;
             case HIDDEN:
-                this.setText(null);
-                this.setIcon(null);
+                setText(null);
+                setIcon(null);
         }
 
       //  throw new RuntimeException("Cannot find symbol for this cell");

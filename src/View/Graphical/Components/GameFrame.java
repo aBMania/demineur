@@ -36,8 +36,8 @@ public class GameFrame extends JFrame {
     }
 
     public void refresh() {
-        if(getGameState().isLost())
-            dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+        //if(getGameState().isLost())
+        //    dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
 
         grid.refresh();
         footer.refresh();
