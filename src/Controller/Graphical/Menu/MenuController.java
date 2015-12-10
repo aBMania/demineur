@@ -19,11 +19,15 @@ public class MenuController {
             menuItem.addActionListener(e -> {
                 MineSweeperService.newGame(menuItem.getGameDifficulty());
                 JFrame frame = (JFrame)SwingUtilities.windowForComponent(gameMenu);
-                frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+                frame.dispose();
             });
         }
 
-        gameMenu.getCustomMenuItem().addActionListener(e -> MineSweeperService.newCustomGame());
+        gameMenu.getCustomMenuItem().addActionListener(e -> {
+            MineSweeperService.newCustomGame();
+            JFrame frame = (JFrame)SwingUtilities.windowForComponent(gameMenu);
+            frame.dispose();
+        });
 
         gameMenu.getQuitMenuItem().addActionListener(e -> System.exit(0));
 

@@ -1,6 +1,5 @@
 package View.Graphical.Menu;
 
-import Controller.Graphical.Menu.GameDifficultyChoiceRadioButton;
 import Model.GameState.GameConstants;
 import Model.GameState.GameDifficulty;
 

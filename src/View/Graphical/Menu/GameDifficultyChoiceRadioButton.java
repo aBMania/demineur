@@ -1,4 +1,4 @@
-package Controller.Graphical.Menu;
+package View.Graphical.Menu;
 
 import Model.GameState.GameDifficulty;
 

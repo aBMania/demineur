@@ -7,27 +7,19 @@ import javax.swing.*;
 
 public class CustomGameFrame extends JFrame {
 
-    private final CustomGamePanel customGamePanel;
+    private final CustomGamePanelWrapper customGamePanelWrapper;
 
-    public CustomGamePanel getCustomGamePanel() {
-        return customGamePanel;
+    public CustomGamePanelWrapper getCustomGamePanelWrapper() {
+        return customGamePanelWrapper;
     }
 
     public CustomGameFrame() {
-        this.customGamePanel = new CustomGamePanel();
-        this.setSize(100,100);
-        add(this.customGamePanel);
+        super("Choose parameters");
+        customGamePanelWrapper = new CustomGamePanelWrapper();
+        setSize(100,100);
+        add(customGamePanelWrapper);
         pack();
         setVisible(true);
     }
 
-    public void addComponentListener() {
-
-    }
-    public GameState fireGameState(int x , int y , int Bombs){
-        GameState gameState;
-        gameState = GameStateFactory.newGameStateByPercentage(x, y, Bombs);
-        return gameState;
-
-    }
 }

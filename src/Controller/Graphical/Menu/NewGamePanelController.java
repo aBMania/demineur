@@ -1,6 +1,7 @@
 package Controller.Graphical.Menu;
 
 import Model.GameState.GameDifficulty;
+import View.Graphical.Menu.GameDifficultyChoiceRadioButton;
 import View.Graphical.Menu.NewGamePanel;
 import service.MineSweeperService;
 
