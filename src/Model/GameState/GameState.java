@@ -2,7 +2,6 @@ package Model.GameState;
 
 import Model.GameCell.GameCell;
 import Model.GameCell.GameCellState;
-import Model.Score.Score;
 import Model.Timer.TimerModel;
 
 import java.util.Collections;
@@ -11,8 +10,6 @@ import java.util.List;
 import java.util.Observable;
 
 public class GameState extends Observable {
-    private GameDifficulty gameDifficulty;
-    private Score score;
     private List<GameStateRow> gameStateRows;
     private TimerModel timer = new TimerModel();
     private Integer sizeX;
@@ -48,12 +45,12 @@ public class GameState extends Observable {
         }
 
         if(cell.isMined())
-            endGame(false);
+            this.setLost();
 
         showCell(cell);
 
         if(checkWon())
-            endGame(true);
+            setWon();
 
         setChanged();
         notifyObservers();
@@ -233,17 +230,8 @@ public class GameState extends Observable {
         return won;
     }
 
-    private void endGame(boolean won){
-        if(won)
-            this.won = true;
-        else
-            this.won = false;
-
-        if(won && gameDifficulty != null) {
-            score = new Score(timer.getDuration(), gameDifficulty);
-            score.register();
-        }
-
+    private void setWon() {
+        this.won = true;
         timer.stop();
     }
 
@@ -251,8 +239,9 @@ public class GameState extends Observable {
         return lost;
     }
 
-    public void setGameDifficulty(GameDifficulty gameDifficulty) {
-        this.gameDifficulty = gameDifficulty;
+    private void setLost() {
+        this.lost = true;
+        timer.stop();
     }
 
     private void setNBombs(Integer nBombs) {
@@ -281,6 +270,4 @@ public class GameState extends Observable {
     public TimerModel getTimer() {
         return timer;
     }
-
-    public Score getScore() { return score; }
 }
