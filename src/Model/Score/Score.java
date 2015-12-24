@@ -21,23 +21,15 @@ public class Score implements Serializable{
         return date;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
     public Duration getDuration() {
         return duration;
-    }
-
-    public void setDuration(Duration duration) {
-        this.duration = duration;
     }
 
     public GameDifficulty getGameDifficulty() {
         return gameDifficulty;
     }
 
-    public void setGameDifficulty(GameDifficulty gameDifficulty) {
-        this.gameDifficulty = gameDifficulty;
+    public void register() {
+        ScoreList.getInstance().addScore(this);
     }
 }

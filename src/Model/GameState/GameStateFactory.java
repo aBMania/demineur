@@ -9,9 +9,14 @@ import java.util.List;
 
 public class GameStateFactory {
 
-
     public static final int MAX_PERCENTAGE = 85;
     public static final int MIN_SIZE = 2;
+
+    public static GameState newGameState(GameDifficulty gameDifficulty) {
+        GameState gameState= newGameState(gameDifficulty.getCols(), gameDifficulty.getRows(), gameDifficulty.getMines());
+        gameState.setGameDifficulty(gameDifficulty);
+        return gameState;
+    }
 
     public static GameState newGameState(Integer x, Integer y, Integer nBombs) {
         List<GameStateRow> gameStateRows = new ArrayList<>(y);

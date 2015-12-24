@@ -6,6 +6,10 @@ import java.awt.*;
 public class NewGameFrame extends JFrame{
     private NewGamePanel newGamePanel;
 
+    public NewGameFrame() {
+        this("New game");
+    }
+
     public NewGamePanel getNewGamePanel() {
         return newGamePanel;
     }
