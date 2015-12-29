@@ -6,14 +6,14 @@ import java.io.Serializable;
 import java.time.Duration;
 import java.util.Date;
 
-public class Score implements Serializable{
+public class Score implements Serializable, Comparable<Score>{
     Date date;
     Duration duration;
-    GameDifficulty gameDifficulty;
+    GameDifficulty difficulty;
 
     public Score(Duration duration, GameDifficulty gameDifficulty) {
         this.duration = duration;
-        this.gameDifficulty = gameDifficulty;
+        this.difficulty = gameDifficulty;
         date = new Date();
     }
 
@@ -21,23 +21,23 @@ public class Score implements Serializable{
         return date;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
     public Duration getDuration() {
         return duration;
     }
 
-    public void setDuration(Duration duration) {
-        this.duration = duration;
+    public GameDifficulty getDifficulty() {
+        return difficulty;
     }
 
-    public GameDifficulty getGameDifficulty() {
-        return gameDifficulty;
+    @Override
+    public int compareTo(Score score) {
+        int durationComparison = duration.compareTo(score.getDuration());
+
+        if(durationComparison != 0) // If the duration isn't the same
+            return durationComparison;
+
+        // If the duration is the same, the most recent is the worst
+        return date.compareTo(score.getDate());
     }
 
-    public void setGameDifficulty(GameDifficulty gameDifficulty) {
-        this.gameDifficulty = gameDifficulty;
-    }
 }

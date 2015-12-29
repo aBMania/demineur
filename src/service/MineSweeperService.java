@@ -13,8 +13,9 @@ import View.Graphical.Menu.CustomGameFrame;
 import View.Graphical.Menu.NewGameFrame;
 
 public class MineSweeperService{
-
     public final static boolean DEBUG = false;
+
+    private MineSweeperService(){}
 
     public static void newGame(GameDifficulty gameDifficulty) {
         newCustomGame(gameDifficulty.getCols(), gameDifficulty.getRows(), gameDifficulty.getMines());

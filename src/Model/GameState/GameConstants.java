@@ -8,7 +8,7 @@ import java.util.List;
 
 public class GameConstants {
 
-    public static final List<GameDifficulty> GAME_DIFFICULTIES = new ArrayList<>();
+    public static final List<GameDifficulty>   GAME_DIFFICULTIES = new ArrayList<>();
 
     private GameConstants(){}
 

@@ -20,7 +20,7 @@ public class ScoreView extends JPanel{
             fullString =  fullString + order.toString() + " : ";
         }
 
-        fullString = fullString + durationString + "(" + score.getGameDifficulty().toString() + ")";
+        fullString = fullString + durationString + "(" + score.getDifficulty().toString() + ")";
 
         add(new JLabel(fullString));
     }
