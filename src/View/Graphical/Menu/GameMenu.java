@@ -12,6 +12,7 @@ import java.util.List;
 public class GameMenu extends JMenuBar {
     private final JMenu gameMenu;
     private final JMenu newMenu;
+    private final JMenuItem scoresMenuItem;
     private final List<GameDifficultyMenuItem> gameDifficultyMenuItemList = new ArrayList<>();
     private final JMenuItem customMenuItem;
     private final JMenuItem quitMenuItem;
@@ -21,9 +22,14 @@ public class GameMenu extends JMenuBar {
         gameMenu.setMnemonic(KeyEvent.VK_G);
         this.add(gameMenu);
 
+        scoresMenuItem = new JMenuItem("Scores");
+        scoresMenuItem.setMnemonic(KeyEvent.VK_N);
+        gameMenu.add(scoresMenuItem);
+
         newMenu = new JMenu("New");
         newMenu.setMnemonic(KeyEvent.VK_N);
         gameMenu.add(newMenu);
+
 
         for(GameDifficulty gameDifficulty : GameConstants.GAME_DIFFICULTIES){
             GameDifficultyMenuItem gameDifficultyMenuItem = new GameDifficultyMenuItem(gameDifficulty);
@@ -53,4 +59,7 @@ public class GameMenu extends JMenuBar {
         return customMenuItem;
     }
 
+    public JMenuItem getScoresMenuItem() {
+        return scoresMenuItem;
+    }
 }
