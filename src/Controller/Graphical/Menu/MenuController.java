@@ -1,15 +1,12 @@
-package Controller.Graphical.Menu;
+package controller.Graphical.Menu;
 
-import View.Graphical.Menu.GameDifficultyMenuItem;
-import View.Graphical.Menu.GameMenu;
-import View.Score.ScoresFrame;
+import view.Graphical.Menu.GameDifficultyMenuItem;
+import view.Graphical.Menu.GameMenu;
+import view.Score.ScoresFrame;
 import service.MineSweeperService;
 import service.ScoreManagerService;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
 
 public class MenuController {
 

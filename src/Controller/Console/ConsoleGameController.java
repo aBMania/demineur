@@ -1,8 +1,8 @@
-package Controller.Console;
+package controller.Console;
 
-import Controller.GameController;
-import Model.GameCell.GameCell;
-import View.Console.ConsoleGameView;
+import controller.GameController;
+import model.GameCell.GameCell;
+import view.Console.ConsoleGameView;
 
 import java.util.Scanner;
 

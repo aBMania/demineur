@@ -1,8 +1,8 @@
-package Controller.Graphical.Menu;
+package controller.Graphical.Menu;
 
-import Model.GameState.GameDifficulty;
-import View.Graphical.Menu.GameDifficultyChoiceRadioButton;
-import View.Graphical.Menu.NewGamePanel;
+import model.GameState.GameDifficulty;
+import view.Graphical.Menu.GameDifficultyChoiceRadioButton;
+import view.Graphical.Menu.NewGamePanel;
 import service.MineSweeperService;
 
 import javax.swing.*;

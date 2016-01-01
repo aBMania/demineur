@@ -1,16 +1,13 @@
 package service;
 
-import Controller.Graphical.Components.GameController;
-import Controller.Graphical.Menu.CustomGameFrameController;
-import Controller.Graphical.Menu.NewGamePanelController;
-import Model.GameState.GameConstants;
-import Model.GameState.GameDifficulty;
-import Model.GameState.GameState;
-import Model.GameState.GameStateFactory;
-import View.Console.ConsoleGameView;
-import View.Graphical.GameView;
-import View.Graphical.Menu.CustomGameFrame;
-import View.Graphical.Menu.NewGameFrame;
+import controller.Graphical.Components.GameController;
+import controller.Graphical.Menu.CustomGameFrameController;
+import model.GameState.GameDifficulty;
+import model.GameState.GameState;
+import model.GameState.GameStateFactory;
+import view.Console.ConsoleGameView;
+import view.Graphical.GameView;
+import view.Graphical.Menu.CustomGameFrame;
 
 public class MineSweeperService{
     public final static boolean DEBUG = false;

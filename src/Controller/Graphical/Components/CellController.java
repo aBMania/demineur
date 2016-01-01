@@ -1,7 +1,7 @@
-package Controller.Graphical.Components;
+package controller.Graphical.Components;
 
-import Model.GameCell.GameCell;
-import View.Graphical.Components.CellView;
+import model.GameCell.GameCell;
+import view.Graphical.Components.CellView;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;

@@ -1,9 +1,9 @@
-package View;
+package view;
 
-import Model.GameCell.GameCell;
-import Model.GameCell.GameCellEvent;
-import Model.GameCell.GameCellListener;
-import Model.GameState.GameState;
+import model.GameCell.GameCell;
+import model.GameCell.GameCellEvent;
+import model.GameCell.GameCellListener;
+import model.GameState.GameState;
 
 import java.util.*;
 

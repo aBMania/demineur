@@ -1,6 +1,6 @@
-package Controller.Graphical.Menu;
+package controller.Graphical.Menu;
 
-import View.Graphical.Menu.CustomGamePanelWrapper;
+import view.Graphical.Menu.CustomGamePanelWrapper;
 import service.MineSweeperService;
 
 import java.awt.event.ActionEvent;

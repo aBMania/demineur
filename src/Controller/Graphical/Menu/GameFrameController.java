@@ -1,7 +1,7 @@
-package Controller.Graphical.Menu;
+package controller.Graphical.Menu;
 
-import Controller.Graphical.Components.GridController;
-import View.Graphical.Components.GameFrame;
+import controller.Graphical.Components.GridController;
+import view.Graphical.Components.GameFrame;
 
 public class GameFrameController {
     public GameFrameController(GameFrame gameFrame) {

@@ -1,8 +1,8 @@
-package Test;
+package test;
 
-import Model.GameState.GameConstants;
-import Model.Score.Score;
-import View.Score.ScoresFrame;
+import model.GameState.GameConstants;
+import model.Score.Score;
+import view.Score.ScoresFrame;
 import service.ScoreManagerService;
 
 import java.time.Duration;

@@ -1,7 +1,7 @@
-package View.Graphical.Menu;
+package view.Graphical.Menu;
 
-import Model.GameState.GameConstants;
-import Model.GameState.GameDifficulty;
+import model.GameState.GameConstants;
+import model.GameState.GameDifficulty;
 
 import javax.swing.*;
 import java.util.ArrayList;

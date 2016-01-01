@@ -1,13 +1,12 @@
-package View.Graphical.Components;
+package view.Graphical.Components;
 
-import Model.GameState.GameState;
-import View.Graphical.GameView;
-import View.Graphical.Menu.GameMenu;
+import model.GameState.GameState;
+import view.Graphical.GameView;
+import view.Graphical.Menu.GameMenu;
 import service.MineSweeperService;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.WindowEvent;
 
 public class GameFrame extends JFrame {
     private GameView gameView;

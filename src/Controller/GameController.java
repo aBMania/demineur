@@ -1,9 +1,9 @@
-package Controller;
+package controller;
 
-import Model.GameCell.GameCellEvent;
-import Model.GameCell.GameCellListener;
-import Model.GameState.GameState;
-import View.GameView;
+import model.GameCell.GameCellEvent;
+import model.GameCell.GameCellListener;
+import model.GameState.GameState;
+import view.GameView;
 
 abstract public class GameController implements GameCellListener {
     private GameState gameState;

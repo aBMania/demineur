@@ -1,9 +1,9 @@
-package Test;
+package test;
 
-import Controller.Console.ConsoleGameController;
-import Model.GameState.GameState;
-import Model.GameState.GameStateFactory;
-import View.Console.ConsoleGameView;
+import controller.Console.ConsoleGameController;
+import model.GameState.GameState;
+import model.GameState.GameStateFactory;
+import view.Console.ConsoleGameView;
 
 import java.util.Scanner;
 

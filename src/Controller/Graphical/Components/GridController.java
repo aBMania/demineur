@@ -1,7 +1,7 @@
-package Controller.Graphical.Components;
+package controller.Graphical.Components;
 
-import View.Graphical.Components.CellView;
-import View.Graphical.Components.GridView;
+import view.Graphical.Components.CellView;
+import view.Graphical.Components.GridView;
 
 public class GridController {
 

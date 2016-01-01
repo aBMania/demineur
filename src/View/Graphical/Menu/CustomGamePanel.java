@@ -1,6 +1,6 @@
-package View.Graphical.Menu;
+package view.Graphical.Menu;
 
-import Model.GameState.GameConstants;
+import model.GameState.GameConstants;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,7 +1,7 @@
-package View.Graphical.Components;
+package view.Graphical.Components;
 
-import Model.GameState.GameState;
-import View.Graphical.TimerView.TimerView;
+import model.GameState.GameState;
+import view.Graphical.TimerView.TimerView;
 
 import javax.swing.*;
 

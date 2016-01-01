@@ -1,11 +1,11 @@
-package View.Graphical;
+package view.Graphical;
 
-import Model.GameState.GameState;
-import View.Graphical.Components.GameFrame;
+import model.GameState.GameState;
+import view.Graphical.Components.GameFrame;
 
 import java.util.Observable;
 
-public class GameView extends View.GameView {
+public class GameView extends view.GameView {
 
     private GameFrame gameFrame;
 

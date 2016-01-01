@@ -1,7 +1,7 @@
-package View.Score;
+package view.Score;
 
-import Model.Score.Score;
-import Model.Score.ScoreList;
+import model.Score.Score;
+import model.Score.ScoreList;
 
 import javax.swing.*;
 import java.awt.*;

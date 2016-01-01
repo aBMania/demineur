@@ -1,13 +1,12 @@
 package service;
 
-import Model.GameState.GameConstants;
-import Model.GameState.GameDifficulty;
-import Model.Score.Score;
-import Model.Score.ScoreList;
+import model.GameState.GameConstants;
+import model.GameState.GameDifficulty;
+import model.Score.Score;
+import model.Score.ScoreList;
 
 import java.io.*;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class ScoreManagerService implements Serializable {
     private static Map<String, ScoreList> scoreLists;

@@ -1,7 +1,7 @@
-package Test;
+package test;
 
-import Controller.Graphical.Menu.NewGamePanelController;
-import View.Graphical.Menu.NewGameFrame;
+import controller.Graphical.Menu.NewGamePanelController;
+import view.Graphical.Menu.NewGameFrame;
 
 public class NewGameFrameTest {
     public static void main(String[] args) {

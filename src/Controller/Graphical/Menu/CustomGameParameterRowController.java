@@ -1,6 +1,6 @@
-package Controller.Graphical.Menu;
+package controller.Graphical.Menu;
 
-import View.Graphical.Menu.CustomGameParameterRow;
+import view.Graphical.Menu.CustomGameParameterRow;
 
 public class CustomGameParameterRowController{
 

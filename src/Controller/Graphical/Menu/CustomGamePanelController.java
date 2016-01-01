@@ -1,8 +1,8 @@
-package Controller.Graphical.Menu;
+package controller.Graphical.Menu;
 
-import Model.GameState.GameConstants;
-import View.Graphical.Menu.CustomGamePanel;
-import View.Graphical.Menu.CustomGameParameterRow;
+import model.GameState.GameConstants;
+import view.Graphical.Menu.CustomGamePanel;
+import view.Graphical.Menu.CustomGameParameterRow;
 
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;

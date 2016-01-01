@@ -1,8 +1,8 @@
-package View.Graphical.Components;
+package view.Graphical.Components;
 
-import Model.GameCell.GameCell;
-import Model.GameState.GameState;
-import View.GameView;
+import model.GameCell.GameCell;
+import model.GameState.GameState;
+import view.GameView;
 
 import javax.swing.*;
 import java.awt.*;

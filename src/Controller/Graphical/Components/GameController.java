@@ -1,10 +1,10 @@
-package Controller.Graphical.Components;
+package controller.Graphical.Components;
 
-import Controller.Graphical.Menu.GameFrameController;
-import View.Graphical.GameView;
+import controller.Graphical.Menu.GameFrameController;
+import view.Graphical.GameView;
 
 
-public class GameController extends Controller.GameController {
+public class GameController extends controller.GameController {
 
     public GameController(GameView view) {
         super(view);

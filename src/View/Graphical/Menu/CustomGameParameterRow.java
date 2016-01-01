@@ -1,4 +1,4 @@
-package View.Graphical.Menu;
+package view.Graphical.Menu;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;

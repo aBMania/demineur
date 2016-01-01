@@ -1,7 +1,7 @@
-package View.Graphical.Components;
+package view.Graphical.Components;
 
-import Model.GameCell.GameCell;
-import View.GameView;
+import model.GameCell.GameCell;
+import view.GameView;
 
 import javax.swing.*;
 import java.awt.*;

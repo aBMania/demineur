@@ -1,6 +1,6 @@
-package Controller.Graphical.Menu;
+package controller.Graphical.Menu;
 
-import View.Graphical.Menu.CustomGameFrame;
+import view.Graphical.Menu.CustomGameFrame;
 
 public class CustomGameFrameController {
     public CustomGameFrameController(CustomGameFrame customGameFrame) {

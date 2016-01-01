@@ -1,8 +1,8 @@
-package View.Console;
+package view.Console;
 
-import Model.GameCell.GameCell;
-import Model.GameState.GameState;
-import View.GameView;
+import model.GameCell.GameCell;
+import model.GameState.GameState;
+import view.GameView;
 
 import java.util.Observable;
 

@@ -1,7 +1,4 @@
-package View.Graphical.Menu;
-
-import Model.GameState.GameState;
-import Model.GameState.GameStateFactory;
+package view.Graphical.Menu;
 
 import javax.swing.*;
 
