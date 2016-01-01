@@ -5,6 +5,8 @@ import model.GameState.GameDifficulty;
 import model.Score.Score;
 import model.Score.ScoreList;
 
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
 import java.io.*;
 import java.util.*;
 
@@ -20,7 +22,7 @@ public class ScoreManagerService implements Serializable {
         for(GameDifficulty difficulty : GameConstants.GAME_DIFFICULTIES) {
             ScoreList difficultyScoreList = new ScoreList(difficulty);
 
-            ScoreList previousScores = getScoreListFromFile(SCORES_PATH + "/" + difficulty + ".ser");
+            ScoreList previousScores = getScoreListFromFile(SCORES_PATH + "/" + difficulty + ".xml");
 
             if (previousScores != null)
                 difficultyScoreList.addAll(previousScores);
@@ -36,7 +38,7 @@ public class ScoreManagerService implements Serializable {
 
         scoreList.add(score);
 
-        rewriteScoreList(SCORES_PATH + "/" + difficulty + ".ser", scoreList);
+        rewriteScoreList(SCORES_PATH + "/" + difficulty + ".xml", scoreList);
     }
 
     public static Map<String, ScoreList> getScoreLists() {
@@ -44,16 +46,14 @@ public class ScoreManagerService implements Serializable {
     }
 
     private static void rewriteScoreList(String path, ScoreList scoreList) {
+
         new File(path);
 
-        FileOutputStream fout;
-        ObjectOutputStream oos;
-
         try {
-            fout = new FileOutputStream(path);
-            oos = new ObjectOutputStream(fout);
-            oos.writeObject(scoreList);
-            oos.close();
+            XMLEncoder encoder = new XMLEncoder(new BufferedOutputStream(new FileOutputStream(path)));
+
+            encoder.writeObject(scoreList);
+            encoder.close();
         }
         catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -72,31 +72,23 @@ public class ScoreManagerService implements Serializable {
             return null;
 
         FileInputStream inputFileStream = null;
-        ObjectInputStream objectInputStream = null;
+        BufferedInputStream bufferedInputStream = null;
+        XMLDecoder decoder = null;
 
         try
         {
             inputFileStream = new FileInputStream(path);
-            objectInputStream = new ObjectInputStream(inputFileStream);
-            return (ScoreList) objectInputStream.readObject();
-        }
-        catch(ClassNotFoundException e)
-        {
-            e.printStackTrace();
-        }
-        catch(IOException i)
+            bufferedInputStream = new BufferedInputStream(inputFileStream);
+            decoder = new XMLDecoder(new BufferedInputStream(bufferedInputStream));
+
+            return (ScoreList) decoder.readObject();
+
+        } catch(IOException i)
         {
             i.printStackTrace();
         }
         finally {
-            if(objectInputStream != null) {
-                try {
-                    objectInputStream.close();
-                }
-                catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+            decoder.close();
 
             if(inputFileStream != null) {
                 try {
@@ -107,7 +99,8 @@ public class ScoreManagerService implements Serializable {
                 }
             }
         }
-
         return null;
+
+
     }
 }
