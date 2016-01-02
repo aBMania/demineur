@@ -2,12 +2,14 @@ package service;
 
 import controller.Graphical.Components.GameController;
 import controller.Graphical.Menu.CustomGameFrameController;
+import controller.Graphical.Menu.NewGamePanelController;
 import model.GameState.GameDifficulty;
 import model.GameState.GameState;
 import model.GameState.GameStateFactory;
 import view.Console.ConsoleGameView;
 import view.Graphical.GameView;
 import view.Graphical.Menu.CustomGameFrame;
+import view.Graphical.Menu.NewGameFrame;
 
 public class MineSweeperService{
     public final static boolean DEBUG = false;
@@ -16,6 +18,11 @@ public class MineSweeperService{
 
     public static void newGame(GameDifficulty gameDifficulty) {
         newCustomGame(gameDifficulty.getCols(), gameDifficulty.getRows(), gameDifficulty.getMines());
+    }
+
+    public static void newGame(){
+        NewGameFrame gameFrame = new NewGameFrame();
+        new NewGamePanelController(gameFrame.getNewGamePanel());
     }
 
     public static void newCustomGame(){

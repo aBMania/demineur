@@ -8,11 +8,12 @@ import model.Score.ScoreList;
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.*;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ScoreManagerService implements Serializable {
     private static Map<String, ScoreList> scoreLists;
-    public static final String SCORES_PATH = "scores";
+    public static final String SCORES_PATH = "scores/";
 
     static{
         new File(SCORES_PATH).mkdir(); // make score dir
@@ -22,7 +23,7 @@ public class ScoreManagerService implements Serializable {
         for(GameDifficulty difficulty : GameConstants.GAME_DIFFICULTIES) {
             ScoreList difficultyScoreList = new ScoreList(difficulty);
 
-            ScoreList previousScores = getScoreListFromFile(SCORES_PATH + "/" + difficulty + ".xml");
+            ScoreList previousScores = getScoreListFromDifficultyFile(difficulty);
 
             if (previousScores != null)
                 difficultyScoreList.addAll(previousScores);
@@ -38,14 +39,16 @@ public class ScoreManagerService implements Serializable {
 
         scoreList.add(score);
 
-        rewriteScoreList(SCORES_PATH + "/" + difficulty + ".xml", scoreList);
+        rewriteScoreList(scoreList);
     }
 
     public static Map<String, ScoreList> getScoreLists() {
         return scoreLists;
     }
 
-    private static void rewriteScoreList(String path, ScoreList scoreList) {
+    private static void rewriteScoreList(ScoreList scoreList) {
+
+        String path = getDifficultyPath(scoreList.getDifficulty());
 
         new File(path);
 
@@ -58,27 +61,26 @@ public class ScoreManagerService implements Serializable {
         catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
 
     }
 
+    public static ScoreList getScoreListFromDifficultyFile(GameDifficulty difficulty) {
 
-    public static ScoreList getScoreListFromFile(String path) {
+        String path = getDifficultyPath(difficulty);
+
         File f = new File(path);
 
         if(!f.exists())
             return null;
 
         FileInputStream inputFileStream = null;
-        BufferedInputStream bufferedInputStream = null;
         XMLDecoder decoder = null;
 
         try
         {
+
             inputFileStream = new FileInputStream(path);
-            bufferedInputStream = new BufferedInputStream(inputFileStream);
+            BufferedInputStream bufferedInputStream = new BufferedInputStream(inputFileStream);
             decoder = new XMLDecoder(new BufferedInputStream(bufferedInputStream));
 
             return (ScoreList) decoder.readObject();
@@ -88,7 +90,9 @@ public class ScoreManagerService implements Serializable {
             i.printStackTrace();
         }
         finally {
-            decoder.close();
+
+            if(decoder != null)
+                decoder.close();
 
             if(inputFileStream != null) {
                 try {
@@ -101,6 +105,9 @@ public class ScoreManagerService implements Serializable {
         }
         return null;
 
+    }
 
+    private static String getDifficultyPath(GameDifficulty difficulty){
+        return SCORES_PATH + difficulty.getName() + ".xml";
     }
 }

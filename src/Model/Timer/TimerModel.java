@@ -1,8 +1,5 @@
-package Model.Timer;
+package model.Timer;
 
-import javafx.scene.paint.Stop;
-
-import java.sql.Time;
 import java.time.Duration;
 import java.util.Timer;
 import java.util.TimerTask;

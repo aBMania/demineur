@@ -1,8 +1,8 @@
-package Model.GameState;
+package model.GameState;
 
-import Model.GameCell.GameCell;
-import Model.GameCell.GameCellState;
-import Model.Timer.TimerModel;
+import model.GameCell.GameCell;
+import model.GameCell.GameCellState;
+import model.Timer.TimerModel;
 
 import java.util.Collections;
 import java.util.LinkedList;

@@ -1,17 +1,19 @@
-package Model.Score;
+package model.Score;
 
-import Model.GameState.GameDifficulty;
+import model.GameState.GameDifficulty;
 
 import java.io.Serializable;
-import java.time.Duration;
 import java.util.Date;
 
 public class Score implements Serializable, Comparable<Score>{
     Date date;
-    Duration duration;
+    long duration;
     GameDifficulty difficulty;
 
-    public Score(Duration duration, GameDifficulty gameDifficulty) {
+    public Score() {
+    }
+
+    public Score(long duration, GameDifficulty gameDifficulty) {
         this.duration = duration;
         this.difficulty = gameDifficulty;
         date = new Date();
@@ -21,17 +23,13 @@ public class Score implements Serializable, Comparable<Score>{
         return date;
     }
 
-    public Duration getDuration() {
-        return duration;
-    }
-
     public GameDifficulty getDifficulty() {
         return difficulty;
     }
 
     @Override
     public int compareTo(Score score) {
-        int durationComparison = duration.compareTo(score.getDuration());
+        int durationComparison = Long.compare(duration, score.getDuration());
 
         if(durationComparison != 0) // If the duration isn't the same
             return durationComparison;
@@ -40,4 +38,19 @@ public class Score implements Serializable, Comparable<Score>{
         return date.compareTo(score.getDate());
     }
 
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public long getDuration() {
+        return duration;
+    }
+
+    public void setDuration(long duration) {
+        this.duration = duration;
+    }
+
+    public void setDifficulty(GameDifficulty difficulty) {
+        this.difficulty = difficulty;
+    }
 }

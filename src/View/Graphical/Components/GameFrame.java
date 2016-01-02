@@ -1,9 +1,9 @@
 package view.Graphical.Components;
 
 import model.GameState.GameState;
+import service.MineSweeperService;
 import view.Graphical.GameView;
 import view.Graphical.Menu.GameMenu;
-import service.MineSweeperService;
 
 import javax.swing.*;
 import java.awt.*;
@@ -60,7 +60,7 @@ public class GameFrame extends JFrame {
             System.exit(0);
 
         if (option == JOptionPane.YES_OPTION){
-            MineSweeperService.newCustomGame();
+            MineSweeperService.newGame();
             dispose();
         }
     }

@@ -1,10 +1,14 @@
-package Model.Score;
+package model.Score;
 
-import Model.GameState.GameDifficulty;
+import model.GameState.GameDifficulty;
+
 import java.util.TreeSet;
 
 public class ScoreList extends TreeSet<Score> {
     private GameDifficulty difficulty;
+
+    public ScoreList() {
+    }
 
     public ScoreList(GameDifficulty difficulty) {
         this.difficulty = difficulty;
@@ -12,5 +16,9 @@ public class ScoreList extends TreeSet<Score> {
 
     public GameDifficulty getDifficulty() {
         return difficulty;
+    }
+
+    public void setDifficulty(GameDifficulty difficulty) {
+        this.difficulty = difficulty;
     }
 }

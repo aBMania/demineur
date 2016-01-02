@@ -1,6 +1,6 @@
-package View.Graphical.Menu;
+package view.Graphical.Menu;
 
-import Model.GameState.GameDifficulty;
+import model.GameState.GameDifficulty;
 
 import javax.swing.*;
 

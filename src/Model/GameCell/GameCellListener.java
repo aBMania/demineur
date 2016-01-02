@@ -1,4 +1,4 @@
-package Model.GameCell;
+package model.GameCell;
 
 public interface GameCellListener {
     void markCellWithQuestionMark(GameCellEvent e);

@@ -3,8 +3,8 @@ package view.Graphical.TimerView;
 import model.Timer.TimerModel;
 
 import javax.swing.*;
-import java.util.*;
 import java.util.Timer;
+import java.util.TimerTask;
 
 public class TimerView extends JLabel {
     private TimerModel timerModel;

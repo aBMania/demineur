@@ -1,9 +1,9 @@
 package controller.Graphical.Menu;
 
 import model.GameState.GameDifficulty;
+import service.MineSweeperService;
 import view.Graphical.Menu.GameDifficultyChoiceRadioButton;
 import view.Graphical.Menu.NewGamePanel;
-import service.MineSweeperService;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

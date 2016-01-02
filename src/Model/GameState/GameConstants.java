@@ -1,4 +1,4 @@
-package Model.GameState;
+package model.GameState;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

@@ -1,4 +1,4 @@
-package Model.GameCell;
+package model.GameCell;
 
 public class GameCellEvent{
     private GameCell gameCell;

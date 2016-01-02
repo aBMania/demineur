@@ -1,7 +1,7 @@
-package Model.GameState;
+package model.GameState;
 
-import Model.GameCell.GameCell;
-import Model.GameCell.GameCellState;
+import model.GameCell.GameCell;
+import model.GameCell.GameCellState;
 
 import java.util.ArrayList;
 import java.util.List;

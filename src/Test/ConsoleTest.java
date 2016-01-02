@@ -12,7 +12,6 @@ public class ConsoleTest {
 
     private static final boolean DEBUG = false;
 
-
     private static void printIntro() {
         System.out.println("Pour jouer, entrez la taille de la grille ainsi que le pourcentage de bombes");
         printFormat();

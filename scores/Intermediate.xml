@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_60" class="java.beans.XMLDecoder">
+ <object class="model.Score.ScoreList">
+  <void method="add">
+   <object class="model.Score.Score">
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1451755555201</long>
+     </object>
+    </void>
+    <void property="difficulty">
+     <object class="model.GameState.GameDifficulty" id="GameDifficulty0">
+      <void property="accelerator">
+       <object class="javax.swing.KeyStroke" id="KeyStroke0" method="getKeyStroke">
+        <int>73</int>
+        <int>130</int>
+       </object>
+      </void>
+      <void property="cols">
+       <int>16</int>
+      </void>
+      <void property="mines">
+       <int>40</int>
+      </void>
+      <void property="mnemonicKey">
+       <int>73</int>
+      </void>
+      <void property="name">
+       <string>Intermediate</string>
+      </void>
+      <void property="rows">
+       <int>16</int>
+      </void>
+     </object>
+    </void>
+    <void property="duration">
+     <long>180</long>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="model.Score.Score">
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1451756088830</long>
+     </object>
+    </void>
+    <void property="difficulty">
+     <object class="model.GameState.GameDifficulty" id="GameDifficulty1">
+      <void property="accelerator">
+       <object idref="KeyStroke0"/>
+      </void>
+      <void property="cols">
+       <int>16</int>
+      </void>
+      <void property="mines">
+       <int>40</int>
+      </void>
+      <void property="mnemonicKey">
+       <int>73</int>
+      </void>
+      <void property="name">
+       <string>Intermediate</string>
+      </void>
+      <void property="rows">
+       <int>16</int>
+      </void>
+     </object>
+    </void>
+    <void property="duration">
+     <long>180</long>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="model.Score.Score">
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1451756093347</long>
+     </object>
+    </void>
+    <void property="difficulty">
+     <object class="model.GameState.GameDifficulty" id="GameDifficulty2">
+      <void property="accelerator">
+       <object idref="KeyStroke0"/>
+      </void>
+      <void property="cols">
+       <int>16</int>
+      </void>
+      <void property="mines">
+       <int>40</int>
+      </void>
+      <void property="mnemonicKey">
+       <int>73</int>
+      </void>
+      <void property="name">
+       <string>Intermediate</string>
+      </void>
+      <void property="rows">
+       <int>16</int>
+      </void>
+     </object>
+    </void>
+    <void property="duration">
+     <long>180</long>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="model.Score.Score">
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1451684501105</long>
+     </object>
+    </void>
+    <void property="difficulty">
+     <object class="model.GameState.GameDifficulty">
+      <void property="accelerator">
+       <object idref="KeyStroke0"/>
+      </void>
+      <void property="cols">
+       <int>16</int>
+      </void>
+      <void property="mines">
+       <int>40</int>
+      </void>
+      <void property="mnemonicKey">
+       <int>73</int>
+      </void>
+      <void property="name">
+       <string>Intermediate</string>
+      </void>
+      <void property="rows">
+       <int>16</int>
+      </void>
+     </object>
+    </void>
+    <void property="duration">
+     <long>185</long>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="model.Score.Score">
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1451684535743</long>
+     </object>
+    </void>
+    <void property="difficulty">
+     <object class="model.GameState.GameDifficulty">
+      <void property="accelerator">
+       <object idref="KeyStroke0"/>
+      </void>
+      <void property="cols">
+       <int>16</int>
+      </void>
+      <void property="mines">
+       <int>40</int>
+      </void>
+      <void property="mnemonicKey">
+       <int>73</int>
+      </void>
+      <void property="name">
+       <string>Intermediate</string>
+      </void>
+      <void property="rows">
+       <int>16</int>
+      </void>
+     </object>
+    </void>
+    <void property="duration">
+     <long>185</long>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="model.Score.Score">
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1451684537728</long>
+     </object>
+    </void>
+    <void property="difficulty">
+     <object class="model.GameState.GameDifficulty">
+      <void property="accelerator">
+       <object idref="KeyStroke0"/>
+      </void>
+      <void property="cols">
+       <int>16</int>
+      </void>
+      <void property="mines">
+       <int>40</int>
+      </void>
+      <void property="mnemonicKey">
+       <int>73</int>
+      </void>
+      <void property="name">
+       <string>Intermediate</string>
+      </void>
+      <void property="rows">
+       <int>16</int>
+      </void>
+     </object>
+    </void>
+    <void property="duration">
+     <long>185</long>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="model.Score.Score">
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1451755555230</long>
+     </object>
+    </void>
+    <void property="difficulty">
+     <object idref="GameDifficulty0"/>
+    </void>
+    <void property="duration">
+     <long>185</long>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="model.Score.Score">
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1451755555264</long>
+     </object>
+    </void>
+    <void property="difficulty">
+     <object idref="GameDifficulty0"/>
+    </void>
+    <void property="duration">
+     <long>185</long>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="model.Score.Score">
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1451756088871</long>
+     </object>
+    </void>
+    <void property="difficulty">
+     <object idref="GameDifficulty1"/>
+    </void>
+    <void property="duration">
+     <long>185</long>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="model.Score.Score">
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1451756088899</long>
+     </object>
+    </void>
+    <void property="difficulty">
+     <object idref="GameDifficulty1"/>
+    </void>
+    <void property="duration">
+     <long>185</long>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="model.Score.Score">
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1451756093375</long>
+     </object>
+    </void>
+    <void property="difficulty">
+     <object idref="GameDifficulty2"/>
+    </void>
+    <void property="duration">
+     <long>185</long>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="model.Score.Score">
+    <void property="date">
+     <object class="java.util.Date">
+      <long>1451756093404</long>
+     </object>
+    </void>
+    <void property="difficulty">
+     <object idref="GameDifficulty2"/>
+    </void>
+    <void property="duration">
+     <long>185</long>
+    </void>
+   </object>
+  </void>
+  <void property="difficulty">
+   <object idref="GameDifficulty2"/>
+  </void>
+ </object>
+</java>

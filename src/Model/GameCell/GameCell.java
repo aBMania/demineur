@@ -1,6 +1,6 @@
-package Model.GameCell;
+package model.GameCell;
 
-import Model.GameState.GameState;
+import model.GameState.GameState;
 
 import java.util.ArrayList;
 import java.util.List;

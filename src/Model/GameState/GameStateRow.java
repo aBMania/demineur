@@ -1,6 +1,6 @@
-package Model.GameState;
+package model.GameState;
 
-import Model.GameCell.GameCell;
+import model.GameCell.GameCell;
 
 import java.util.List;
 

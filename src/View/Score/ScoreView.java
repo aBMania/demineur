@@ -10,7 +10,7 @@ public class ScoreView extends JPanel{
     public ScoreView(Score score, Integer order) {
         this.score = score;
 
-        long s = score.getDuration().getSeconds();
+        Long s = score.getDuration();
         String durationString = String.format("%d:%02d:%02d", s / 3600, (s % 3600) / 60, (s % 60));
 
         String fullString = "";

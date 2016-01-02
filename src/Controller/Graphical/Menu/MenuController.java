@@ -1,10 +1,10 @@
 package controller.Graphical.Menu;
 
+import service.MineSweeperService;
+import service.ScoreManagerService;
 import view.Graphical.Menu.GameDifficultyMenuItem;
 import view.Graphical.Menu.GameMenu;
 import view.Score.ScoresFrame;
-import service.MineSweeperService;
-import service.ScoreManagerService;
 
 import javax.swing.*;
 

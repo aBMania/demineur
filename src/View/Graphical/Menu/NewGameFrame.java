@@ -24,4 +24,8 @@ public class NewGameFrame extends JFrame{
     public NewGameFrame(String title) {
         this(title, new Dimension(350, 300));
     }
+
+    public NewGameFrame(){
+        this("New game");
+    }
 }
